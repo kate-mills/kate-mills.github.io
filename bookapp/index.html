@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bookapp</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="favicon1.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="css/oct.css"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/oct.css">
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+
+
+ <link rel="stylesheet" href="css/oct.css">
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+</head>
+<body>
+
+
+<div id="bookapp">
+<div class="row-12">
+        <span id="showTime"></span><span id="showDate"></span>
+       <p> <a id="napaLibrary" target="_blank" href="https://napa.polarislibrary.com/polaris/logon.aspx?ctx=3.1033.0.0.5&Header=1">
+       <span class="glyphicon glyphicon-link"> </span></a>
+       <span id="getTime" class="glyphicon glyphicon-time"></span>
+        <span id="getDate" class="glyphicon glyphicon-calendar"></span></p>
+</div>
+    <div class="nav">
+        <h2 class="grey">Bookapp </h2>
+            <a  id="allLink" href="#/all">All <span id="all-length" class="badge">0</span> </a>
+            <a id="favoritesLink" href="#/favorites">Favorites <span id="favorites-length" class="badge">0</span> </a>
+            <a id="wantLink" href="#/iWant">I Want <span id="want-length" class="badge">0</span> </a>
+            <a id="orderLink" href="#/onOrder">On Order <span id="order-length" class="badge">0</span> </a>
+            <a id="availableLink" href="#/available">Available <span id="available-length" class="badge">0</span> </a>
+            <a  id="readLink" href="#/alreadyRead">Read <span id="read-length" class="badge">0</span> </a>
+      </div>
+<br />
+
+    <div class="container" id="new-book">
+        <input id="author" type="text" name="this.author" placeholder="Author" autofocus="">
+        <input id="title" type="text" name="this.title" placeholder="Book Title">
+        <input id="published" type="text" name="this.published" placeholder="Year Published" maxlength="4">
+    </div>
+<div class="container">
+  <h4 id="nameTitle"> All Books </h4>
+  <span id="alphabet" class="glyphicon glyphicon-sort-by-alphabet"></span>
+  <table class="table">
+    <thead id="head">
+      <tr>
+        <th class="author">Author</th>
+        <th class="title">Title</th>
+        <th class="year">Year</th>
+        <th class="glyphicon glyphicon-book bookmarkGrey"></th>
+        <th class="glyphicon glyphicon-bookmark bookmarkGreen"></th>
+        <th class="glyphicon glyphicon-bookmark bookmarkOrange"></th>
+        <th class="glyphicon glyphicon-bookmark bookmarkBlue"></th>
+        <th class="glyphicon glyphicon-bookmark bookmarkRed"></th>
+        <th class="glyphicon glyphicon-star grey"></th>
+        <th class="glyphicon glyphicon-trash grey"></th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+
+    </tbody>
+  </table>
+</div>
+</div>
+
+ <div class="container"><p id="footer"></p> </div>
+
+  <!-- ========= -->
+  <!-- Libraries -->
+  <!-- ========= -->
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js" type="text/javascript"></script>
+
+
+  <script src="js/appBook.js" type="text/javascript"></script>
+  <script src="js/appBookList.js" type="text/javascript"></script>
+  <script src="js/date.js" type="text/javascript"></script>
+  <script src="js/updateLengths.js" type="text/javascript"></script>
+
+  <script src="js/footer.js" type="text/javascript"></script>
+  <script src="js/Star.js" type="text/javascript"></script>
+
+   <script src="js/colors.js" type="text/javascript"></script>
+  <script src="js/views.js" type="text/javascript"></script>
+  <script src="js/main.js" type="text/javascript"></script>
+
+
+
+  <!-- Javascript code -->
+  <!-- =============== -->
+
+
+</body>
+</html>

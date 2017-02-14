@@ -1,0 +1,337 @@
+W3.CSS 2.75 by Jan Egil and Borge Refsnes */
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+/* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block;vertical-align:baseline}
+audio:not([controls]){display:none;height:0}[hidden],template{display:none}
+a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}
+dfn{font-style:italic}mark{background:#ff0;color:#000}
+small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-0.5em}sub{bottom:-0.25em}
+img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}
+hr{-moz-box-sizing:content-box;box-sizing:content-box}
+code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}
+button,input,select,textarea{font:inherit;margin:0}
+button{overflow:visible}button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+input[type=checkbox],input[type=radio]{padding:0}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}
+input[type=search]{box-sizing:content-box;-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box}
+input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}pre,textarea{overflow:auto}
+/* End extract from normalize.css */
+html,body{font-family:Verdana,sans-serif;font-size:15px;line-height:1.5}html{overflow-x:hidden}
+h1,h2,h3,h4,h5,h6,.w3-slim,.w3-wide{font-family:"Segoe UI",Arial,sans-serif}
+h1{font-size:36px}h2{font-size:30px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}
+.w3-serif{font-family:"Times New Roman",Times,serif}
+h1,h2,h3,h4,h5,h6{font-weight:400;margin:10px 0}.w3-wide{letter-spacing:4px}
+h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{font-weight:inherit}
+hr{height:0;border:0;border-top:1px solid #eee;margin:20px 0}
+img{margin-bottom:-5px}a{color:inherit}html {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+ input[type="text"] {
+    width: 100%;
+    font-size: 24px;
+    font-family: inherit;
+    line-height: 1.0em;
+    border: 0;
+    outline: none;
+    padding: 6px 6px 6px 20px;
+    margin: 0 auto;
+    border: 1px solid #999999;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -ms-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+}
+div#new-book {
+    width: 51%;
+}
+input, textarea, keygen, select, button {
+    text-rendering: auto;
+    /*color: initial;*/
+    color: #9e9e9e;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em 0em 0em 0em;
+    font: 11px BlinkMacSystemFont;
+}
+
+input, textarea, keygen, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+
+
+h2 {color: grey;}
+div#bookapp {
+    margin-top: 10px;
+    background: #fbf5db;
+    /*margin-bottom: 40px;*/
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+    -ms-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+    -o-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -ms-border-radius: 0 0 5px 5px;
+    -o-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+div.nav {
+    flex-wrap: nowrap;
+    width: 100%;
+    display: block;
+    -webkit-text-orientation: vertical-right;
+    -webkit-ruby-position: initial;
+    -webkit-transform-origin-y: inherit;
+    -webkit-max-logical-height: initial;
+    max-height: inherit;
+    text-align: -webkit-center;
+
+}
+#bookapp input[type="text"] {
+  font-size: 24px;
+  font-family: inherit;
+  line-height: 1.0em;
+  border: 0;
+  outline: none;
+  padding: 6px 6px 6px 20px;
+  margin: auto;
+  border: 1px solid #999999;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -ms-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+}
+.container {
+    width: 100%;
+}
+
+div.row-12{
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 0;
+}
+
+#showTime, #showDate{background-color:transparent; height:0px;margin-left: 10px;position: relative; display: block; line-height: 0px; color: grey;font-weight: 500;}
+#showDate{left: 74px; bottom: 0px;}
+#getDate, #getTime, .glyphicon-link:before{ cursor: pointer;
+    color: grey;
+    font-weight: 500;
+    height:10px;
+    width: 20px;
+    position: relative;
+    top: 20px;
+    background-color: transparent;
+  }
+#getDate, #getTime{height: 15px; width: 15px;}
+
+.glyphicon-link:before {margin-left: 5px; content: "\e144";color: grey;}
+.glyphicon-bookmark:before {content: "\e044";}
+
+
+a{flex-wrap: nowrap;display: inline-block;}
+a{font-size: medium;}
+a:hover{color: inherit;text-decoration: none;}a:hover,a:focus {text-decoration: none;}a:focus {outline: 5px auto -webkit-focus-ring-color;outline-offset: -2px;}
+
+
+
+h4#nameTitle {text-align: center;padding-top: 20px;}
+
+#redBook{content: "\e043"; color: red;position:relative;bottom: 8px;left: 5px;}
+#orangeBook{content: "\e043"; color: #ff8300;position:relative;bottom: 8px;left: 5px;}
+#greyBook{content: "\e043"; color: #9e9e9e;position:relative;bottom: 8px;left: 5px;}
+#greenBook{content: "\e043"; color: #08d008;position:relative;bottom: 8px;left: 5px;}
+#blueBook{content: "\e043"; color: #2196f3;position:relative;bottom: 8px;left: 5px;}
+#purpleBook{content: "\e043"; color: #c713e6;position:relative;bottom: 8px;left: 5px;}
+
+
+
+.badge {color: rgba(247, 242, 242, 1);margin-right: 25px;}
+
+.backGrey{background-color: #9e9e9e;}
+.backPurple{background-color: #d502f9;}
+.backGreen{background-color: #08d008;}
+.backOrange{ background-color:#ff8300;}
+.backBlue{background-color: #2196f3;}
+.backRed{background-color: #ff0000;}
+
+span#alphabet{color: grey;background-position-x: initial;font-weight: 600; position: relative; left: 25px;cursor: pointer;}
+
+.red{color: red;}
+.blue{color: #2196f3;}
+.orange{color: #ff8300;}
+/*.orange{color: #fb8100;}*/
+.purple{color: #d502f9;}
+.green{color: #32cd32;}
+.grey{color: #9e9e9e;}
+
+#headphones{content:"\e035"; font-family: 'Glyphicons Halflings'; }
+
+
+
+
+
+
+
+/*#bookmarkBlue {content: "\e044"; color: #2196f3;}
+#bookmarkGreen{content: "\e044"; color: #1aea22;}
+#bookmarkOrange{content: "\e044"; color: #ff5722;}*/
+tbody td {overflow: visible;}
+
+tbody tr.listWant:hover{background-color: #06cc56;}
+tbody tr.listOrder:hover{background-color: #ff8300;}
+tbody tr.listAvailable:hover{background-color: #2196f3;}
+tbody tr.listAlreadyRead:hover{background-color: red;}
+
+tr th{color: grey;display: table-cell;}
+th.text {background-position-x: initial; display: table-cell;color: #607d8b;text-align: left;}
+tr.listWant, tr.listOrder, tr.listAvailable, tr.listAlreadyRead{ display: table-row; vertical-align: inherit; border-color: inherit;}
+
+th.glyphicon{font-family: 'Glyphicons Halflings'; display: table-cell; text-align: center;}
+th.bookmarkGrey{ font-family: 'Glyphicons Halflings'; content: "\e043";}
+th.bookmarkRed{font-family: 'Glyphicons Halflings'; content: "\e044"; color: red; }
+th.bookmarkOrange{font-family: 'Glyphicons Halflings'; content: "\e044"; color: #ff8300; }
+th.bookmarkGreen{font-family: 'Glyphicons Halflings'; content: "\e044"; color: #1aea22; }
+th.bookmarkBlue {font-family: 'Glyphicons Halflings'; content: "\e044"; color:  #2196f3;}
+
+td{color: black; padding: 8px;display: table-cell;}
+td.glyphicon{font-weight: 900;background-position-x: initial;display: table-cell; text-align: center;}
+td.glyphicon-star-empty:before {background-position-x: initial; content: "\e007";display: table-cell;text-align: center;}
+td.glyphicon.glyphicon-star-empty.red{background-position-x: initial; display: table-cell; text-align: center;}
+
+td.glyphicon-trash{font-family: 'Glyphicons Halflings'; cursor: pointer;color: #9e9e9e }
+td.glyphicon-trash:hover {font-family: 'Glyphicons Halflings'; content: "\e014";font-weight: bold;}
+td#radioWant:hover{font-family: 'Glyphicons Halflings'; color: transparent; cursor: not-allowed;}
+
+tr.listWant td.glyphicon.glyphicon-shoppingcart{  font-family: 'Glyphicons Halflings'; content: "\e116"; text-align: center; color: green;background-position-x: initial;}
+
+tr.listWant:hover td.glyphicon.glyphicon-shopping-cart{color: transparent;}
+tr.listWant:hover td#destroy:hover{color:green;}
+tr.listWant:hover td#radioOrder:hover{background-position-x: initial;font-weight: 900; color: white; cursor:pointer;}
+tr.listWant:hover td#radioAvailable:hover{background-position-x: initial;font-weight: 900; color: white; cursor:pointer;}
+tr.listWant:hover td#radioRead:hover{background-position-x: initial;font-weight: 900; color: white; cursor:pointer;}
+
+
+tr.listOrder td.glyphicon.glyphicon-play, td#destroy:hover, td.glyphicon.glyphicon-book.orange{text-align: center; color: orange;background-position-x: initial;}
+tr.listOrder:hover td#radioOrder:hover{color:transparent; cursor:not-allowed;}
+tr.listOrder:hover td#radioAvailable:hover {color: white; cursor: pointer;}
+tr.listOrder:hover td#radioRead:hover {color: white; cursor: pointer;}
+tr.listOrder:hover td#radioWant, td#radioOrder:hover{color: transparent; cursor: not-allowed;}
+
+tr.listAvailable td.glyphicon.glyphicon-play{text-align: center; color: #2196f3;background-position-x: initial;}
+tr.listAvailable:hover td.glyphicon.glyphicon-play{color: blue;}
+tr.listAvailable:hover td.glyphicon.glyphicon-book.blue{color:blue;}
+tr.listAvailable:hover td#destroy:hover{color:blue;}
+tr.listAvailable:hover  td#radioWant{color:transparent; cursor:not-allowed;}
+tr.listAvailable:hover td#radioOrder{color:transparent; cursor:not;allowed;}
+tr.listAvailable:hover td#radioAvailable:hover{color:transparent; cursor:not-allowed;}
+tr.listAvailable:hover td#radioRead:hover{color:white; cursor:pointer;}
+
+
+
+
+
+tr.listAlreadyRead:hover td#destroy:hover{color:pink;}
+tr.listAlreadyRead:hover td.glyphicon-star-empty:before{color: pink;}
+tr.listAlreadyRead:hover td.glyphicon-star:before{color: pink;}
+tr.listAlreadyRead:hover td.glyphicon.glyphicon-book.red{color:pink;}
+tr.listAlreadyRead:hover td#radioWant{color:transparent; cursor:not-allowed;}
+tr.listAlreadyRead:hover td#radioOrder{color:transparent; cursor:not-allowed;}
+tr.listAlreadyRead:hover td#radioAvailable{color:transparent; cursor:not-allowed;}
+tr.listAlreadyRead:hover td#radioRead{color:transparent; cursor:not-allowed;}
+td.musicIcon{color: blue;}
+
+td.glyphicon-star-empty:before, td#radioWant, td#radioOrder,  td#radioRead {display: table-cell;cursor: pointer; text-align: -webkit-center; }
+td.glyphicon-book{content: "\e043"; background-color: transparent;}
+
+
+tr.listAlreadyRead:hover td.glyphicon-book{content: "\e043"; color: #fa053a; background-color: transparent; }
+
+/*td#radioAvailable{display: table-cell; cursor: pointer;  }*/
+b.glyphicon-education{}
+.glyphicon.glypicon-headphones.blue:before{
+    cursor: pointer;
+}
+td.glyphicon-star {cursor: pointer;display: table-cell;text-align: -webkit-center;font-weight: 900;}
+td.glyphicon.glyphicon-star-empty.red {display: table-cell;text-align: -webkit-center;font-weight: 600;}
+
+td#destroy{content: "\e014";vertical-align: top;cursor: pointer;display: table-cell;}
+
+/*td#radioWant:hover{color: rgba(247, 242, 242, 1);background-color: #32cd32; border-radius: 300px 300px 300px 300px;  }*/
+
+
+
+
+
+/*tbody tr.listAvailable  td#radioOrder:hover{color: rgba(247, 242, 242, 1);background-color: transparent;}*/
+
+/*tbody tr.listOrder  td#radioOrder:hover, td#radioAvailable:hover{color: rgba(247, 242, 242, 1);background-color: transparent;}*/
+
+/*td#radioAvailable:hover{
+    cursor: pointer;
+    color: rgba(247, 242, 242, 1);
+    background-color: #2196f3;
+    border-radius: 300px 300px 300px 300px;
+}
+td#radioRead.glyphicon.glyphicon-education.red:hover{
+    cursor: pointer;
+    color: rgba(247, 242, 242, 1);
+    background-color: red;
+    border-radius: 300px 300px 300px 300px;
+}*/
+
+#footer{
+   color: #9e9e9e;
+}
+
+/*table.table #table-body .listWant:last-child {
+    color:red;
+}*/
+td.glyphicon-star + td#destroy:hover{
+    color: red;
+}
+td.glyphicon-star-empty + td#destroy:hover{
+    color:red;
+}
+tbody tr.listWant td#radioWant:hover{cursor: not-allowed; color: rgba(204, 129, 0, 0);}
+tbody tr.listWant:hover td.glyphicon.glyphicon-book.green{color:green;}
+tbody tr.listWant:hover td#radioOrder:hover, td#radioAvailable:hover, td#radioAlreadyRead:hover{color:white}
+
+
+/*tbody tr.listOrder td#radioWant, td#radioOrder{  color: rgba(204, 129, 0, 0);}*/
+/*tbody tr.listOrder  td#radioOrder:hover{cursor: not-allowed;    color: rgba(204, 129, 0, 0); background-position-x: initial; background-size: initial; }*/
+/*tbody tr.lostOrder td#radioWant:hover{cursor: pointer; color: rgba(247, 242, 242, 1); }*/
+/*tbody tr.listAvailable td#radioAvailable:hover{cursor: not-allowed; }*/
+/*.main_content div.knowledge, .main_content div.release, div.print_container div.knowledge, div.print_container div.release {
+    float: left;
+    clear: both;
+    height: 20px;
+    text-align: right;
+    font-size: 15px;
+    margin: -2px 4px 10px;
+    padding: 2px 26px 0 0;
+    background: url(/structure/images/article/icon_sprite.png)right -75px no-repeat;
+    background-size: 16px 512px;
+}
