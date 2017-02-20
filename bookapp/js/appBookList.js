@@ -1,4 +1,4 @@
-pp.BookList = Backbone.Collection.extend({
+app.BookList = Backbone.Collection.extend({
       model: app.Book,
       localStorage: new Store("backbone-book"),
       getFavoriteBooks: function(){return this.filter(function(book) {return book.get('star');});},
