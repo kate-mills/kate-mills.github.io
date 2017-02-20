@@ -2,11 +2,11 @@ app.BookList = Backbone.Collection.extend({
       model: app.Book,
       localStorage: new Store("backbone-book"),
       getFavoriteBooks: function(){return this.filter(function(book) {return book.get('star');});},
-      getAllBooks: function(){ return app.bookList.filter(function(book){ return book.get('all') })},
-      getBooksIWant: function(){ return app.bookList.filter(function(book){return book.get('iWant') })},
-      getBooksOnOrder: function(){ return app.bookList.filter(function(book){return book.get('onOrder') })},
-      getBooksAvailable: function(){ return app.bookList.filter(function(book){return book.get('available')})},
-      getBooksRead: function(){ return app.bookList.filter(function(book){return book.get('alreadyRead')})},
+      getAllBooks: function(){ return app.bookList.filter(function(book){ return book.get('all');});},
+      getBooksIWant: function(){ return app.bookList.filter(function(book){return book.get('iWant'); });},
+      getBooksOnOrder: function(){ return app.bookList.filter(function(book){return book.get('onOrder'); });},
+      getBooksAvailable: function(){ return app.bookList.filter(function(book){return book.get('available'); });},
+      getBooksRead: function(){ return app.bookList.filter(function(book){return book.get('alreadyRead'); });}
 
 });//close app.BookList
 
