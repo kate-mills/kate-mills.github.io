@@ -245,7 +245,7 @@ td.glyphicon-star + td#destroy:hover{
 td.glyphicon-star-empty + td#destroy:hover{
     color:red;
 }
-div.container.table{background-color: #fbf5db;}
+div.container.table{background-color: #fbf5db;margin-top:10px;}
 table.table{background-color:#fbf5db;}
 thead{color: #808080; font-size: x-large; background-color: #fbf5db;}
 tbody{background-color: #fbf5db;}
