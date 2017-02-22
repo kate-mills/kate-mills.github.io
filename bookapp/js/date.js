@@ -20,30 +20,33 @@ function getDate(){
 }
 
 var testYear = function(year){
-    if(year === undefined || year === null) {
+    if(year === undefined || year  === "null") {
         // console.log("year: ", null);
-        return year = "null";
+        year = null;
+        return year;
     }
-    else if ( typeof(year) === typeof("string") ){
-        if(year === ''){
-            return year = "null";
-        }
-        if(year === undefined) {
-            return "null";
+    else if ( year === typeof("String") ){
+            // return year = "null";
+            console.log(year);
+            return String(year);
         }
 
+
+    else {
+
         year = Number(year);
-        // console.log('YEAR1', year);
         if( year ) {
-            return year = Number( year);
+            year = String(year);
+            console.log(year);
+            return year;
         }
         else {
             year = "null";
-            // console.log(year);
-            return year = "null";
+            console.log(year);
+            return year;
         }
-
     }
+
 
 
 };

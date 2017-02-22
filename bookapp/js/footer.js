@@ -37,6 +37,7 @@ switch (new Date().getDay()) {
 
 
 }
-    var footerText = '&copy; km-2016  ' + text;
+    var napaLibrary = '<a style="background:white" title="Napa Library" id="napaLibrary" target="_blank" href="https://napa.polarislibrary.com/polaris/logon.aspx?ctx=3.1033.0.0.5&Header=1"><span class="glyphicon glyphicon-link"> </span></a>';
+    var footerText = '&copy; km-2016  ' + text + napaLibrary;
     $('#footer').html(footerText);
-    
+

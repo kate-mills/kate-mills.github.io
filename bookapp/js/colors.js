@@ -1,45 +1,113 @@
-function makeGreen(){
-    $('th').first().text('Favorite Author')
-    // $('th').last().html('<th class="glyphicon">&#xe014;</th>');
-    $.fn.greenify = function(){
-        this.css("color", "green");
+$.fn.neutralize = function(){
+        this.css("color", "#fbf5db");
+         this.css("background-color", "#FBF5DA");
         return this;
     };
-    $.fn.greenifyFooter = function(){
-            this.css("color", "#8bc34a");
-            return this;
-    };
-    $("h4").greenify().addClass("greenified");
-    $("a").greenify().addClass("greenified");
-    $("li").greenify().addClass("greenified");
-    // $("th").greenify().addClass("greenified");
-    $("#showDate").greenify().addClass("greenified");
-    $("#showTime").greenify().addClass("greenified");
-    $("p#footer").greenifyFooter().addClass("greenifiedLight");
-}
-
-function makePurple(){
-    $('th').first().text('Favorite Authors').css('color', 'purple');
-    $('th').eq(1).css('color', 'purple').text('Favorite Titles');
-    $('th').eq(2).css('color', 'purple').text('Year')
-    $('th').eq(3).css('color', '#d502f9');
-    $('th').eq(9).css('color', '#d502f9');
-}
-
-function makeGrey(){
-    $.fn.darkShade = function(){
+$.fn.greyify = function(){
         this.css("color", "#9e9e9e");
+         this.css("background-color", "#FBF5DA");
         return this;
     };
-    $.fn.lightShade = function(){
-        this.css("color", "#e0e0e0");
+$.fn.greenify = function(){
+        this.css("color", "green");
+         this.css("background-color", "#FBF5DA");
+        return this;
+};
+$.fn.orangeify = function(){
+        this.css("color", "#ff8300");
+        return this;
+};
+$.fn.redify = function(){
+        this.css("color", "red");
+        return this;
+};
+$.fn.blueify = function(){
+        this.css("color", "#2196f3");
+        this.css("background-color", "#FBF5DA");
+        return this;
+};
+$.fn.purplefy = function(){
+        this.css("color", "purple");
+        return this;
+};
+$.fn.darkGrey = function(){
+        this.css("color", "#777");
         return this;
     };
-    $("h4").darkShade().addClass("dark-Grey");
-    $("a").darkShade().addClass("dark-Grey");
-    $("li").darkShade().addClass("dark-Grey");
-    // $('th').darkShade().addClass("dark-Grey");
-    $("#showDate").darkShade().addClass("dark-Grey");
-    $("#showTime").darkShade().addClass("dark-Grey");
-    $("p#footer").darkShade().addClass("light-Grey");
+$.fn.lightShade = function(){
+    this.css("color", "#e0e0e0");
+    return this;
+};
+function makeRed(){
+    $("th").darkGrey().css("cursor", "default");
+    $('th').eq(1).text('Title I Have Read');
+    $("th").eq(2).text('Year');
+    $("th").eq(3).redify().text('Read');
+    $("th").eq(4).redify();
+    $('div#new-book.container').hide();
+    $("#ToggleArrow").redify();
+    $("#alphabet").redify();
+
 }
+function makeOrange(){
+    $("th").darkGrey().css("cursor", "default");
+    $('th').eq(1).text('Title On Order');
+    $("th").eq(3).orangeify().text('Order');
+    $('div#new-book.container').hide();
+    $("th").eq(4).neutralize();
+    $("#ToggleArrow").orangeify();
+    $("#alphabet").orangeify();
+}
+function makeGreen() {
+    $("th").darkGrey().css("cursor", "default");
+    $('th').eq(1).text('Title I Want');
+    $("th").eq(3).greenify().text('Want');
+    $("th").eq(4).neutralize();
+    $('div#new-book.container').show();
+    $("#showTime").greenify();
+    $("#ToggleArrow").greenify();
+    $("#alphabet").greenify();
+
+}
+function makeBlue(){
+    $("th").blueify().css("cursor", "default");
+    $('th').first().text('Authors');
+    $('th').eq(1).text('Available Books');
+    $("th").eq(2).text('Year ');
+    $("th").eq(3).text('Available');
+    $("th").eq(4).neutralize();
+   $('div#new-book.container').hide();
+   $("#ToggleArrow").blueify();
+   $("#alphabet").blueify();
+}
+function makePurple(){
+    $("th").darkGrey().css("cursor", "default");
+    $('th').eq(1).text('Favorite Titles');
+
+    $("th").eq(3).purplefy().text("Favorites");
+    $('div#new-book.container').hide();
+    $("th").eq(4).neutralize();
+    $("#ToggleArrow").purplefy();
+    $("#alphabet").purplefy();
+
+}
+function makeAllGrey() {
+    $("th").darkGrey().css("cursor", "default");
+    $("h4").darkGrey().addClass("dark-Grey");
+    $("h2").darkGrey();
+    $("a").darkGrey().addClass("dark-Grey");
+    $("li").darkGrey().addClass("dark-Grey");
+    $("th").darkGrey();
+    $('th').eq(0).text('Authors');
+    $('th').eq(1).text('All Books');
+    $("th").eq(2).text('Year');
+    $("th").eq(3).text('All');
+    $("#ToggleArrow").darkGrey();
+    $("#alphabet").darkGrey();
+}
+
+
+$( "#ToggleArrow" ).click(
+  function() {
+    $('div#new-book.container').toggle();
+  });

@@ -23,10 +23,10 @@ app.BookView = Backbone.View.extend({
         'click': 'onClick',
         'click td.glyphicon-star-empty': 'onClickEmptyStar',
         'click td.glyphicon-star': 'onClickFullStar',
-        'click #radioWant': 'onToggleWant',
-        'click #radioOrder': 'onToggleOrder',
-        'click #radioAvailable': 'onToggleAvailable',
-        'click #radioRead': 'onToggleRead',
+        'click td.glyphicon.glyphicon-bookmark.green': 'onToggleOrder',
+        'click td.glyphicon.glyphicon-bookmark.orange': 'onToggleAvailable',
+        'click td.glyphicon.glyphicon-bookmark.blue': 'onToggleRead',
+        'click td.glyphicon.glyphicon-bookmark.red': 'onToggleAvailable',
         'click td#destroy': 'destroy',
         'dblclick':'onDoubleClick',
 
@@ -42,8 +42,9 @@ app.BookView = Backbone.View.extend({
 
     },
     render: function(){
-        if(this.model)
+        if(this.model){
           this.model.toJSON();
+        }
         this.bus.status = this.model.get('status');
         this.rating = this.model.get('rating');
         this.status = this.model.get('status');
@@ -61,6 +62,7 @@ app.BookView = Backbone.View.extend({
         if( this.model.get('iWant')){
            this.bookmark = this.greenBookmark;
            this.star = this.noData;
+           this.alert = "Click " + this.title+ "";
         }
         if( this.model.get('onOrder') ) {
             this.bookmark = this.orangeBookmark;
@@ -69,6 +71,7 @@ app.BookView = Backbone.View.extend({
         if( this.model.get('available') ){
             this.bookmark = this.blueBookmark;
             this.star = this.noData;
+
         }
         if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
            this.bookmark = this.redBookmark;
@@ -83,17 +86,14 @@ app.BookView = Backbone.View.extend({
         this.authorHTML = ('<td>' + this.model.get('author') +'</td>');
         this.titleHTML = ('<td>' + this.model.get('title') +'</td>');
         this.publishedHTML = ('<td>' + this.model.get('published') +'</td>');
-        this.radioWant = ('<td id="radioWant"></td>');
-        this.radioWant = '<td id="radioWant" class="glyphicon glyphicon-shopping-cart green"></td>';
-        this.radioOrder = '<td id="radioOrder" class="glyphicon orange">&#xe183;</td>';
-        this.radioAvailable = '<td id="radioAvailable" class="glyphicon glyphicon-headphones blue"></td>';
 
-        this.radioRead = '<td id="radioRead" class="glyphicon glyphicon-education red"></td>';
+        this.status = this.model.get("status");
+        this.radio = ('<td>' + this.model.get('status') +'</td>');
 
         this.ex = ('<td id="destroy" class="glyphicon glyphicon-trash '+this.bus.statusClass+'"></td>');
 
 
-        this.$el.html(  this.authorHTML   + this.titleHTML + this.publishedHTML  + this.bookmark +  this.radioWant + this.radioOrder + this.radioAvailable + this.radioRead   + this.star + this.ex);
+        this.$el.html(  this.authorHTML   + this.titleHTML + this.publishedHTML  + this.bookmark + this.radioWant + this.radioOrder + this.radioAvailable + this.radioRead   + this.star + this.ex);
         this.$el.attr({
           id: this.model.cid,
           class: this.status,
@@ -104,7 +104,7 @@ app.BookView = Backbone.View.extend({
     },
 
      onClickRadio: function(){
-
+      console.dir(document.body);
       console.log('radio clicked', this.bus.status );
 
      },
@@ -273,13 +273,14 @@ app.AppView = Backbone.View.extend({
 
   },
 
+
   addAll: function(){
-      console.log('this', this)
+      console.log('this', this);
       this.$('#table-body').html(''); // clean the book list
 
       switch(window.filter){  // filter book item list
          case 'all':
-                makeGrey()
+                makeAllGrey();
                 $('#nameTitle').text(title.nameAll);
                 $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
                 $('tbody').addClass('grey');
@@ -287,6 +288,7 @@ app.AppView = Backbone.View.extend({
                 _.each(app.bookList.getAllBooks(), this.addOne, this);
                 break;
           case 'iWant':
+                makeGreen();
                 $('#nameTitle').text(title.nameWant);
                  $('#nameTitle').append('<p id="greenBook" class="glyphicon glyphicon-book"></p>');
                  $('span.badge').removeClass('backGrey backPurple backBlue backOrange backRed').addClass('backGreen');
@@ -295,6 +297,7 @@ app.AppView = Backbone.View.extend({
                 _.each(app.bookList.getBooksIWant(), this.addOne, this);
                 break;
           case 'onOrder':
+                makeOrange();
                 $('#nameTitle').text(title.nameOrder);
                 $('#nameTitle').append('<p id="orangeBook" class="glyphicon glyphicon-book"></p>');
                 $('span.badge').removeClass('backGrey backGreen backBlue backPurple backRed').addClass('backOrange');
@@ -302,13 +305,14 @@ app.AppView = Backbone.View.extend({
                 _.each(app.bookList.getBooksOnOrder(), this.addOne, this);
                 break;
           case 'available':
+                makeBlue();
                 $('#nameTitle').text(title.nameAvailable);
                 $('span.badge').removeClass('backGrey backGreen backPurple backOrange backRed').addClass('backBlue');
                 $('#nameTitle').append('<p id="blueBook" class="glyphicon glyphicon-book"></p>');
                 _.each(app.bookList.getBooksAvailable(), this.addOne, this);
                 break;
           case 'alreadyRead':
-                makeGreen();
+                makeRed();
                 $('#nameTitle').text(title.nameRead);
                 $('span.badge').removeClass('backGrey backGreen backPurple backOrange backBlue').addClass('backRed');
                 $('#nameTitle').append('<p id="redBook" class="glyphicon glyphicon-book"></p>');
@@ -316,6 +320,7 @@ app.AppView = Backbone.View.extend({
                 _.each(app.bookList.getBooksRead(), this.addOne, this);
                 break;
           case 'favorites':
+                  makePurple();
                   $('#nameTitle').text(title.nameFavorites);
                   $('#nameTitle').append('<p id="purpleBook" class="glyphicon glyphicon-book"></p>');
                   $('span.badge').removeClass('backGrey backGreen  backRed backOrange backBlue').addClass('backPurple');
@@ -323,7 +328,7 @@ app.AppView = Backbone.View.extend({
                   break;
 
               default:
-
+              makeAllGrey();
               $('#nameTitle').text(title.nameAll);
               $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
                 _.each(app.bookList, this.addOne, this);
@@ -340,7 +345,7 @@ app.AppView = Backbone.View.extend({
     this.model.toJSON();
 
     this.author = this.model.get('author');
-    this.title = this.model.get('title');
+    this.title= this.model.get('title');
     this.rating = this.model.get('rating');
     console.log('adding One model: ', this.author, this.title, this.rating);
 

@@ -2,7 +2,7 @@ var app = {};
 app.Book = Backbone.Model.extend({
     defaults: function(){
       return {
-        created_at: function(){return getDate();},
+        created_at: (function(){return Date();}()),
         title: '',
         author: '',
         published: null,
@@ -135,15 +135,17 @@ app.Book = Backbone.Model.extend({
       if(!attrs.author)
           return "Book needs an author to be Entered.";
       if(!attrs.published)
-          return null;
+          return "Book needs a Date to be Published";
     },
 
-    initialize: function(){
+    initialize: function() {
       if(this.isValid()) {
-            // console.log(this.get("title") + " has been added to your collection.");
+            console.log(this.get("title") + " has been added to your collection.");
       } if(!this.isValid()){
-            // console.log( "\n this.isValid = ", this.isValid() );
-            // console.log( this.validationError,' \n  ');
+            // var error = this.validate();
+            // console.log(error);
+            console.log( "\n this.isValid = ", this.isValid() );
+            console.log( this.validationError,' \n  ');
       }
     }
 

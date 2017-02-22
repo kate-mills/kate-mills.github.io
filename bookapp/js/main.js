@@ -38,6 +38,7 @@ $('#getDate').toggle(function(){
     $('#showDate').html('');
 
 });
-  
+
 });
 updateLengths();
+
