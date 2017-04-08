@@ -20,7 +20,6 @@ app.Book = Backbone.Model.extend({
     toggleWant: function(){
       this.save({ iWant: !this.get('iWant')});
     },
-
     giveOneStarRating: function(){
       this.save({rating: 1, star: true });
       console.log('rating', this.get('rating'));
