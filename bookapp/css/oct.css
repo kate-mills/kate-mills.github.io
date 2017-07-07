@@ -166,6 +166,12 @@ h4#nameTitle {text-align: center;padding-top: 20px;}
 #purpleBook{content: "\e043"; color: #c713e6;position:relative;bottom: 8px;left: 5px;}
 
 
+input.edit {
+  display: none; /* Hides input box*/
+}
+td .editing  {
+  display: none; /* Hides label text when .editing*/
+}
 
 .badge {color: rgba(247, 242, 242, 1);margin-right: 25px;}
 

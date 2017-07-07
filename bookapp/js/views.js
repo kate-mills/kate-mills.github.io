@@ -1,7 +1,7 @@
-app.BookView = Backbone.View.extend({
+app.BookView = Backbone.View.extend ({
 
     tagName: 'tr',
-    initialize: function(options){
+    initialize: function(options) {
         this.bus = options.bus;
         this.model = options.model;
         options.author = this.model.get('author');
@@ -17,7 +17,6 @@ app.BookView = Backbone.View.extend({
     onModelChange: function(options){
      this.bus.trigger('updateBadgeNums');
      this.updateLengths();
-
     },
     events: {
         'click': 'onClick',
@@ -27,39 +26,37 @@ app.BookView = Backbone.View.extend({
         'click td.glyphicon.glyphicon-bookmark.orange': 'onToggleAvailable',
         'click td.glyphicon.glyphicon-bookmark.blue': 'onToggleRead',
         'click td.glyphicon.glyphicon-bookmark.red': 'onToggleAvailable',
-        'click td#destroy': 'destroy',
-        'dblclick':'onDoubleClick',
-
+        'click td#destroy': 'destroy'
     },
-    onDoubleClick:function(){
-      console.clear();
-      console.log( this.model.toJSON() );
-      $this = $( this );
-
-      this.bus.trigger("bookSelected", this.model);
-      this.bus.trigger("Radios", this.model);
-      this.date = this.model.get('created_at');
-
-    },
-    render: function(){
-        if(this.model){
+    // onDoubleClick:function() {
+    //   var changing = this.model.toJSON();
+    //   this.model.author = this.$el.html('<td><input type="text">'+changing.author + changing.title + changing.published+'</td>');
+    //   this.authorHTML = ('<td>' + this.model.get('author') +'</td>');
+    //   this.model.author = changing.author;
+    //   this.model.title = changing.title;
+    //   this.model.published = changing.published;
+    //   console.log(changing);
+    //   // this.clickedData= this.$el.html("<input></input> ")
+    //   // console.log(this.clickedData[0].author);
+    //   // this.$el.focus();
+    // },
+    render: function() {
+        if(this.model) {
           this.model.toJSON();
         }
         this.bus.status = this.model.get('status');
         this.rating = this.model.get('rating');
         this.status = this.model.get('status');
         this.date = this.model.get('created_at');
-
         this.emptyStarRed = Star.prototype.emptyRed;
         this.fullStarRed  =  Star.prototype.fullRed;
         this.noData = Star.prototype.noData;
-
         this.greenBookmark = Bookmark.prototype.green;
         this.orangeBookmark = Bookmark.prototype.orange;
         this.blueBookmark = Bookmark.prototype.blue;
         this.redBookmark = Bookmark.prototype.red;
 
-        if( this.model.get('iWant')){
+        if( this.model.get('iWant')) {
            this.bookmark = this.greenBookmark;
            this.star = this.noData;
            this.alert = "Click " + this.title+ "";
@@ -81,24 +78,19 @@ app.BookView = Backbone.View.extend({
             this.bookmark = this.redBookmark;
             this.star = this.fullStarRed;
         }
-        console.log(this);
 
         this.authorHTML = ('<td>' + this.model.get('author') +'</td>');
         this.titleHTML = ('<td>' + this.model.get('title') +'</td>');
         this.publishedHTML = ('<td>' + this.model.get('published') +'</td>');
-
         this.status = this.model.get("status");
         this.radio = ('<td>' + this.model.get('status') +'</td>');
-
         this.ex = ('<td id="destroy" class="glyphicon glyphicon-trash '+this.bus.statusClass+'"></td>');
 
 
         this.$el.html(  this.authorHTML   + this.titleHTML + this.publishedHTML  + this.bookmark + this.radioWant + this.radioOrder + this.radioAvailable + this.radioRead   + this.star + this.ex);
-        this.$el.attr({
-          id: this.model.cid,
-          class: this.status,
-      });
-        this.$el.attr({id: this.model.cid, status: this.model.status } );
+
+        this.$el.attr({ id: this.model.cid, class: this.status });
+        // this.$el.attr({id: this.model.cid, status: this.model.status } );
         // console.log('#########################RENDER', this);
         return this;
     },
@@ -109,10 +101,8 @@ app.BookView = Backbone.View.extend({
 
      },
     updateOnEnter: function(e){
-        if(e.which == 13){
-          this.close();
-        }
-      },
+        if(e.which == 13) { this.close(); }
+    },
     onClickEmptyStar: function(){
       this.model.giveOneStarRating();
       this.render();
@@ -122,14 +112,14 @@ app.BookView = Backbone.View.extend({
       console.log(this.model.get("rating"));
       this.render();
     },
-    onToggleWant: function(){
+    onToggleWant: function() {
       this.model.placeOnWant();
       this.onClickRadio();
       this.render();
 
-      if(window.filter !== 'iWant'){
-        if(window.filter !== 'all')
-        this.$el.fadeOut('slow');
+      if (window.filter !== 'iWant') {
+        if (window.filter !== 'all')
+            this.$el.fadeOut('slow');
       }
     },
 
@@ -158,15 +148,13 @@ app.BookView = Backbone.View.extend({
          this.$el.fadeOut('slow');
       }
     },
-    destroy: function(){
+    destroy: function() {
         this.model.destroy();
     },
-    updateLengths: function(){
+    updateLengths: function() {
       updateLengths();
     }
 }); //close app.BookView
-
-
 
 
 app.BookListView = Backbone.View.extend({
@@ -188,7 +176,6 @@ app.BookListView = Backbone.View.extend({
         this.$el.find("tr#" + book.cid).remove();
         this.$("tr#" + book.cid).remove();
   },
-
 
   render: function(){
         var self = this;
@@ -274,11 +261,10 @@ app.AppView = Backbone.View.extend({
   },
 
 
-  addAll: function(){
-      console.log('this', this);
+  addAll: function() {
       this.$('#table-body').html(''); // clean the book list
 
-      switch(window.filter){  // filter book item list
+      switch(window.filter) {  // filter book item list
          case 'all':
                 makeAllGrey();
                 $('#nameTitle').text(title.nameAll);
@@ -339,25 +325,21 @@ app.AppView = Backbone.View.extend({
         }
   },
 
-  addOne: function(book){
-    this.model = book;
-    if(this.model);
-    this.model.toJSON();
-
-    this.author = this.model.get('author');
-    this.title= this.model.get('title');
-    this.rating = this.model.get('rating');
-    console.log('adding One model: ', this.author, this.title, this.rating);
-
-        var view = new app.BookView({model: book, bus: bus });
-        // $('#table-body').append(view.render().el);
-        $('#table-body').prepend(view.render().el);
+  addOne: function(book) {
+    if(book)
+      this.model = book;
+      this.model.toJSON();
+      this.author = this.model.get('author');
+      this.title= this.model.get('title');
+      this.rating = this.model.get('rating');
+      var view = new app.BookView({model: book, bus: bus });
+      $('#table-body').prepend(view.render().el);
   },
 
-  render: function(){
+  render: function() {
         this.$el.html('<input id="author" type="text" placeholder="Author" autofocus> <input id="title" type="text" placeholder="Book Title"><input id="published" type="text" maxlength="4" placeholder="Year Published">');
         return this;
-  }
+      }
 });//close app.AppView
 
 
@@ -376,7 +358,6 @@ app.Router = Backbone.Router.extend({
     setFilter: function(params) {
         console.log('app.router.params = ' + params);
         window.filter = params.trim() || '';
-        console.log('bookList.length', bookList.length);
         bookList.trigger('reset');
         $('#all-length').html(bookList.length);
     }

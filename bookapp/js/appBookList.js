@@ -2,6 +2,7 @@ app.BookList = Backbone.Collection.extend({
       model: app.Book,
       localStorage: new Store("backbone-book"),
       getFavoriteBooks: function(){return this.filter(function(book) {return book.get('star');});},
+      getHatedBooks: function(){return this.filter(function(book) {return book.get('blackstar');});},
       getAllBooks: function(){ return app.bookList.filter(function(book){ return book.get('all');});},
       getBooksIWant: function(){ return app.bookList.filter(function(book){return book.get('iWant'); });},
       getBooksOnOrder: function(){ return app.bookList.filter(function(book){return book.get('onOrder'); });},
@@ -23,7 +24,7 @@ if(num < 1){
 
 // ***** bookList is what I will be working with in views *******
 
-console.log("bookList collection:", bookList.length, bookList);
+// console.log("bookList collection:", bookList.length, bookList);
 
 var firstbook = bookList.at(0);
 var secondbook = bookList.at(1);
