@@ -22,8 +22,8 @@ app.BookView = Backbone.View.extend({
     events: {
         'click': 'onClick',
         'click td.glyphicon-star-empty': 'onClickEmptyStar',
-        'click td.glyphicon-star': 'onClickFullStar',
-        'click td.glyphicon-thumbs-down.black': 'onClickBlackStar',
+        'click td.glyphicon-thumbs-up': 'onClickThumbsUp',
+        'click td.glyphicon-thumbs-down.black': 'onClickThumbsDown',
         'click td.glyphicon.glyphicon-bookmark.green': 'onToggleOrder',
         'click td.glyphicon.glyphicon-bookmark.orange': 'onToggleAvailable',
         'click td.glyphicon.glyphicon-bookmark.blue': 'onToggleRead',
@@ -51,8 +51,8 @@ app.BookView = Backbone.View.extend({
         this.date = this.model.get('created_at');
 
         this.emptyStarRed = Star.prototype.emptyRed;
-        this.fullStarRed  =  Star.prototype.fullRed;
-        this.negativeRating = Star.prototype.negative;
+        this.thumbsUp  =  Star.prototype.favorite;
+        this.thumbsDown = Star.prototype.negative;
         this.noData = Star.prototype.noData;
 
         this.greenBookmark = Bookmark.prototype.green;
@@ -79,11 +79,11 @@ app.BookView = Backbone.View.extend({
         }
         if ( this.model.get('alreadyRead') && this.model.get('rating') === 1  ){
             this.bookmark = this.redBookmark;
-            this.star = this.fullStarRed;
+            this.star = this.thumbsUp;
         }
         if (this.model.get('alreadyRead') && this.model.get('rating') === 2) {
           this.bookmark = this.redBookmark;
-          this.star = this.negativeRating;
+          this.star = this.thumbsDown;
         }
         console.log(this);
 
@@ -120,12 +120,12 @@ app.BookView = Backbone.View.extend({
       this.model.giveOneStarRating();
       this.render();
     },
-    onClickFullStar: function() {
+    onClickThumbsUp: function() {
       this.model.giveNegativeRating();
       console.log(this.model.get("rating"));
       this.render();
     },
-    onClickBlackStar: function(){
+    onClickThumbsDown: function(){
       this.model.giveZeroStarRating();
       console.log(this.model.get("rating"));
       this.render();
