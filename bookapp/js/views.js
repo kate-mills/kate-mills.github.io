@@ -23,7 +23,7 @@ app.BookView = Backbone.View.extend({
         'click': 'onClick',
         'click td.glyphicon-star-empty': 'onClickEmptyStar',
         'click td.glyphicon-star': 'onClickFullStar',
-        'click td.glyphicon-star.black': 'onClickBlackStar',
+        'click td.glyphicon-thumbs-down.black': 'onClickBlackStar',
         'click td.glyphicon.glyphicon-bookmark.green': 'onToggleOrder',
         'click td.glyphicon.glyphicon-bookmark.orange': 'onToggleAvailable',
         'click td.glyphicon.glyphicon-bookmark.blue': 'onToggleRead',
