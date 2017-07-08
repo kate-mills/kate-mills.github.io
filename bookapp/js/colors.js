@@ -83,13 +83,11 @@ function makeBlue(){
 function makePurple(){
     $("th").darkGrey().css("cursor", "default");
     $('th').eq(1).text('Favorite Titles');
-
     $("th").eq(3).purplefy().text("Favorites");
     $('div#new-book.container').hide();
     $("th").eq(4).neutralize();
     $("#ToggleArrow").purplefy();
     $("#alphabet").purplefy();
-
 }
 function makeAllGrey() {
     $("th").darkGrey().css("cursor", "default");
@@ -105,7 +103,6 @@ function makeAllGrey() {
     $("#ToggleArrow").darkGrey();
     $("#alphabet").darkGrey();
 }
-
 
 $( "#ToggleArrow" ).click(
   function() {

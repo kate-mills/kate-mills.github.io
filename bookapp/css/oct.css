@@ -244,7 +244,9 @@ h4{color:grey;}
 #napaLibrary > span{background: white;font-size:15px;}
 
 
-
+td.glyphicon-thumbs-up, td.glyphicon-thumbs-down{
+  cursor: pointer;
+}
 td.glyphicon-star-empty:before, td#radioWant, td#radioOrder,  td#radioRead {cursor: pointer; text-align: -webkit-center; }
 td.glyphicon-book{content: "\e043"; }
 .glyphicon{background-color:#fbf5db;}

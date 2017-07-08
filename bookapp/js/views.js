@@ -22,13 +22,33 @@ app.BookView = Backbone.View.extend({
     events: {
         'click': 'onClick',
         'click td.glyphicon-star-empty': 'onClickEmptyStar',
-        'click td.glyphicon-star': 'onClickFullStar',
+        'click td.glyphicon-thumbs-up': 'onClickThumbsUp',
+        'click td.glyphicon-thumbs-down.black': 'onClickThumbsDown',
         'click td.glyphicon.glyphicon-bookmark.green': 'onToggleOrder',
         'click td.glyphicon.glyphicon-bookmark.orange': 'onToggleAvailable',
         'click td.glyphicon.glyphicon-bookmark.blue': 'onToggleRead',
         'click td.glyphicon.glyphicon-bookmark.red': 'onToggleAvailable',
         'click td#destroy': 'destroy'
     },
+<<<<<<< HEAD
+||||||| merged common ancestors
+    onDoubleClick:function(){
+      console.clear();
+      console.log( this.model.toJSON() );
+      $this = $( this );
+
+      this.bus.trigger("bookSelected", this.model);
+      this.bus.trigger("Radios", this.model);
+      this.date = this.model.get('created_at');
+=======
+    onDoubleClick:function(){
+      console.clear();
+      console.log( this.model.toJSON() );
+      $this = $( this );
+      this.bus.trigger("bookSelected", this.model);
+      this.bus.trigger("Radios", this.model);
+      this.date = this.model.get('created_at');
+>>>>>>> hate-list
 
     render: function(){
         if(this.model){
@@ -40,7 +60,8 @@ app.BookView = Backbone.View.extend({
         this.date = this.model.get('created_at');
 
         this.emptyStarRed = Star.prototype.emptyRed;
-        this.fullStarRed  =  Star.prototype.fullRed;
+        this.thumbsUp  =  Star.prototype.favorite;
+        this.thumbsDown = Star.prototype.negative;
         this.noData = Star.prototype.noData;
 
         this.greenBookmark = Bookmark.prototype.green;
@@ -60,7 +81,6 @@ app.BookView = Backbone.View.extend({
         if( this.model.get('available') ){
             this.bookmark = this.blueBookmark;
             this.star = this.noData;
-
         }
         if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
            this.bookmark = this.redBookmark;
@@ -68,7 +88,11 @@ app.BookView = Backbone.View.extend({
         }
         if ( this.model.get('alreadyRead') && this.model.get('rating') === 1  ){
             this.bookmark = this.redBookmark;
-            this.star = this.fullStarRed;
+            this.star = this.thumbsUp;
+        }
+        if (this.model.get('alreadyRead') && this.model.get('rating') === 2) {
+          this.bookmark = this.redBookmark;
+          this.star = this.thumbsDown;
         }
         console.log(this);
 
@@ -78,7 +102,6 @@ app.BookView = Backbone.View.extend({
 
         this.status = this.model.get("status");
         this.radio = ('<td>' + this.model.get('status') +'</td>');
-
         this.ex = ('<td id="destroy" class="glyphicon glyphicon-trash '+this.bus.statusClass+'"></td>');
 
 
@@ -106,7 +129,12 @@ app.BookView = Backbone.View.extend({
       this.model.giveOneStarRating();
       this.render();
     },
-    onClickFullStar: function(){
+    onClickThumbsUp: function() {
+      this.model.giveNegativeRating();
+      console.log(this.model.get("rating"));
+      this.render();
+    },
+    onClickThumbsDown: function(){
       this.model.giveZeroStarRating();
       console.log(this.model.get("rating"));
       this.render();
@@ -130,6 +158,7 @@ app.BookView = Backbone.View.extend({
          this.$el.fadeOut('slow');
       }
     },
+
     onToggleAvailable: function(){
       this.model.placeOnAvailable();
       this.render();
@@ -147,9 +176,11 @@ app.BookView = Backbone.View.extend({
          this.$el.fadeOut('slow');
       }
     },
+
     destroy: function(){
         this.model.destroy();
     },
+
     updateLengths: function(){
       updateLengths();
     }

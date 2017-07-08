@@ -29,6 +29,9 @@ app.Book = Backbone.Model.extend({
       this.save({rating: 0, star: false });
       console.log('rating', this.get('rating'));
     },
+    giveNegativeRating: function(){
+      this.save({rating: 2});
+    },
     placeOnWant: function(){
 
       if(!this.get('iWant')){
