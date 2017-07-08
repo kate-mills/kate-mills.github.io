@@ -52,7 +52,7 @@ app.BookView = Backbone.View.extend({
 
         this.emptyStarRed = Star.prototype.emptyRed;
         this.fullStarRed  =  Star.prototype.fullRed;
-        this.negativeRating = Star.prototype.fullBlack;
+        this.negativeRating = Star.prototype.negative;
         this.noData = Star.prototype.noData;
 
         this.greenBookmark = Bookmark.prototype.green;
