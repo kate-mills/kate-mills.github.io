@@ -30,25 +30,6 @@ app.BookView = Backbone.View.extend({
         'click td.glyphicon.glyphicon-bookmark.red': 'onToggleAvailable',
         'click td#destroy': 'destroy'
     },
-<<<<<<< HEAD
-||||||| merged common ancestors
-    onDoubleClick:function(){
-      console.clear();
-      console.log( this.model.toJSON() );
-      $this = $( this );
-
-      this.bus.trigger("bookSelected", this.model);
-      this.bus.trigger("Radios", this.model);
-      this.date = this.model.get('created_at');
-=======
-    onDoubleClick:function(){
-      console.clear();
-      console.log( this.model.toJSON() );
-      $this = $( this );
-      this.bus.trigger("bookSelected", this.model);
-      this.bus.trigger("Radios", this.model);
-      this.date = this.model.get('created_at');
->>>>>>> hate-list
 
     render: function(){
         if(this.model){
