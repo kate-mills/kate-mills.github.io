@@ -23,6 +23,7 @@ app.BookView = Backbone.View.extend({
         'click': 'onClick',
         'click td.glyphicon-star-empty': 'onClickEmptyStar',
         'click td.glyphicon-star': 'onClickFullStar',
+        'click td.glyphicon-star.black': 'onClickBlackStar',
         'click td.glyphicon.glyphicon-bookmark.green': 'onToggleOrder',
         'click td.glyphicon.glyphicon-bookmark.orange': 'onToggleAvailable',
         'click td.glyphicon.glyphicon-bookmark.blue': 'onToggleRead',
@@ -35,7 +36,6 @@ app.BookView = Backbone.View.extend({
       console.clear();
       console.log( this.model.toJSON() );
       $this = $( this );
-
       this.bus.trigger("bookSelected", this.model);
       this.bus.trigger("Radios", this.model);
       this.date = this.model.get('created_at');
@@ -52,6 +52,7 @@ app.BookView = Backbone.View.extend({
 
         this.emptyStarRed = Star.prototype.emptyRed;
         this.fullStarRed  =  Star.prototype.fullRed;
+        this.negativeRating = Star.prototype.fullBlack;
         this.noData = Star.prototype.noData;
 
         this.greenBookmark = Bookmark.prototype.green;
@@ -71,7 +72,6 @@ app.BookView = Backbone.View.extend({
         if( this.model.get('available') ){
             this.bookmark = this.blueBookmark;
             this.star = this.noData;
-
         }
         if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
            this.bookmark = this.redBookmark;
@@ -81,6 +81,10 @@ app.BookView = Backbone.View.extend({
             this.bookmark = this.redBookmark;
             this.star = this.fullStarRed;
         }
+        if (this.model.get('alreadyRead') && this.model.get('rating') === 2) {
+          this.bookmark = this.redBookmark;
+          this.star = this.negativeRating;
+        }
         console.log(this);
 
         this.authorHTML = ('<td>' + this.model.get('author') +'</td>');
@@ -89,7 +93,6 @@ app.BookView = Backbone.View.extend({
 
         this.status = this.model.get("status");
         this.radio = ('<td>' + this.model.get('status') +'</td>');
-
         this.ex = ('<td id="destroy" class="glyphicon glyphicon-trash '+this.bus.statusClass+'"></td>');
 
 
@@ -117,7 +120,12 @@ app.BookView = Backbone.View.extend({
       this.model.giveOneStarRating();
       this.render();
     },
-    onClickFullStar: function(){
+    onClickFullStar: function() {
+      this.model.giveNegativeRating();
+      console.log(this.model.get("rating"));
+      this.render();
+    },
+    onClickBlackStar: function(){
       this.model.giveZeroStarRating();
       console.log(this.model.get("rating"));
       this.render();
@@ -141,6 +149,7 @@ app.BookView = Backbone.View.extend({
          this.$el.fadeOut('slow');
       }
     },
+
     onToggleAvailable: function(){
       this.model.placeOnAvailable();
       this.render();
@@ -158,9 +167,11 @@ app.BookView = Backbone.View.extend({
          this.$el.fadeOut('slow');
       }
     },
+
     destroy: function(){
         this.model.destroy();
     },
+
     updateLengths: function(){
       updateLengths();
     }

@@ -26,9 +26,10 @@ _.extend(Bookmark, Backbone.Events);
 
 var Star = Backbone.View.extend({
     noData: '<td class="glyphicon"></td>',
-    emptyBlue: '<td class="glyphicon glyphicon-star-empty"></td>',
-    emptyGreen: '<td class="glyphicon glyphicon-star-empty "></td>',
-    emptyOrange: '<td class="glyphicon glyphicon-star-empty "></td>',
+    // emptyBlue: '<td class="glyphicon glyphicon-star-empty"></td>',
+    // emptyGreen: '<td class="glyphicon glyphicon-star-empty "></td>',
+    // emptyOrange: '<td class="glyphicon glyphicon-star-empty "></td>',
+    fullBlack: '<td title="Click to Favorite" class="glyphicon glyphicon-star black "></td>',
     emptyRed: '<td title="Click to Favorite" class="glyphicon glyphicon-star-empty "></td>',
     full: '<td itle="Click to Favorite" class="glyphicon glyphicon-star grey"></td>',
     fullRed: '<td title="Click to Un-Favorite" class="glyphicon glyphicon-star red"></td>',
