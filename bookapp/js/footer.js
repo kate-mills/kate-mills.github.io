@@ -37,7 +37,13 @@ switch (new Date().getDay()) {
 
 
 }
-    var napaLibrary = '<a style="background:white" title="Napa Library" id="napaLibrary" target="_blank" href="https://napa.polarislibrary.com/polaris/logon.aspx?ctx=3.1033.0.0.5&Header=1"><span class="glyphicon glyphicon-link"> </span></a>';
-    var footerText = '&copy; km-2016  ' + text + napaLibrary;
-    $('#footer').html(footerText);
+
+    var napaLibrary = '<a title="Napa Library" id="napaLibrary" target="_blank" href="https://napa.polarislibrary.com/polaris/logon.aspx?ctx=3.1033.0.0.5&Header=1"><span class="glyphicon glyphicon-link"> </span> napa library</a>';
+
+    var countyOfNapa = '<a title="NAPA COUNTY CA" id="countyOfNapa" target="_blank" href="http://countyofnapa.org/library/"><span class="glyphicon glyphicon-link"> </span> county of napa</a>';
+
+    var worldCat = '<a title="World Cat" id="worldCat" target="_blank" href="http://www.worldcat.org/"><span class="glyphicon glyphicon-link"> </span> worldcat</a>';
+
+    var footerText = '&copy; km-2016  ' + text + napaLibrary +  countyOfNapa + worldCat;
+    $('#footer').html(footerText );
 

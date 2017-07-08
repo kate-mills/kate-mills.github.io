@@ -143,6 +143,30 @@ p#footer.light-Grey{background-color:white;}
     height:10px;
     width: 20px;
     background-color:white;
+    background: white;
+  }
+ /*#napaLibrary, #countyOfNapa {
+    font-size: .7em;
+    background: white;
+  }
+
+ #footer > #napaLibrary> span {
+    font-size: 10px;
+    background: white;
+ }
+
+  #footer > #countyOfNapa > span {
+    font-size: 10px;
+    background: white;
+  }
+*/
+  a#countyOfNapa, a#napaLibrary, a#worldCat{
+    color: red;
+    font-size: 10px;
+    background: white;
+  }
+  #footer #napaLibrary > span {
+    font-size: 10px;
   }
 #getDate, #getTime{height: 15px; width: 15px;}
 
