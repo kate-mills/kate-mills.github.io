@@ -40,10 +40,10 @@ $.fn.lightShade = function(){
 };
 function makeRed(){
     $("th").darkGrey().css("cursor", "default");
-    $('th').eq(1).text('Title I Have Read');
+    $('th').eq(1).text('Books Read');
     $("th").eq(2).text('Year');
     $("th").eq(3).redify().text('Read');
-    $("th").eq(4).redify();
+    $("th").eq(4).redify().text('wdyt ?');
     $('div#new-book.container').hide();
     $("#ToggleArrow").redify();
     $("#alphabet").redify();
@@ -85,7 +85,7 @@ function makePurple(){
     $('th').eq(1).text('Favorite Titles');
     $("th").eq(3).purplefy().text("Favorites");
     $('div#new-book.container').hide();
-    $("th").eq(4).neutralize();
+    // $("th").eq(4).neutralize();
     $("#ToggleArrow").purplefy();
     $("#alphabet").purplefy();
 }
