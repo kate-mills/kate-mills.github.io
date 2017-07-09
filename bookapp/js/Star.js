@@ -24,7 +24,7 @@ var Bookmark = Backbone.View.extend({
 });
 _.extend(Bookmark, Backbone.Events);
 
-var Star = Backbone.View.extend({
+var Rating = Backbone.View.extend({
     noData: '<td class="glyphicon"></td>',
     negative: '<td title="Click to give book a new rating." class="glyphicon glyphicon-thumbs-down black "></td>',
     emptyRed: '<td title="What do you think?" class="wdyt">wdyt?</td>',

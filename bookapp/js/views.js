@@ -41,10 +41,10 @@ app.BookView = Backbone.View.extend({
         this.status = this.model.get('status');
         this.date = this.model.get('created_at');
 
-        this.emptyStarRed = Star.prototype.emptyRed;
-        this.thumbsUp  =  Star.prototype.favorite;
-        this.thumbsDown = Star.prototype.negative;
-        this.noData = Star.prototype.noData;
+        this.emptyStarRed = Rating.prototype.emptyRed;
+        this.thumbsUp  =  Rating.prototype.favorite;
+        this.thumbsDown = Rating.prototype.negative;
+        this.noData = Rating.prototype.noData;
 
         this.greenBookmark = Bookmark.prototype.green;
         this.orangeBookmark = Bookmark.prototype.orange;
