@@ -21,7 +21,8 @@ app.BookView = Backbone.View.extend({
     },
     events: {
         'click': 'onClick',
-        'click td.glyphicon-star-empty': 'onClickEmptyStar',
+        // 'click td.glyphicon-star-empty': 'onClickEmptyStar',
+        'click td.wdyt': 'onClickWDYT',
         'click td.glyphicon-thumbs-up': 'onClickThumbsUp',
         'click td.glyphicon-thumbs-down.black': 'onClickThumbsDown',
         'click td.glyphicon.glyphicon-bookmark.green': 'onToggleOrder',
@@ -106,6 +107,10 @@ app.BookView = Backbone.View.extend({
         }
       },
     onClickEmptyStar: function(){
+      this.model.giveOneStarRating();
+      this.render();
+    },
+    onClickWDYT: function(){
       this.model.giveOneStarRating();
       this.render();
     },

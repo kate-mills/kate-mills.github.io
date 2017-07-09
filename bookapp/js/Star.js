@@ -26,10 +26,10 @@ _.extend(Bookmark, Backbone.Events);
 
 var Star = Backbone.View.extend({
     noData: '<td class="glyphicon"></td>',
-    negative: '<td title="Click to Favorite" class="glyphicon glyphicon-thumbs-down black "></td>',
-    emptyRed: '<td title="Click to Favorite" class="glyphicon glyphicon-star-empty "></td>',
-    full: '<td itle="Click to Favorite" class="glyphicon glyphicon-star grey"></td>',
-    favorite: '<td title="Click to Un-Favorite" class="glyphicon glyphicon-thumbs-up red"></td>',
+    negative: '<td title="Click to give book a new rating." class="glyphicon glyphicon-thumbs-down black "></td>',
+    emptyRed: '<td title="What do you think?" class="wdyt">wdyt?</td>',
+    full: '<td title="" class="glyphicon glyphicon-star grey"></td>',
+    favorite: '<td title="Click if you didn\'t like this book." class="glyphicon glyphicon-thumbs-up red"></td>',
 
     click: function(){
         this.trigger('onClickStar',{
