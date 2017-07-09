@@ -92,7 +92,6 @@ app.BookView = Backbone.View.extend({
           class: this.status,
       });
         this.$el.attr({id: this.model.cid, status: this.model.status } );
-        // console.log('#########################RENDER', this);
         return this;
     },
 
@@ -255,7 +254,6 @@ app.AppView = Backbone.View.extend({
         var printPublishedValue = 'published: '.concat(this.publishedValue);
 
         if(keyCode == 9){
-
           testPublishedValue = testYear( publishedValue );
           publishedValue = testYear( publishedValue );
           console.log("publishedValue2: ", this.publishedValue);
@@ -351,7 +349,6 @@ app.AppView = Backbone.View.extend({
     console.log('adding One model: ', this.author, this.title, this.rating);
 
         var view = new app.BookView({model: book, bus: bus });
-        // $('#table-body').append(view.render().el);
         $('#table-body').prepend(view.render().el);
   },
 
