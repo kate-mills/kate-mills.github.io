@@ -21,16 +21,16 @@ app.Book = Backbone.Model.extend({
       this.save({ iWant: !this.get('iWant')});
     },
 
-    giveOneStarRating: function(){
-      this.save({rating: 1, star: true });
+    giveThumbsUp: function(){
+      this.save({rating: 'thumbsup', star: true });
       console.log('rating', this.get('rating'));
     },
      giveZeroStarRating: function(){
       this.save({rating: 0, star: false });
       console.log('rating', this.get('rating'));
     },
-    giveNegativeRating: function(){
-      this.save({rating: 2});
+    giveThumbsDown: function(){
+      this.save({rating: 'thumbsdown', star: false });
     },
     placeOnWant: function(){
 
@@ -58,6 +58,16 @@ app.Book = Backbone.Model.extend({
       }
     },
 
+    makeAFavorite: function(){
+      if (this.get('rating') == 1){
+        console.log('Rating is 1.');
+        this.save({'star': true });
+      }
+      if (this.get('rating') == 2) {
+        console.log('thumbs-down');
+        this.save({'star': false});
+      }
+    },
     placeOnOrder: function(){
       if(!this.get('onOrder')){
         this.save({ "onOrder": true });

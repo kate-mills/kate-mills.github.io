@@ -27,7 +27,7 @@ _.extend(Bookmark, Backbone.Events);
 var Rating = Backbone.View.extend({
     noData: '<td class="glyphicon"></td>',
     negative: '<td title="Click to give book a new rating." class="glyphicon glyphicon-thumbs-down black "></td>',
-    emptyRed: '<td style="padding-left:35px" title="What do you think?" class="wdyt">wdyt?</td>',
+    questionmark: '<td style="padding-left:55px" title="What do you think?" class="wdyt">?</td>',
     full: '<td title="" class="glyphicon glyphicon-star grey"></td>',
     favorite: '<td title="Click if you didn\'t like this book." class="glyphicon glyphicon-thumbs-up red"></td>',
 
@@ -39,12 +39,12 @@ var Rating = Backbone.View.extend({
 
 });
 
-_.extend(Star, Backbone.Events);
-Star.on('onClickStar', function(e){
-    console.log('star', e);
-    return window.filter;
+// _.extend(Star, Backbone.Events);
+// Star.on('onClickStar', function(e){
+//     console.log('star', e);
+//     return window.filter;
 
-});
+// });
 
 var TableHeader = Backbone.View.extend({
     greyBookmark: '<th class="glyphicon glyphicon-bookmark grey></th>',

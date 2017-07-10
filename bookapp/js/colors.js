@@ -27,7 +27,7 @@ $.fn.blueify = function(){
         return this;
 };
 $.fn.purplefy = function(){
-        this.css("color", "purple");
+        this.css("color", "#d502f9");
         return this;
 };
 $.fn.darkGrey = function(){
@@ -85,7 +85,7 @@ function makePurple(){
     $('th').eq(1).text('Favorite Titles');
     $("th").eq(3).purplefy().text("Favorites");
     $('div#new-book.container').hide();
-    // $("th").eq(4).neutralize();
+    $("th").eq(4).purplefy().text('wdyt ?');
     $("#ToggleArrow").purplefy();
     $("#alphabet").purplefy();
 }

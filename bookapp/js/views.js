@@ -41,7 +41,7 @@ app.BookView = Backbone.View.extend({
         this.status = this.model.get('status');
         this.date = this.model.get('created_at');
 
-        this.emptyStarRed = Rating.prototype.emptyRed;
+        this.questionmark = Rating.prototype.questionmark;
         this.thumbsUp  =  Rating.prototype.favorite;
         this.thumbsDown = Rating.prototype.negative;
         this.noData = Rating.prototype.noData;
@@ -66,13 +66,13 @@ app.BookView = Backbone.View.extend({
         }
         if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
            this.bookmark = this.redBookmark;
-           this.star = this.emptyStarRed;
+           this.star = this.questionmark;
         }
-        if ( this.model.get('alreadyRead') && this.model.get('rating') === 1  ){
+        if ( this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsup'  ){
             this.bookmark = this.redBookmark;
             this.star = this.thumbsUp;
         }
-        if (this.model.get('alreadyRead') && this.model.get('rating') === 2) {
+        if (this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsdown') {
           this.bookmark = this.redBookmark;
           this.star = this.thumbsDown;
         }
@@ -111,17 +111,19 @@ app.BookView = Backbone.View.extend({
       this.render();
     },
     onClickWDYT: function(){
-      this.model.giveOneStarRating();
+      this.model.giveThumbsUp();
+      this.model.makeAFavorite();
       this.render();
     },
     onClickThumbsUp: function() {
-      this.model.giveNegativeRating();
+      this.model.giveThumbsDown();
       console.log(this.model.get("rating"));
       this.render();
     },
     onClickThumbsDown: function(){
       this.model.giveZeroStarRating();
       console.log(this.model.get("rating"));
+      this.model.makeAFavorite();
       this.render();
     },
     onToggleWant: function(){
