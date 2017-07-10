@@ -112,7 +112,6 @@ app.BookView = Backbone.View.extend({
     },
     onClickWDYT: function(){
       this.model.giveThumbsUp();
-      this.model.makeAFavorite();
       this.render();
     },
     onClickThumbsUp: function() {
@@ -121,9 +120,8 @@ app.BookView = Backbone.View.extend({
       this.render();
     },
     onClickThumbsDown: function(){
-      this.model.giveZeroStarRating();
+      this.model.giveNoRating();
       console.log(this.model.get("rating"));
-      this.model.makeAFavorite();
       this.render();
     },
     onToggleWant: function(){
