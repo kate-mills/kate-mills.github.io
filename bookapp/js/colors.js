@@ -9,7 +9,7 @@ $.fn.greyify = function(){
         return this;
     };
 $.fn.greenify = function(){
-        this.css("color", "green");
+        this.css("color", "#08d008");
          this.css("background-color", "#FBF5DA");
         return this;
 };
@@ -34,16 +34,14 @@ $.fn.darkGrey = function(){
         this.css("color", "#777");
         return this;
     };
-$.fn.lightShade = function(){
-    this.css("color", "#e0e0e0");
+$.fn.lightGrey = function(){
+    this.css('color', '#9e9e9e');
     return this;
 };
 function makeRed(){
     $("th").darkGrey().css("cursor", "default");
-    $('th').eq(1).text('Books Read');
-    $("th").eq(2).text('Year');
     $("th").eq(3).redify().text('Read');
-    $("th").eq(4).redify().text('wdyt ?');
+    $("th").eq(4).redify().text('wdyt?').css({'position': 'relative', 'left': '20px'});
     $('div#new-book.container').hide();
     $("#ToggleArrow").redify();
     $("#alphabet").redify();
@@ -51,7 +49,6 @@ function makeRed(){
 }
 function makeOrange(){
     $("th").darkGrey().css("cursor", "default");
-    $('th').eq(1).text('Title On Order');
     $("th").eq(3).orangeify().text('Order');
     $('div#new-book.container').hide();
     $("th").eq(4).neutralize();
@@ -60,32 +57,27 @@ function makeOrange(){
 }
 function makeGreen() {
     $("th").darkGrey().css("cursor", "default");
-    $('th').eq(1).text('Title I Want');
     $("th").eq(3).greenify().text('Want');
     $("th").eq(4).neutralize();
-    $('div#new-book.container').show();
+    // $('div#new-book.container').show();
     $("#showTime").greenify();
     $("#ToggleArrow").greenify();
     $("#alphabet").greenify();
 
 }
 function makeBlue(){
-    $("th").blueify().css("cursor", "default");
-    $('th').first().text('Authors');
-    $('th').eq(1).text('Available Books');
-    $("th").eq(2).text('Year ');
-    $("th").eq(3).text('Available');
+    $("th").darkGrey().css("cursor", "default");
+    $("th").eq(3).blueify().text('Available');
     $("th").eq(4).neutralize();
-   $('div#new-book.container').hide();
-   $("#ToggleArrow").blueify();
-   $("#alphabet").blueify();
+    $('div#new-book.container').hide();
+    $("#ToggleArrow").blueify();
+    $("#alphabet").blueify();
 }
 function makePurple(){
     $("th").darkGrey().css("cursor", "default");
-    $('th').eq(1).text('Favorite Titles');
-    $("th").eq(3).purplefy().text("Favorites");
+    $("th").eq(3).purplefy().text("Favorite");
     $('div#new-book.container').hide();
-    $("th").eq(4).purplefy().text('wdyt ?');
+    $("th").eq(4).purplefy().html('wdyt?').css({'position': 'relative', 'left': '20px'});
     $("#ToggleArrow").purplefy();
     $("#alphabet").purplefy();
 }
@@ -96,10 +88,11 @@ function makeAllGrey() {
     $("a").darkGrey().addClass("dark-Grey");
     $("li").darkGrey().addClass("dark-Grey");
     $("th").darkGrey();
-    $('th').eq(0).text('Authors');
-    $('th').eq(1).text('All Books');
+    $('th').eq(0).text('Author');
+    $('th').eq(1).text('Title');
     $("th").eq(2).text('Year');
-    $("th").eq(3).text('All');
+    $("th").eq(3).lightGrey().text('All');
+    $("th").eq(4).darkGrey().text('wdyt?').css({'position': 'relative', 'left': '20px'});
     $("#ToggleArrow").darkGrey();
     $("#alphabet").darkGrey();
 }

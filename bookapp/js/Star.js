@@ -29,7 +29,7 @@ var Rating = Backbone.View.extend({
     negative: '<td title="Click to give book a new rating." class="glyphicon glyphicon-thumbs-down black "></td>',
     questionmark: '<td style="padding-left:55px" title="What do you think?" class="wdyt">?</td>',
     full: '<td title="" class="glyphicon glyphicon-star grey"></td>',
-    favorite: '<td title="Click if you didn\'t like this book." class="glyphicon glyphicon-thumbs-up red"></td>',
+    favorite: '<td title="Click if you didn\'t like this book." class="glyphicon glyphicon-thumbs-up purple"></td>',
 
     click: function(){
         this.trigger('onClickStar',{
