@@ -57,17 +57,6 @@ app.Book = Backbone.Model.extend({
         console.log(this.get("title") +" is already on your 'Books I Want List'.");
       }
     },
-
-    // checkForFavorite: function(){
-    //   if (this.get('rating') == 'thumbsup'){
-    //     console.log('Rating is thumbsup.');
-    //     this.save({'star': true });
-    //   }
-    //   if (this.get('rating') == 'thumbsdown') {
-    //     console.log('Rating is thumbsdown.');
-    //     this.save({'star': false});
-    //   }
-    // },
     placeOnOrder: function(){
       if(!this.get('onOrder')){
         this.save({ "onOrder": true });
