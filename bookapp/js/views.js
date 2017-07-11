@@ -10,11 +10,11 @@ app.BookView = Backbone.View.extend({
 
     onClick: function(){
         this.bus.trigger("bookSelected", this.model);
-        this.updateLengths();
+        updateLengths();
     },
     onModelChange: function(options){
      this.bus.trigger('updateBadgeNums');
-     this.updateLengths();
+     updateLengths();
     },
     events: {
         'click': 'onClick',
@@ -55,9 +55,9 @@ app.BookView = Backbone.View.extend({
             this.bookmark = this.orangeBookmark;
             this.rating = this.noData;
         }
-        if( this.model.get('available') ){
-            this.bookmark = this.blueBookmark;
-            this.rating = this.noData;
+        if( this.model.get('available') ) {
+          this.bookmark = this.blueBookmark;
+          this.rating = this.noData;
         }
 
         if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
@@ -92,12 +92,6 @@ app.BookView = Backbone.View.extend({
         this.$el.attr({id: this.model.cid, status: this.model.status } );
         return this;
     },
-
-     // onClickRadio: function(){
-     //  console.dir(document.body);
-     //  console.log('radio clicked', this.bus.status );
-
-     // },
     updateOnEnter: function(e){
         if(e.which == 13){
           this.close();
@@ -124,8 +118,6 @@ app.BookView = Backbone.View.extend({
       old_list = window.filter;
       new_list = 'iWant';
       this.model.changeList(newList, old_list);
-      // this.model.placeOnWant();
-      // this.onClickRadio();
       this.render();
 
       if(window.filter !== 'iWant'){
@@ -135,7 +127,6 @@ app.BookView = Backbone.View.extend({
     },
 
     onToggleOrder: function(){
-      // this.model.placeOnOrder();
       this.model.changeList('onOrder');
       this.render();
       if(window.filter !== 'onOrder'){
@@ -145,10 +136,8 @@ app.BookView = Backbone.View.extend({
     },
 
     onToggleAvailable: function(){
-      // this.model.placeOnAvailable();
-      old_list = window.filter;
-      new_list = 'available';
       this.model.changeList('available');
+      this.removeFromFavoriteList(this.model.toJSON());
       this.render();
       if(window.filter !== 'available'){
         if(window.filter !== 'all')
@@ -156,67 +145,55 @@ app.BookView = Backbone.View.extend({
       }
     },
     onToggleRead: function(){
-      // this.model.placeOnRead();
       this.model.changeList('alreadyRead');
-      // this.onClickRadio();
       this.render();
       if(window.filter !== 'alreadyRead'){
         if(window.filter !== 'all')
          this.$el.fadeOut('slow');
       }
     },
-
     addToFavoriteList: function(){
       this.model.save('star', true);
+      this.model.save('rating', 'thumbsup');
     },
-    removeFromFavoriteList: function(){
+    removeFromFavoriteList: function(model){
       this.model.save('star', false);
+      this.model.save('rating', 0);
+      updateLengths();
     },
-
-
-
     destroy: function(){
         this.model.destroy();
     },
-
     updateLengths: function(){
       updateLengths();
     }
 }); //close app.BookView
-
-
-
 
 app.BookListView = Backbone.View.extend({
 
   initialize: function(options){
         this.bus = options.bus;
         this.bus.on("add", this.onBookAdded, this);
-
   },
-  events: {"click": "onClick"},
+  events: { "click": "onClick" },
       onClick:function(){
-          this.bus.trigger("bookSelected", this.model);
-       },
-  onBookAdded: function(book){
+        this.bus.trigger("bookSelected", this.model);
+      },
+      onBookAdded: function(book){
         app.bookView = new app.BookView({ model: book });
         this.$el.append(app.bookView.render().$el);
-  },
-  onBookRemoved: function(book){
+      },
+      onBookRemoved: function(book){
         this.$el.find("tr#" + book.cid).remove();
         this.$("tr#" + book.cid).remove();
-  },
-
-
-  render: function(){
+      },
+      render: function(){
         var self = this;
-
         this.model.each(function(book){
             var view = new app.BookView({ model: book, bus: self.bus});
             self.$el.append(view.render().$el);
         });
-  }
-
+      }
 });
 
 
@@ -425,6 +402,5 @@ app.appView = new app.AppView({bus: bus});
 var windowFn = app.appView.addAll;
 window.windowFn = windowFn;
 
-
-var UpdateLengths = updateLengths;
-_.extend(UpdateLengths, Backbone.Events);
+// var UpdateLengths = updateLengths;
+// _.extend(UpdateLengths, Backbone.Events);
