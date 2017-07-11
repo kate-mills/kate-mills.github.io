@@ -5,13 +5,6 @@ var title = {
     nameAvailable: 'Books Available',
     nameRead: 'Books I Already Read',
     nameFavorites: 'Favorites',
-
-    walk: function(){
-        this.trigger('walking',{
-            speed: 1,
-            date: new Date(),
-        });
-    },
 };
 
 var Bookmark = Backbone.View.extend({
@@ -27,7 +20,7 @@ _.extend(Bookmark, Backbone.Events);
 var Rating = Backbone.View.extend({
     noData: '<td class="glyphicon"></td>',
     negative: '<td title="Click to give book a new rating." class="glyphicon glyphicon-thumbs-down black "></td>',
-    questionmark: '<td style="padding-left:55px" title="What do you think?" class="wdyt">?</td>',
+    questionmark: '<td style="" title="What do you think?" class="wdyt">?</td>',
     full: '<td title="" class="glyphicon glyphicon-star grey"></td>',
     favorite: '<td title="Click if you didn\'t like this book." class="glyphicon glyphicon-thumbs-up purple"></td>',
 
@@ -39,17 +32,3 @@ var Rating = Backbone.View.extend({
 
 });
 
-// _.extend(Star, Backbone.Events);
-// Star.on('onClickStar', function(e){
-//     console.log('star', e);
-//     return window.filter;
-
-// });
-
-var TableHeader = Backbone.View.extend({
-    greyBookmark: '<th class="glyphicon glyphicon-bookmark grey></th>',
-    blueOrder: '<th class="glyphicon glyicon-bookmark blue></th>',
-    // greyStar: '<th title="Click to Favorite" class="glyphicon glyphicon-star"></th>',
-    greyTrash: '<th title="Delete Book Forever!" class="glyphicon glyphicon-trash grey"></th>',
-});
-_.extend(TableHeader, Backbone.Events);

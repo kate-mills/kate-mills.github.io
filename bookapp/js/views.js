@@ -1,13 +1,11 @@
 app.BookView = Backbone.View.extend({
-
     tagName: 'tr',
     initialize: function(options){
         this.bus = options.bus;
         this.model = options.model;
-        options.author = this.model.get('author');
         this.model.on('add', this.addOne, this);
         this.model.on('destroy', this.remove, this);
-        this.bus.on('onClickRadio', this.onClick);
+        this.bus.on('onClickRadio', this.onClick, this);
     },
 
     onClick: function(){
@@ -17,12 +15,10 @@ app.BookView = Backbone.View.extend({
     onModelChange: function(options){
      this.bus.trigger('updateBadgeNums');
      this.updateLengths();
-
     },
     events: {
         'click': 'onClick',
-        // 'click td.glyphicon-star-empty': 'onClickEmptyStar',
-        'click td.wdyt': 'onClickWDYT',
+        'click td.wdyt': 'onClickQuestionmark',
         'click td.glyphicon-thumbs-up': 'onClickThumbsUp',
         'click td.glyphicon-thumbs-down.black': 'onClickThumbsDown',
         'click td.glyphicon.glyphicon-bookmark.green': 'onToggleOrder',
@@ -31,7 +27,6 @@ app.BookView = Backbone.View.extend({
         'click td.glyphicon.glyphicon-bookmark.red': 'onToggleAvailable',
         'click td#destroy': 'destroy'
     },
-
     render: function(){
         if(this.model){
           this.model.toJSON();
@@ -53,32 +48,34 @@ app.BookView = Backbone.View.extend({
 
         if( this.model.get('iWant')){
            this.bookmark = this.greenBookmark;
-           this.star = this.noData;
+           this.rating = this.noData;
            this.alert = "Click " + this.title+ "";
         }
         if( this.model.get('onOrder') ) {
             this.bookmark = this.orangeBookmark;
-            this.star = this.noData;
+            this.rating = this.noData;
         }
         if( this.model.get('available') ){
             this.bookmark = this.blueBookmark;
-            this.star = this.noData;
+            this.rating = this.noData;
         }
+
         if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
            this.bookmark = this.redBookmark;
-           this.star = this.questionmark;
+           this.rating = this.questionmark;
         }
-        if ( this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsup'  ){
+        if ( this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsup'  || this.model.get('alreadyRead') && this.model.get('rating') === 1) {
             this.bookmark = this.redBookmark;
-            this.star = this.thumbsUp;
+            this.rating = this.thumbsUp;
         }
-        if (this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsdown') {
+        if (this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsdown'){
           this.bookmark = this.redBookmark;
-          this.star = this.thumbsDown;
+          this.rating = this.thumbsDown;
         }
         console.log(this);
 
         this.authorHTML = ('<td>' + this.model.get('author') +'</td>');
+        this.readerHTML = ('<td>' + this.model.get('reader') +'</td>');
         this.titleHTML = ('<td>' + this.model.get('title') +'</td>');
         this.publishedHTML = ('<td>' + this.model.get('published') +'</td>');
 
@@ -87,7 +84,7 @@ app.BookView = Backbone.View.extend({
         this.ex = ('<td id="destroy" class="glyphicon glyphicon-trash '+this.bus.statusClass+'"></td>');
 
 
-        this.$el.html(  this.authorHTML   + this.titleHTML + this.publishedHTML  + this.bookmark + this.radioWant + this.radioOrder + this.radioAvailable + this.radioRead   + this.star + this.ex);
+        this.$el.html(  this.authorHTML + this.readerHTML + this.titleHTML + this.publishedHTML  + this.bookmark + this.radioWant + this.radioOrder + this.radioAvailable + this.radioRead   + this.rating + this.ex);
         this.$el.attr({
           id: this.model.cid,
           class: this.status,
@@ -96,11 +93,11 @@ app.BookView = Backbone.View.extend({
         return this;
     },
 
-     onClickRadio: function(){
-      console.dir(document.body);
-      console.log('radio clicked', this.bus.status );
+     // onClickRadio: function(){
+     //  console.dir(document.body);
+     //  console.log('radio clicked', this.bus.status );
 
-     },
+     // },
     updateOnEnter: function(e){
         if(e.which == 13){
           this.close();
@@ -110,23 +107,25 @@ app.BookView = Backbone.View.extend({
       this.model.giveOneStarRating();
       this.render();
     },
-    onClickWDYT: function(){
-      this.model.giveThumbsUp();
+    onClickQuestionmark: function(){
+      console.clear();
+      this.model.changeRating('thumbsup', true);
       this.render();
     },
     onClickThumbsUp: function() {
-      this.model.giveThumbsDown();
-      console.log(this.model.get("rating"));
+      this.model.changeRating('thumbsdown', false);
       this.render();
     },
     onClickThumbsDown: function(){
-      this.model.giveNoRating();
-      console.log(this.model.get("rating"));
+      this.model.changeRating(0, false);
       this.render();
     },
     onToggleWant: function(){
-      this.model.placeOnWant();
-      this.onClickRadio();
+      old_list = window.filter;
+      new_list = 'iWant';
+      this.model.changeList(newList, old_list);
+      // this.model.placeOnWant();
+      // this.onClickRadio();
       this.render();
 
       if(window.filter !== 'iWant'){
@@ -136,7 +135,8 @@ app.BookView = Backbone.View.extend({
     },
 
     onToggleOrder: function(){
-      this.model.placeOnOrder();
+      // this.model.placeOnOrder();
+      this.model.changeList('onOrder');
       this.render();
       if(window.filter !== 'onOrder'){
         if(window.filter !== 'all')
@@ -145,22 +145,35 @@ app.BookView = Backbone.View.extend({
     },
 
     onToggleAvailable: function(){
-      this.model.placeOnAvailable();
+      // this.model.placeOnAvailable();
+      old_list = window.filter;
+      new_list = 'available';
+      this.model.changeList('available');
       this.render();
       if(window.filter !== 'available'){
         if(window.filter !== 'all')
          this.$el.fadeOut('slow');
       }
     },
-
     onToggleRead: function(){
-      this.model.placeOnRead();
+      // this.model.placeOnRead();
+      this.model.changeList('alreadyRead');
+      // this.onClickRadio();
       this.render();
       if(window.filter !== 'alreadyRead'){
         if(window.filter !== 'all')
          this.$el.fadeOut('slow');
       }
     },
+
+    addToFavoriteList: function(){
+      this.model.save('star', true);
+    },
+    removeFromFavoriteList: function(){
+      this.model.save('star', false);
+    },
+
+
 
     destroy: function(){
         this.model.destroy();
@@ -214,6 +227,7 @@ app.AppView = Backbone.View.extend({
         this.bus = options.bus;
         this.book = this.$('#new-book');
         this.author = this.$('#author');
+        this.reader = this.$('#reader');
         this.title = this.$('#title');
         this.published = this.$('#published');
 
@@ -223,11 +237,25 @@ app.AppView = Backbone.View.extend({
   },
   events: {
         "keydown #author": "onKeypressAuthor",
+        "keydown #reader": "onKeypressReader",
         "keydown #title": "onKeypressTitle",
         "keydown #published": "onKeypressPublished"
   },
   updateLengths: function(){
       updateLengths();
+    },
+    onKeypressReader: function(e) {
+      var keyCode = e.keyCode || e.which;
+      this.readerValue = $('#reader').val();
+      var readerValue = this.readerValue.trim();
+      if (keyCode == 9){
+        this.reader = readerValue;
+        console.log('readerValue', this.reader);
+      }
+      if (keyCode == 13) {
+        this.reader = readerValue;
+        console.log('readerValue', this.reader);
+      }
     },
   onKeypressTitle: function(e){
       var keyCode = e.keyCode || e.which;
@@ -267,8 +295,9 @@ app.AppView = Backbone.View.extend({
         } if(keyCode == 13){
           publishedValue = testYear( publishedValue );
             console.log("typeof ( publishedValue): ", typeof( publishedValue ));
-            app.bookList.create({ author: this.author, title: $('#title').val(), published: publishedValue });
+            app.bookList.create({ author: this.author, reader: this.reader, title: $('#title').val(), published: publishedValue });
             $('#author').val('');
+            $('#reader').val('');
             $('#title').val('');
             $('#published').val('');
             $('#author').focus();
@@ -288,14 +317,14 @@ app.AppView = Backbone.View.extend({
                 $('#nameTitle').text(title.nameAll);
                 $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
                 $('tbody').addClass('grey');
-                $('span.badge').removeClass('backGreen backPurple backBlue backOrange backRed').addClass('backGrey');
+                $('span.badge').removeClass('backGreen backFavorite backBlue backOrange backRed').addClass('backGrey');
                 _.each(app.bookList.getAllBooks(), this.addOne, this);
                 break;
           case 'iWant':
                 makeGreen();
                 $('#nameTitle').text(title.nameWant);
                  $('#nameTitle').append('<p id="greenBook" class="glyphicon glyphicon-book"></p>');
-                 $('span.badge').removeClass('backGrey backPurple backBlue backOrange backRed').addClass('backGreen');
+                 $('span.badge').removeClass('backGrey backFavorite backBlue backOrange backRed').addClass('backGreen');
                  $('span.badge').addClass('backGreen');
                 console.log(app.bookList);
                 _.each(app.bookList.getBooksIWant(), this.addOne, this);
@@ -304,30 +333,29 @@ app.AppView = Backbone.View.extend({
                 makeOrange();
                 $('#nameTitle').text(title.nameOrder);
                 $('#nameTitle').append('<p id="orangeBook" class="glyphicon glyphicon-book"></p>');
-                $('span.badge').removeClass('backGrey backGreen backBlue backPurple backRed').addClass('backOrange');
+                $('span.badge').removeClass('backGrey backGreen backBlue backFavorite backRed').addClass('backOrange');
                 console.log(app.bookList);
                 _.each(app.bookList.getBooksOnOrder(), this.addOne, this);
                 break;
           case 'available':
                 makeBlue();
                 $('#nameTitle').text(title.nameAvailable);
-                $('span.badge').removeClass('backGrey backGreen backPurple backOrange backRed').addClass('backBlue');
+                $('span.badge').removeClass('backGrey backGreen backFavorite backOrange backRed').addClass('backBlue');
                 $('#nameTitle').append('<p id="blueBook" class="glyphicon glyphicon-book"></p>');
                 _.each(app.bookList.getBooksAvailable(), this.addOne, this);
                 break;
           case 'alreadyRead':
                 makeRed();
                 $('#nameTitle').text(title.nameRead);
-                $('span.badge').removeClass('backGrey backGreen backPurple backOrange backBlue').addClass('backRed');
+                $('span.badge').removeClass('backGrey backGreen backFavorite backOrange backBlue').addClass('backRed');
                 $('#nameTitle').append('<p id="redBook" class="glyphicon glyphicon-book"></p>');
-
                 _.each(app.bookList.getBooksRead(), this.addOne, this);
                 break;
           case 'favorites':
                   makePurple();
                   $('#nameTitle').text(title.nameFavorites);
-                  $('#nameTitle').append('<p id="purpleBook" class="glyphicon glyphicon-book"></p>');
-                  $('span.badge').removeClass('backGrey backGreen  backRed backOrange backBlue').addClass('backPurple');
+                  $('#nameTitle').append('<p id="favoriteBook" class="glyphicon glyphicon-book"></p>');
+                  $('span.badge').removeClass('backGrey backGreen  backRed backOrange backBlue').addClass('backFavorite');
                   _.each(app.bookList.getFavoriteBooks(), this.addOne, this);
                   break;
 
@@ -349,17 +377,13 @@ app.AppView = Backbone.View.extend({
     this.model.toJSON();
 
     this.author = this.model.get('author');
+    this.reader = this.model.get('reader');
     this.title= this.model.get('title');
     this.rating = this.model.get('rating');
-    console.log('adding One model: ', this.author, this.title, this.rating);
+    console.log('adding One model: ', this.author, this.reader, this.title, this.rating);
 
         var view = new app.BookView({model: book, bus: bus });
         $('#table-body').prepend(view.render().el);
-  },
-
-  render: function(){
-        this.$el.html('<input id="author" type="text" placeholder="Author" autofocus> <input id="title" type="text" placeholder="Book Title"><input id="published" type="text" maxlength="4" placeholder="Year Published">');
-        return this;
   }
 });//close app.AppView
 
@@ -392,9 +416,7 @@ app.Router = Backbone.Router.extend({
 var allBooksView = new app.BookListView({
   el: "#table-body",
   model: bookList,
-  bus: bus,
-
-
+  bus: bus
 });
 
 app.router = new app.Router();
@@ -405,5 +427,4 @@ window.windowFn = windowFn;
 
 
 var UpdateLengths = updateLengths;
-
 _.extend(UpdateLengths, Backbone.Events);
