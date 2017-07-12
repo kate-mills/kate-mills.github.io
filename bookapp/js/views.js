@@ -196,7 +196,6 @@ app.BookListView = Backbone.View.extend({
       }
 });
 
-
 app.AppView = Backbone.View.extend({
   el: '#bookapp',
 
@@ -257,17 +256,11 @@ updateLengths: function(){
             console.log("BookTitle", this.title);
         }
   },
-  onKeypressAuthor: function(e){
+  onKeypressAuthor: function(e) {
         var keyCode = e.keyCode || e.which;
-        this.authorValue = $('#author').val();
-        var authorValue = this.authorValue.trim();
-        if (keyCode == 9){
-            this.author = authorValue;
-            console.log("AuthorName", this.author);
-        }if(keyCode == 13){
-             this.author = authorValue;
-            console.log("AuthorName", this.author);
-        }
+        var author = $('#author').val().trim();
+        this.author = author;
+        console.log('this.author', this.author);
   },
   onKeypressPublished: function(e) {
         var keyCode = e.keyCode || e.which;
@@ -275,8 +268,14 @@ updateLengths: function(){
         var test = this.testPublishedYear( published );
 
         if(keyCode == 9 || keyCode == 13) {
-          if ( $('#author').val() && $('#title').val()) {
-            app.bookList.create({ author: this.author, reader: this.reader, title: this.title, published: this.published });
+          if (  $('#author').val() && $('#title').val()  ) {
+            app.bookList.create({
+              author: $('#author').val().trim(),
+              reader: $('#reader').val().trim(),
+              title: $('#title').val().trim(),
+              published: test
+            });
+
             $('#author').val('');
             $('#reader').val('');
             $('#title').val('');
@@ -287,16 +286,15 @@ updateLengths: function(){
       }
   },
 
-  onSubmit: function(){
+  onSubmit: function(e){
     console.clear();
-    console.log(this);
+    console.log(this, e);
 
     if ( $('#author').val() && $('#title').val() ) {
         var author = $('#author').val().trim();
         var reader = $('#reader').val().trim();
         var title = $('#title').val().trim();
         var published = this.testPublishedYear( $('#published').val().trim() );
-
 
         app.bookList.create({ author: author, reader: reader, title: title, published: published });
         $('#author').val('');
@@ -310,27 +308,27 @@ updateLengths: function(){
   },
   onMousedownInput: function(e){
     if (e.target.id == 'author') {
-      var authorValue = $(e.target).val();
-      this.author = authorValue.trim();
-      console.log('FROM onMousedownInput', this.author);
+      var author= $(e.target).val();
+      author = author.trim();
+      console.log('FROM onMousedownInput', author);
     }
 
     if (e.target.id == 'reader') {
-      var readerValue = $(e.target).val();
-      this.reader = readerValue.trim();
-      console.log('FROM onMousedownInput', this.reader);
+      var reader = $(e.target).val();
+      reader = reader.trim();
+      console.log('FROM onMousedownInput', reader);
     }
 
     if (e.target.id == 'title') {
-      var titleValue = $(e.target).val();
-      this.title = titleValue.trim();
-      console.log('FROM onMousedownInput', this.title);
+      var title = $(e.target).val();
+      title = title.trim();
+      console.log('FROM onMousedownInput', title);
     }
 
     if (e.target.id == 'published') {
-      var publishedValue = $(e.target).val();
-      this.published = publishedValue.trim();
-      console.log('FROM onMousedownInput', this.published);
+      var published = $(e.target).val();
+      published = published.trim();
+      console.log('FROM onMousedownInput', published);
     }
 
   },
