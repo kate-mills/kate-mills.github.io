@@ -84,6 +84,7 @@ input, textarea, keygen, select, button, meter, progress {
 div#bookapp {
     width: 1300px;
     margin: 10px auto;
+
     background: #fbf5db;
     -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
     -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
@@ -117,8 +118,8 @@ div.nav {
   border: 0;
   outline: none;
   padding: 6px 6px 6px 20px;
-  /*margin: auto;*/
   margin-left: 60px;
+
   border: 1px solid #999999;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
@@ -126,6 +127,7 @@ div.nav {
   -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
 }
+
 div.container {
     width: 80%;
 }
@@ -149,15 +151,13 @@ p#footer.light-Grey{background-color:white;}
   }
 
   a#countyOfNapa, a#napaLibrary, a#worldCat{
-    /*color: red;*/
     font-size: 10px;
     background: white;
   }
   #footer #napaLibrary > span {
     font-size: 10px;
   }
-
-  a#countyOfNapa:hover, a#napaLibrary:hover, a#worldCat:hover{
+a#countyOfNapa:hover, a#napaLibrary:hover, a#worldCat:hover{
     color: black;
   }
 #getDate, #getTime{height: 15px; width: 15px;}
@@ -191,7 +191,6 @@ h4#nameTitle {text-align: center;padding-top: 20px;}
 .backBlue{background-color: #2196f3;}
 .backRed{background-color: #ff0000;}
 
-span#alphabet{color: grey;background-position-x: initial;font-weight: 600; position: relative; left: 25px;cursor: pointer;}
 
 .red{color: red;}
 .blue{color: #2196f3;}
@@ -200,13 +199,26 @@ span#alphabet{color: grey;background-position-x: initial;font-weight: 600; posit
 .green{color: #32cd32;}
 .grey{color: #9e9e9e;}
 
-.table .table {background-color: #fbf5db;}
+
+
+
+:after, :before { background-color: #fbf5db;}
+.glyphicon-book:before{background-color: white;}
+
+.badge{color:white;}
+h4{color:grey;}
+
+
+#ToggleArrow::before{ margin-top: 10px; cursor:pointer;  padding: 0 20px 20px 20px; position: relative; right: 300px;}
+#footer{ color: #9e9e9e;}
+#napaLibrary {background-color:white;}
+#napaLibrary > span{background: white;font-size:15px;}
+
+
+
 
 tbody td {overflow: visible;background-color:#fbf5db;}
 
-
-tr th{color: grey;display: table-cell;}
-th.text {background-position-x: initial; display: table-cell;color: #607d8b;text-align: left;}
 tr.listWant, tr.listOrder, tr.listAvailable, tr.listAlreadyRead{ display: table-row; vertical-align: inherit; border-color: inherit;}
 
 th.glyphicon{font-family: 'Glyphicons Halflings'; display: table-cell; text-align: center;}
@@ -216,82 +228,28 @@ th.bookmarkOrange{font-family: 'Glyphicons Halflings'; content: "\e044"; color: 
 th.bookmarkGreen{font-family: 'Glyphicons Halflings'; content: "\e044"; color: #1aea22; }
 th.bookmarkBlue {font-family: 'Glyphicons Halflings'; content: "\e044"; color:  #2196f3;}
 
-td{color: black; padding: 8px;display: table-cell;background-position-x:initial;}
-td.glyphicon{font-weight: 900;background-position-x: initial;display: table-cell; text-align: center;}
-td.glyphicon-star-empty {background-position-x: initial; content: "\e007";text-align: center;color: red;}
-td.glyphicon.glyphicon-star-empty.red{background-position-x: initial; display: table-cell; text-align: center;}
+td{ background-position-x:initial; color: black; display: table-cell; padding: 8px;}
+td.glyphicon{font-weight: 900; display: table-cell; text-align: center;}
 
 td.glyphicon-trash{font-family: 'Glyphicons Halflings'; cursor: pointer;color: #9e9e9e }
-td.glyphicon-trash:hover {font-family: 'Glyphicons Halflings'; content: "\e014";font-weight: bold;}
-/*td#radioWant:hover{font-family: 'Glyphicons Halflings'; color: transparent; cursor: not-allowed;}*/
-:after, :before { background-color: #fbf5db;}
-.glyphicon-book:before{background-color: white;}
+td.glyphicon-trash:hover {font-family: 'Glyphicons Halflings'; content: "\e014";font-weight: bold; color: red;}
 
-.badge{color:white;}
-h4{color:grey;}
-.glyphicon-star:before {content: "\e006";}
-.glyphicon-star-empty:before {content: "\e007";}
-
-
-#napaLibrary {background-color:white;}
-#napaLibrary > span{background: white;font-size:15px;}
-
-
-td.glyphicon-thumbs-up, td.glyphicon-thumbs-down{
-  cursor: pointer;
-}
-td.glyphicon-thumbs-up{
-  color: #009688;
-}
-td.glyphicon-star-empty:before, td#radioWant, td#radioOrder,  td#radioRead {cursor: pointer; text-align: -webkit-center; }
+td.glyphicon-thumbs-up{color: #009688;}
+td.wdyt:hover, td.glyphicon-bookmark:hover, td.glyphicon-thumbs-up:hover, td.glyphicon-thumbs-down:hover {cursor:pointer;}
 td.glyphicon-book{content: "\e043"; }
-.glyphicon{background-color:#fbf5db;}
+td.wdyt{font-size: 19px;text-align: -webkit-center;}
+td.glyphicon-thumbs-down + #destroy:hover{ color:black; }
 
 
-td.glyphicon-star {cursor: pointer;display: table-cell;font-weight: 900;text-align: -webkit-center;}
-td.glyphicon.glyphicon-star-empty.red {display: table-cell;font-weight: 600;text-align: -webkit-center;}
-td#destroy{cursor: pointer;display: table-cell;content: "\e014";vertical-align: top;}
+td.moving_to_read{ color: red; }
 
-.glyphicon-bookmark {cursor:pointer;}
-
-#ToggleArrow::before{ margin-top: 10px; cursor:pointer;  padding: 0 20px 20px 20px; position: relative; right: 300px;}
-
-#footer{
-   color: #9e9e9e;
-}
-td.wdyt{
-  font-size: larger;
-  display: table-cell;
-  text-align: -webkit-center;
-  vertical-align: inherit;
-  left: 6px;
-  /*vertical-align: top;*/
-}
-td.glyphicon.glyphicon-thumbs-up.purple{
-  display: table-cell;
-   vertical-align: top;
-  text-align: -webkit-center;
-
-}
-td.wdyt:hover {
-  cursor: pointer;
-}
-td.wdyt + td#destroy:hover{
-    color: red;
-}
-td.glyphicon-thumbs-up + td#destroy:hover{
-    color:red;
-}
-td.glyphicon-thumbs-down + td#destroy:hover{
-    color:black;
-}
 div.container.table{background-color: #fbf5db;margin-top:10px;}
 table.table{background-color:#fbf5db;}
 thead{color: #808080; font-size: x-large; background-color: #fbf5db;}
 tbody{background-color: #fbf5db;}
-tbody tr.listWant td#radioWant:hover{cursor: not-allowed; color: rgba(204, 129, 0, 0);}
-tbody tr.listWant:hover td.glyphicon.glyphicon-book.green{color:green;}
-tbody tr.listWant:hover td#radioOrder:hover, td#radioAvailable:hover, td#radioAlreadyRead:hover{color:white}
+/*tbody tr.listWant td#radioWant:hover{cursor: not-allowed; color: rgba(204, 129, 0, 0);}*/
+/*tbody tr.listWant:hover td.glyphicon.glyphicon-book.green{color:green;}
+tbody tr.listWant:hover td#radioOrder:hover, td#radioAvailable:hover, td#radioAlreadyRead:hover{color:white}*/
 
 
 th .glyphicon-star:before {

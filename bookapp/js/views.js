@@ -29,7 +29,9 @@ app.BookView = Backbone.View.extend({
     },
     render: function(){
         if(this.model){
-          this.model.toJSON();
+          // this.model.toJSON();
+          this.$el.html(this.model.attributes);
+          console.log('hi!');
         }
         this.bus.status = this.model.get('status');
         this.rating = this.model.get('rating');
@@ -72,7 +74,6 @@ app.BookView = Backbone.View.extend({
           this.bookmark = this.redBookmark;
           this.rating = this.thumbsDown;
         }
-        // console.log(this);
 
         this.authorHTML = ('<td>' + this.model.get('author') +'</td>');
         this.readerHTML = ('<td>' + this.model.get('reader') +'</td>');
@@ -144,13 +145,16 @@ app.BookView = Backbone.View.extend({
          this.$el.fadeOut('slow');
       }
     },
-    onToggleRead: function(){
+    onToggleRead: function(e){
+      console.log(e.target);
+      var w = window.filter;
+      console.log(w);
+      if (w !== 'all' && w !== 'alreadyRead') {
+          this.$(e.target).html('Read').addClass('moving_to_read');
+          this.$el.fadeOut('slow');
+      }
       this.model.changeList('alreadyRead');
       this.render();
-      if(window.filter !== 'alreadyRead'){
-        if(window.filter !== 'all')
-         this.$el.fadeOut('slow');
-      }
     },
     addToFavoriteList: function(){
       this.model.save('star', true);

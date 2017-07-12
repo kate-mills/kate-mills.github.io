@@ -27,6 +27,7 @@ app.Book = Backbone.Model.extend({
         }
     },
     changeList: function(new_list) {
+      console.log('changing list', this);
         if (! this.get('iWant') && new_list == 'iWant') {
           this.save({'iWant': true, 'onOrder': false, 'available': false, 'alreadyRead': false});
         }
