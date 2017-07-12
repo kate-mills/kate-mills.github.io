@@ -97,7 +97,6 @@ app.BookView = Backbone.View.extend({
         }
       },
     onClickQuestionmark: function(){
-      console.clear();
       this.model.changeRating('thumbsup', true);
       this.render();
     },
@@ -138,9 +137,7 @@ app.BookView = Backbone.View.extend({
       }
     },
     onToggleRead: function(e){
-      console.log(e.target);
       var w = window.filter;
-      console.log(w);
       if (w !== 'all' && w !== 'alreadyRead') {
           this.$(e.target).html('Read').addClass('moving_to_read');
           this.$el.fadeOut('slow');
@@ -160,9 +157,6 @@ app.BookView = Backbone.View.extend({
     destroy: function(){
         this.model.destroy();
     },
-    // updateLengths: function(){
-    //   updateLengths();
-    // }
 }); //close app.BookView
 app.BookListView = Backbone.View.extend({
 
@@ -228,11 +222,9 @@ testPublishedYear: function(n){
       var readerValue = this.readerValue.trim();
       if (keyCode == 9){
         this.reader = readerValue;
-        console.log('readerValue', this.reader);
       }
       if (keyCode == 13) {
         this.reader = readerValue;
-        console.log('readerValue', this.reader);
       }
     },
   onKeypressTitle: function(e){
@@ -241,17 +233,14 @@ testPublishedYear: function(n){
         var titleValue = this.titleValue.trim();
         if (keyCode == 9){
             this.title = titleValue;
-            console.log("BookTitle", this.title);
         }if(keyCode == 13){
              this.title = titleValue;
-            console.log("BookTitle", this.title);
         }
   },
   onKeypressAuthor: function(e) {
         var keyCode = e.keyCode || e.which;
         var author = $('#author').val().trim();
         this.author = author;
-        console.log('this.author', this.author);
   },
   onKeypressPublished: function(e) {
         var keyCode = e.keyCode || e.which;
@@ -277,8 +266,6 @@ testPublishedYear: function(n){
       }
   },
   onSubmit: function(e){
-    console.clear();
-    console.log(this, e);
 
     if ( $('#author').val() && $('#title').val() ) {
         var author = $('#author').val().trim();
@@ -299,25 +286,21 @@ testPublishedYear: function(n){
     if (e.target.id == 'author') {
       var author= $(e.target).val();
       author = author.trim();
-      console.log('FROM onMousedownInput', author);
     }
 
     if (e.target.id == 'reader') {
       var reader = $(e.target).val();
       reader = reader.trim();
-      console.log('FROM onMousedownInput', reader);
     }
 
     if (e.target.id == 'title') {
       var title = $(e.target).val();
       title = title.trim();
-      console.log('FROM onMousedownInput', title);
     }
 
     if (e.target.id == 'published') {
       var published = $(e.target).val();
       published = published.trim();
-      console.log('FROM onMousedownInput', published);
     }
 
   },
