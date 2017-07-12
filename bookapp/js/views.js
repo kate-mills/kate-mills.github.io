@@ -72,7 +72,7 @@ app.BookView = Backbone.View.extend({
           this.bookmark = this.redBookmark;
           this.rating = this.thumbsDown;
         }
-        console.log(this);
+        // console.log(this);
 
         this.authorHTML = ('<td>' + this.model.get('author') +'</td>');
         this.readerHTML = ('<td>' + this.model.get('reader') +'</td>');
@@ -216,7 +216,19 @@ app.AppView = Backbone.View.extend({
         "keydown #author": "onKeypressAuthor",
         "keydown #reader": "onKeypressReader",
         "keydown #title": "onKeypressTitle",
-        "keydown #published": "onKeypressPublished"
+        "keydown #published": "onKeypressPublished",
+        "mousedown input": "onMousedownInput"
+  },
+
+  testPublishedYear: function(n){
+    if ( Number(n) ) {
+    // console.log('Number');
+    return String(n);
+    }
+  else if ( String(n)  || n === undefined || n === ''){
+        // console.log('String');
+    return 'null';
+    }
   },
   updateLengths: function(){
       updateLengths();
@@ -258,34 +270,53 @@ app.AppView = Backbone.View.extend({
             console.log("AuthorName", this.author);
         }
   },
-  onKeypressPublished: function(e){
+  onKeypressPublished: function(e) {
         var keyCode = e.keyCode || e.which;
-        var publishedValue = $('#published').val().trim();
-        var printPublishedValue = 'published: '.concat(this.publishedValue);
+        var published = $('#published').val().trim();
 
-        if(keyCode == 9){
-          testPublishedValue = testYear( publishedValue );
-          publishedValue = testYear( publishedValue );
-          console.log("publishedValue2: ", this.publishedValue);
-              alert('Hi Dad! Press enter to save this book to your database.');
-
-        } if(keyCode == 13){
-          publishedValue = testYear( publishedValue );
-            console.log("typeof ( publishedValue): ", typeof( publishedValue ));
-            app.bookList.create({ author: this.author, reader: this.reader, title: $('#title').val(), published: publishedValue });
+        if(keyCode == 9 || keyCode == 13) {
+          if ( $('#author').val() && $('#title').val()) {
+            this.published = this.testPublishedYear( published );
+            app.bookList.create({ author: this.author, reader: this.reader, title: this.title, published: this.published });
             $('#author').val('');
             $('#reader').val('');
             $('#title').val('');
             $('#published').val('');
             $('#author').focus();
-            this.updateLengths();
+            updateLengths();
           }
+      }
+  },
+  onMousedownInput: function(e){
+    if (e.target.id == 'author') {
+      var authorValue = $(e.target).val();
+      this.author = authorValue.trim();
+      console.log('FROM onMousedownInput', this.author);
+    }
+
+    if (e.target.id == 'reader') {
+      var readerValue = $(e.target).val();
+      this.reader = readerValue.trim();
+      console.log('FROM onMousedownInput', this.reader);
+    }
+
+    if (e.target.id == 'title') {
+      var titleValue = $(e.target).val();
+      this.title = titleValue.trim();
+      console.log('FROM onMousedownInput', this.title);
+    }
+
+    if (e.target.id == 'published') {
+      var publishedValue = $(e.target).val();
+      this.published = publishedValue.trim();
+      console.clear();
+      console.log('FROM onMousedownInput', this.published);
+    }
 
   },
 
 
   addAll: function(){
-      console.log('this', this);
       this.$('#table-body').html(''); // clean the book list
 
       switch(window.filter){  // filter book item list
@@ -343,8 +374,6 @@ app.AppView = Backbone.View.extend({
                 _.each(app.bookList, this.addOne, this);
                 updateLengths();
                 break;
-
-
         }
   },
 
@@ -357,7 +386,8 @@ app.AppView = Backbone.View.extend({
     this.reader = this.model.get('reader');
     this.title= this.model.get('title');
     this.rating = this.model.get('rating');
-    console.log('adding One model: ', this.author, this.reader, this.title, this.rating);
+    this.published = this.model.get('published');
+    console.log('adding One model: ', this.author, this.reader, this.title, this.published, this.rating);
 
         var view = new app.BookView({model: book, bus: bus });
         $('#table-body').prepend(view.render().el);
@@ -365,9 +395,6 @@ app.AppView = Backbone.View.extend({
 });//close app.AppView
 
 
-//--------------
-// Routers
-//--------------
 var bus = _.extend({}, Backbone.Events);
 _.extend(app.bookList, Backbone.Events);
 _.extend(title, Backbone.Events);
@@ -398,7 +425,7 @@ var allBooksView = new app.BookListView({
 
 app.router = new app.Router();
 Backbone.history.start();
-app.appView = new app.AppView({bus: bus});
+app.appView = new app.AppView({ bus: bus });
 var windowFn = app.appView.addAll;
 window.windowFn = windowFn;
 

@@ -51,11 +51,8 @@ app.Book = Backbone.Model.extend({
     },
 
     initialize: function() {
-      if(this.isValid()) {
-            console.log(this.get("title") + " has been added to your collection.");
-      } if(!this.isValid()){
-          console.log( "\n this.isValid = ", this.isValid() );
-          console.log( this.validationError,' \n  ');
+      if(!this.isValid()) {
+        console.log( this.validationError,' \n  ');
       }
     }
 });//close app.Book

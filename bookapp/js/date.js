@@ -21,16 +21,13 @@ function getDate(){
 
 var testYear = function(year){
     if(year === undefined || year  === "null") {
-        // console.log("year: ", null);
         year = null;
         return year;
     }
     else if ( year === typeof("String") ){
-            // return year = "null";
             console.log(year);
             return String(year);
         }
-
 
     else {
 
