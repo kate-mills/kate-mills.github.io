@@ -31,7 +31,6 @@ app.BookView = Backbone.View.extend({
         if(this.model){
           // this.model.toJSON();
           this.$el.html(this.model.attributes);
-          console.log('hi!');
         }
         this.bus.status = this.model.get('status');
         this.rating = this.model.get('rating');
@@ -84,7 +83,6 @@ app.BookView = Backbone.View.extend({
         this.radio = ('<td>' + this.model.get('status') +'</td>');
         this.ex = ('<td id="destroy" class="glyphicon glyphicon-trash '+this.bus.statusClass+'"></td>');
 
-
         this.$el.html(  this.authorHTML + this.readerHTML + this.titleHTML + this.publishedHTML  + this.bookmark + this.radioWant + this.radioOrder + this.radioAvailable + this.radioRead   + this.rating + this.ex);
         this.$el.attr({
           id: this.model.cid,
@@ -98,10 +96,6 @@ app.BookView = Backbone.View.extend({
           this.close();
         }
       },
-    onClickEmptyStar: function(){
-      this.model.giveOneStarRating();
-      this.render();
-    },
     onClickQuestionmark: function(){
       console.clear();
       this.model.changeRating('thumbsup', true);
@@ -126,7 +120,6 @@ app.BookView = Backbone.View.extend({
         this.$el.fadeOut('slow');
       }
     },
-
     onToggleOrder: function(){
       this.model.changeList('onOrder');
       this.render();
@@ -135,7 +128,6 @@ app.BookView = Backbone.View.extend({
          this.$el.fadeOut('slow');
       }
     },
-
     onToggleAvailable: function(){
       this.model.changeList('available');
       this.removeFromFavoriteList(this.model.toJSON());
@@ -168,9 +160,9 @@ app.BookView = Backbone.View.extend({
     destroy: function(){
         this.model.destroy();
     },
-    updateLengths: function(){
-      updateLengths();
-    }
+    // updateLengths: function(){
+    //   updateLengths();
+    // }
 }); //close app.BookView
 app.BookListView = Backbone.View.extend({
 
@@ -230,9 +222,6 @@ testPublishedYear: function(n){
     return 'null';
     }
   },
- // updateLengths: function(){
- //      updateLengths();
- //    },
   onKeypressReader: function(e) {
       var keyCode = e.keyCode || e.which;
       this.readerValue = $('#reader').val();
