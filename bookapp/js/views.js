@@ -217,23 +217,22 @@ app.AppView = Backbone.View.extend({
         "keydown #reader": "onKeypressReader",
         "keydown #title": "onKeypressTitle",
         "keydown #published": "onKeypressPublished",
-        "mousedown input": "onMousedownInput"
+        "mousedown input": "onMousedownInput",
+        "click input#submit": "onSubmit"
   },
 
-  testPublishedYear: function(n){
+testPublishedYear: function(n){
     if ( Number(n) ) {
-    // console.log('Number');
     return String(n);
     }
   else if ( String(n)  || n === undefined || n === ''){
-        // console.log('String');
     return 'null';
     }
   },
-  updateLengths: function(){
+updateLengths: function(){
       updateLengths();
     },
-    onKeypressReader: function(e) {
+  onKeypressReader: function(e) {
       var keyCode = e.keyCode || e.which;
       this.readerValue = $('#reader').val();
       var readerValue = this.readerValue.trim();
@@ -273,10 +272,10 @@ app.AppView = Backbone.View.extend({
   onKeypressPublished: function(e) {
         var keyCode = e.keyCode || e.which;
         var published = $('#published').val().trim();
+        var test = this.testPublishedYear( published );
 
         if(keyCode == 9 || keyCode == 13) {
           if ( $('#author').val() && $('#title').val()) {
-            this.published = this.testPublishedYear( published );
             app.bookList.create({ author: this.author, reader: this.reader, title: this.title, published: this.published });
             $('#author').val('');
             $('#reader').val('');
@@ -286,6 +285,28 @@ app.AppView = Backbone.View.extend({
             updateLengths();
           }
       }
+  },
+
+  onSubmit: function(){
+    console.clear();
+    console.log(this);
+
+    if ( $('#author').val() && $('#title').val() ) {
+        var author = $('#author').val().trim();
+        var reader = $('#reader').val().trim();
+        var title = $('#title').val().trim();
+        var published = this.testPublishedYear( $('#published').val().trim() );
+
+
+        app.bookList.create({ author: author, reader: reader, title: title, published: published });
+        $('#author').val('');
+        $('#reader').val('');
+        $('#title').val('');
+        $('#published').val('');
+        $('#author').focus();
+        updateLengths();
+    }
+
   },
   onMousedownInput: function(e){
     if (e.target.id == 'author') {
@@ -309,7 +330,6 @@ app.AppView = Backbone.View.extend({
     if (e.target.id == 'published') {
       var publishedValue = $(e.target).val();
       this.published = publishedValue.trim();
-      console.clear();
       console.log('FROM onMousedownInput', this.published);
     }
 
