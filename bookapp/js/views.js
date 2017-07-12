@@ -172,7 +172,6 @@ app.BookView = Backbone.View.extend({
       updateLengths();
     }
 }); //close app.BookView
-
 app.BookListView = Backbone.View.extend({
 
   initialize: function(options){
@@ -202,7 +201,6 @@ app.BookListView = Backbone.View.extend({
 
 app.AppView = Backbone.View.extend({
   el: '#bookapp',
-
   initialize: function (options) {
         this.bus = options.bus;
         this.book = this.$('#new-book');
@@ -232,9 +230,9 @@ testPublishedYear: function(n){
     return 'null';
     }
   },
-updateLengths: function(){
-      updateLengths();
-    },
+ // updateLengths: function(){
+ //      updateLengths();
+ //    },
   onKeypressReader: function(e) {
       var keyCode = e.keyCode || e.which;
       this.readerValue = $('#reader').val();
@@ -289,7 +287,6 @@ updateLengths: function(){
           }
       }
   },
-
   onSubmit: function(e){
     console.clear();
     console.log(this, e);
@@ -308,7 +305,6 @@ updateLengths: function(){
         $('#author').focus();
         updateLengths();
     }
-
   },
   onMousedownInput: function(e){
     if (e.target.id == 'author') {
@@ -336,8 +332,6 @@ updateLengths: function(){
     }
 
   },
-
-
   addAll: function(){
       this.$('#table-body').html(''); // clean the book list
 
@@ -436,9 +430,6 @@ app.Router = Backbone.Router.extend({
 
 });
 
-//--------------
-// Initializers
-//--------------
 var allBooksView = new app.BookListView({
   el: "#table-body",
   model: bookList,
@@ -451,5 +442,3 @@ app.appView = new app.AppView({ bus: bus });
 var windowFn = app.appView.addAll;
 window.windowFn = windowFn;
 
-// var UpdateLengths = updateLengths;
-// _.extend(UpdateLengths, Backbone.Events);
