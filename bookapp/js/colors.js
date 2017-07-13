@@ -28,11 +28,11 @@ $.fn.blueify = function(){
 };
 $.fn.purplefy = function(){
         // this.css("color", "#d502f9");
-        this.css('color', '#009688')
+        this.css({'color': '#009688'});
         return this;
 };
 $.fn.darkGrey = function(){
-        this.css("color", "#777");
+        this.css({"color": "#777"});
         return this;
     };
 $.fn.lightGrey = function(){
@@ -40,79 +40,48 @@ $.fn.lightGrey = function(){
     return this;
 };
 function makeRed(){
-    $("th").darkGrey().css("cursor", "default");
+    $('span.badge').removeClass('backGrey backGreen backFavorite backOrange backBlue').addClass('backRed');
     $("th").eq(4).redify().text('Read');
-    $("th").eq(5).redify().text('wdyt?').css({'position': 'relative', 'left': '20px'});
-    $('div#new-book.container').hide();
+    $("th").eq(5).darkGrey().text('wdyt?');
     $("#ToggleArrow").redify();
-    $("#alphabet").redify();
-
+    $('glyphicon glyphicon-bookmark').addClass('red');
 }
 function makeOrange(){
-    $("th").darkGrey().css("cursor", "default");
+    $('span.badge').removeClass('backGrey backGreen backBlue backFavorite backRed').addClass('backOrange');
     $("th").eq(4).orangeify().text('Order');
-    $('div#new-book.container').hide();
     $("th").eq(5).neutralize();
     $("#ToggleArrow").orangeify();
     $("#alphabet").orangeify();
 }
 function makeGreen() {
-    $("th").darkGrey().css("cursor", "default");
+    $('span.badge').removeClass('backGrey backFavorite backBlue backOrange backRed').addClass('backGreen');
     $("th").eq(4).greenify().text('Want');
     $("th").eq(5).neutralize();
-    // $('div#new-book.container').show();
-    $("#showTime").greenify();
     $("#ToggleArrow").greenify();
-    $("#alphabet").greenify();
 
 }
 function makeBlue(){
-    $("th").darkGrey().css("cursor", "default");
+    $('span.badge').removeClass('backGrey backGreen backFavorite backOrange backRed').addClass('backBlue');
     $("th").eq(4).blueify().text('Available');
     $("th").eq(5).neutralize();
-    $('div#new-book.container').hide();
     $("#ToggleArrow").blueify();
     $("#alphabet").blueify();
 }
 function makePurple(){
-    $("th").darkGrey().css("cursor", "default");
+    $('span.badge').removeClass('backGrey backGreen  backRed backOrange backBlue').addClass('backFavorite');
     $("th").eq(4).purplefy().text("Favorite");
-    $('div#new-book.container').hide();
-    $("th").eq(5).purplefy().html('wdyt?').css({'position': 'relative', 'left': '20px'});
+    $("th").eq(5).darkGrey().text('wdyt?');
+    $('td.glyphicon.glyphicon-bookmark').purplefy();
     $("#ToggleArrow").purplefy();
-    $("#alphabet").purplefy();
 }
-// function makeAllGrey() {
-//     $("th").darkGrey().css("cursor", "default");
-//     $("h4").darkGrey().addClass("dark-Grey");
-//     $("h2").darkGrey();
-//     $("a").darkGrey().addClass("dark-Grey");
-//     $("li").darkGrey().addClass("dark-Grey");
-//     $("th").darkGrey();
-//     $('th').eq(0).text('Author');
-//     $('th').eq(1).text('Title');
-//     $("th").eq(2).text('Year');
-//     $("th").eq(3).lightGrey().text('All');
-//     $("th").eq(4).darkGrey().text('wdyt?').css({'position': 'relative', 'left': '20px'});
-//     $("#ToggleArrow").darkGrey();
-//     $("#alphabet").darkGrey();
-// }
+
 function makeAllGrey() {
-    $("th").darkGrey().css("cursor", "default");
-    $("h4").darkGrey().addClass("dark-Grey");
-    $("h2").darkGrey();
-    $("a").darkGrey().addClass("dark-Grey");
-    $("li").darkGrey().addClass("dark-Grey");
-    $("th").darkGrey();
-    $('th').eq(0).text('Author');
-    $('th').eq(1).text('Reader');
-    $("th").eq(2).text('Title');
-    $("th").eq(3).text('Year');
+    $('span.badge').removeClass('backGreen backFavorite backBlue backOrange backRed').addClass('backGrey');
     $("th").eq(4).lightGrey().text('All');
-    $("th").eq(5).darkGrey().text('wdyt?').css({'position': 'relative', 'left': '20px'});
-    $("#ToggleArrow").darkGrey();
-    $("#alphabet").darkGrey();
+    $("th").eq(5).darkGrey().text('wdyt?');
+    $("#ToggleArrow").lightGrey();
 }
+
 $( "#ToggleArrow" ).click(
   function() {
     $('div#new-book.container').toggle();

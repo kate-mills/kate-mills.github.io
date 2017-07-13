@@ -38,7 +38,7 @@ switch (new Date().getDay()) {
 
 }
 
-    var napaLibrary = '<a title="Napa Library" id="napaLibrary" target="_blank" href="https://napa.polarislibrary.com/polaris/logon.aspx?ctx=3.1033.0.0.5&Header=1"><span class="glyphicon glyphicon-link"> </span> napa library</a>';
+    var napaLibrary = '<a class="inside_footer" title="Napa Library" id="napaLibrary" target="_blank" href="https://napa.polarislibrary.com/polaris/logon.aspx?ctx=3.1033.0.0.5&Header=1"><span class="glyphicon glyphicon-link"> </span> napa library</a>';
 
     var countyOfNapa = '<a title="NAPA COUNTY CA" id="countyOfNapa" target="_blank" href="http://countyofnapa.org/library/"><span class="glyphicon glyphicon-link"> </span> county of napa</a>';
 
@@ -46,4 +46,5 @@ switch (new Date().getDay()) {
 
     var footerText = '&copy; km-2016  ' + text + napaLibrary +  countyOfNapa + worldCat;
     $('#footer').html(footerText );
+
 

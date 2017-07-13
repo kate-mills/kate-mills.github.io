@@ -158,6 +158,7 @@ app.BookView = Backbone.View.extend({
         this.model.destroy();
     },
 }); //close app.BookView
+
 app.BookListView = Backbone.View.extend({
 
   initialize: function(options){
@@ -208,12 +209,17 @@ app.AppView = Backbone.View.extend({
         "click input#submit": "onSubmit"
   },
 
-testPublishedYear: function(n){
+  testPublishedYear: function(n){
     if ( Number(n) ) {
-    return String(n);
+      if (n < 1900) {
+        // $('#error-alert').text('book was published in ' + n).addClass('alert_warning').show().fadeOut(1000);
+        $('#error-alert').text('Published in ' + n).addClass('alert_warning').show().fadeOut(1500);
+        return 'null';}
+      else {
+        return String(n);}
     }
-  else if ( String(n)  || n === undefined || n === ''){
-    return 'null';
+    else if ( String(n)  || n === undefined || n === ''){
+      return 'null';
     }
   },
   onKeypressReader: function(e) {
@@ -245,15 +251,14 @@ testPublishedYear: function(n){
   onKeypressPublished: function(e) {
         var keyCode = e.keyCode || e.which;
         var published = $('#published').val().trim();
-        var test = this.testPublishedYear( published );
 
         if(keyCode == 9 || keyCode == 13) {
-          if (  $('#author').val() && $('#title').val()  ) {
+          if (  this.$('#author').val() && this.$('#title').val()  ) {
             app.bookList.create({
               author: $('#author').val().trim(),
               reader: $('#reader').val().trim(),
               title: $('#title').val().trim(),
-              published: test
+              published: this.testPublishedYear( published )
             });
 
             $('#author').val('');
@@ -266,13 +271,11 @@ testPublishedYear: function(n){
       }
   },
   onSubmit: function(e){
-
     if ( $('#author').val() && $('#title').val() ) {
         var author = $('#author').val().trim();
         var reader = $('#reader').val().trim();
         var title = $('#title').val().trim();
         var published = this.testPublishedYear( $('#published').val().trim() );
-
         app.bookList.create({ author: author, reader: reader, title: title, published: published });
         $('#author').val('');
         $('#reader').val('');
@@ -306,59 +309,48 @@ testPublishedYear: function(n){
   },
   addAll: function(){
       this.$('#table-body').html(''); // clean the book list
-
       switch(window.filter){  // filter book item list
          case 'all':
-                makeAllGrey();
                 $('#nameTitle').text(title.nameAll);
                 $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
-                $('tbody').addClass('grey');
-                $('span.badge').removeClass('backGreen backFavorite backBlue backOrange backRed').addClass('backGrey');
+                makeAllGrey();
                 _.each(app.bookList.getAllBooks(), this.addOne, this);
                 break;
           case 'iWant':
-                makeGreen();
                 $('#nameTitle').text(title.nameWant);
-                 $('#nameTitle').append('<p id="greenBook" class="glyphicon glyphicon-book"></p>');
-                 $('span.badge').removeClass('backGrey backFavorite backBlue backOrange backRed').addClass('backGreen');
-                 $('span.badge').addClass('backGreen');
-                console.log(app.bookList);
+                $('#nameTitle').append('<p id="greenBook" class="glyphicon glyphicon-book"></p>');
+                makeGreen();
                 _.each(app.bookList.getBooksIWant(), this.addOne, this);
                 break;
           case 'onOrder':
-                makeOrange();
                 $('#nameTitle').text(title.nameOrder);
                 $('#nameTitle').append('<p id="orangeBook" class="glyphicon glyphicon-book"></p>');
-                $('span.badge').removeClass('backGrey backGreen backBlue backFavorite backRed').addClass('backOrange');
-                console.log(app.bookList);
+                makeOrange();
                 _.each(app.bookList.getBooksOnOrder(), this.addOne, this);
                 break;
           case 'available':
-                makeBlue();
                 $('#nameTitle').text(title.nameAvailable);
-                $('span.badge').removeClass('backGrey backGreen backFavorite backOrange backRed').addClass('backBlue');
                 $('#nameTitle').append('<p id="blueBook" class="glyphicon glyphicon-book"></p>');
+                makeBlue();
                 _.each(app.bookList.getBooksAvailable(), this.addOne, this);
                 break;
           case 'alreadyRead':
-                makeRed();
                 $('#nameTitle').text(title.nameRead);
-                $('span.badge').removeClass('backGrey backGreen backFavorite backOrange backBlue').addClass('backRed');
                 $('#nameTitle').append('<p id="redBook" class="glyphicon glyphicon-book"></p>');
+                makeRed();
                 _.each(app.bookList.getBooksRead(), this.addOne, this);
                 break;
           case 'favorites':
-                  makePurple();
                   $('#nameTitle').text(title.nameFavorites);
                   $('#nameTitle').append('<p id="favoriteBook" class="glyphicon glyphicon-book"></p>');
-                  $('span.badge').removeClass('backGrey backGreen  backRed backOrange backBlue').addClass('backFavorite');
+                  makePurple();
                   _.each(app.bookList.getFavoriteBooks(), this.addOne, this);
                   break;
 
-              default:
-              makeAllGrey();
-              $('#nameTitle').text(title.nameAll);
-              $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
+          default:
+                $('#nameTitle').text(title.nameAll);
+                $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
+                makeAllGrey();
                 _.each(app.bookList, this.addOne, this);
                 updateLengths();
                 break;

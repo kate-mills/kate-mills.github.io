@@ -1,6 +1,5 @@
-W3.CSS 2.75 by Jan Egil and Borge Refsnes */
+ /*Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize*/
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
-/* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
 html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}
 audio,canvas,video{display:inline-block;vertical-align:baseline}
@@ -24,26 +23,29 @@ input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-sea
 fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}
 legend{border:0;padding:0}pre,textarea{overflow:auto}
 /* End extract from normalize.css */
-html,body{font-family:Veranda,sans-serif;font-size:15px;line-height:1.5}html{overflow-x:hidden}
-h1,h2,h3,h4,h5,h6,.w3-slim,.w3-wide{font-family:"Segoe UI",Arial,sans-serif}
-h1{font-size:36px}h2{font-size:30px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}
-.w3-serif{font-family:"Times New Roman",Times,serif}
+html,body{font-family:Veranda,sans-serif;font-size:15px;line-height:1.5}html{overflow-x:scroll;}
+h1{font-size:36px}h2{font-size:30px}h3{font-size:24px; letter-spacing: 1px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}
 h1,h2,h3,h4,h5,h6{font-weight:400;margin:10px 0}.w3-wide{letter-spacing:4px;color:grey;}
 h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{font-weight:inherit}
 hr{height:0;border:0;border-top:1px solid #eee;margin:20px 0}
-img{margin-bottom:-5px}a{color:inherit}html {
-    box-sizing: border-box;
+img{margin-bottom:-5px}a{color:inherit}html {box-sizing: border-box;}
+input, textarea, keygen, select, button{
+    text-rendering: auto;
+    color: #9e9e9e;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0;
+    font: 11px BlinkMacSystemFont;
+    -webkit-writing-mode: horizontal-tb;
 }
-
-html, body {
-    font-family: Helvetica;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
  input[type="text"] {
     width: 100%;
-    font-size: 24px;
+    font-size: 20px;
     font-family: inherit;
     line-height: 1.0em;
     border: 0;
@@ -57,34 +59,11 @@ html, body {
     -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
     box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
 }
-div#new-book {
-    width: 51%;
-}
-input, textarea, keygen, select, button {
-    text-rendering: auto;
-    /*color: initial;*/
-    color: #9e9e9e;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    margin: 0;
-    font: 11px BlinkMacSystemFont;
-}
 
-input, textarea, keygen, select, button, meter, progress {
-    -webkit-writing-mode: horizontal-tb;
-}
-
-
-/*h2 {color: grey;}*/
+/*div.container{width: 90%;}*/
 div#bookapp {
-    width: 1300px;
+    width: 1500px;
     margin: 10px auto;
-
     background: #fbf5db;
     -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
     -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
@@ -98,9 +77,16 @@ div#bookapp {
     border-radius: 0 0 5px 5px;
 }
 
+/* --NAV-- */
+h3#nameTitle {text-align: center;padding-top: 20px; margin: 0 auto;}
+#ToggleArrow::before{ cursor:pointer;  position: relative; top: 45px; right: 299px;}
+div.nav > a{color: rgb(119, 119, 119); flex-wrap: nowrap;display: inline-block;font-size: medium;}
+div.nav > a:hover, div.nav > a:focus{ text-decoration: none;}
+div.nav > a:focus {outline: 5px auto -webkit-focus-ring-color;outline-offset: -2px;}
 div.nav {
     flex-wrap: nowrap;
     width: 100%;
+    margin: 0 auto;
     display: block;
     -webkit-text-orientation: vertical-right;
     -webkit-ruby-position: initial;
@@ -110,88 +96,13 @@ div.nav {
     text-align: -webkit-center;
 }
 
-#bookapp input[type="text"] {
-  font-size: 24px;
-  width: 500px;
-  font-family: inherit;
-  line-height: 1.0em;
-  border: 0;
-  outline: none;
-  padding: 6px 6px 6px 20px;
-  margin-left: 60px;
-
-  border: 1px solid #999999;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-  -ms-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-}
-
-div.container {
-    width: 80%;
-}
-
-div.row-12{
-    font-family: Verdana,sans-serif;
-    font-size: 15px;
-    line-height: 0;
-}
-
-p#footer.light-Grey{background-color:white;}
-.glyphicon.glyphicon-link.footer{
-    margin-left:10px;
-    cursor: pointer;
-    color: grey;
-    font-weight: 500;
-    height:10px;
-    width: 20px;
-    background-color:white;
-    background: white;
-  }
-
-  a#countyOfNapa, a#napaLibrary, a#worldCat{
-    font-size: 10px;
-    background: white;
-  }
-  #footer #napaLibrary > span {
-    font-size: 10px;
-  }
-a#countyOfNapa:hover, a#napaLibrary:hover, a#worldCat:hover{
-    color: black;
-  }
-#getDate, #getTime{height: 15px; width: 15px;}
-
-.glyphicon-link:before {margin-left: 5px; content: "\e144";color: grey;}
-.glyphicon-bookmark:before {content: "\e044";}
-
-
-a{flex-wrap: nowrap;display: inline-block;}
-a{font-size: medium;}
-a:hover{color: inherit;text-decoration: none;}a:hover,a:focus {text-decoration: none;}a:focus {outline: 5px auto -webkit-focus-ring-color;outline-offset: -2px;}
-
-
-
-h4#nameTitle {text-align: center;padding-top: 20px;}
-
-#redBook{content: "\e043"; color: red;position:relative;bottom: 8px;left: 5px;}
-#orangeBook{content: "\e043"; color: #ff8300;position:relative;bottom: 8px;left: 5px;}
-#greyBook{content: "\e043"; color: #9e9e9e;position:relative;bottom: 8px;left: 5px;}
-#greenBook{content: "\e043"; color: #08d008;position:relative;bottom: 8px;left: 5px;}
-#blueBook{content: "\e043"; color: #2196f3;position:relative;bottom: 8px;left: 5px;}
-#purpleBook{content: "\e043"; color: #c713e6;position:relative;bottom: 8px;left: 5px;}
-#favoriteBook{content: "\e043"; color:#009688; position:relative;bottom: 8px;left: 5px;}
-
-
-.badge {color: rgba(247, 242, 242, 1);margin-right: 25px;}
+/*colors*/
 .backGrey{background-color: #9e9e9e;}
 .backFavorite{background-color: #009688;}
 .backGreen{background-color: #08d008;}
 .backOrange{ background-color:#ff8300;}
 .backBlue{background-color: #2196f3;}
 .backRed{background-color: #ff0000;}
-
-
 .red{color: red;}
 .blue{color: #2196f3;}
 .orange{color: #ff8300;}
@@ -199,67 +110,68 @@ h4#nameTitle {text-align: center;padding-top: 20px;}
 .green{color: #32cd32;}
 .grey{color: #9e9e9e;}
 
+/*inputs adding new book*/
+div#new-book.container { width: 30%; height: 190px; font-size:18px;}
+input#submit{float:right;margin-top: 5px;}
+.alert_warning{color:red; font-size: smaller; padding-left: 255px;}
 
+/*glyphicons*/
+#redBook{color: red;}
+#orangeBook{color: #ff8300;}
+#greyBook{color: #9e9e9e;}
+#greenBook{color: #08d008;}
+#blueBook{color: #2196f3;}
+#purpleBook{color: #c713e6;}
+#favoriteBook{color:#009688;}
+.badge{margin-right: 25px; font-weight: bold;}
+.glyphicon{font-family: 'Glyphicons Halflings'; font-weight: 900; background-color: transparent;}
+.glyphicon-bookmark:before { content: "\e044";}
+.glyphicon-trash:before{content: "\e020"; }
+.glyphicon-book{ position:relative;bottom: 8px;left: 5px;}
 
+/*GENERAL TABLE*/
+table, thead, tr, td, tbody{ background-color: #fbf5db;}
+thead{color: #808080; font-size: large;}
+td{ font-family: Arial; background-position-x:initial; color: black; padding: 2px; font-size: 12px;background-color: #fbf5db;}
+#sorttable_sortrevind, #sorttable_sortfwdind{padding:0; font-size: x-small; color:#b5b3ad}
+th #sorttable_sortrevind, th #sorttable_sortfwdind{padding: 0; font-size: x-small; color:#b5b3ad; background-color: transparent;}
 
-:after, :before { background-color: #fbf5db;}
-.glyphicon-book:before{background-color: white;}
+/* table --glyphicons--*/
+th.glyphicon, td.glyphicon, td.no_data{ display: table-cell;border: transparent;}
+td.no_data, td.glyphicon.glyphicon-thumbs-up, td.glyphicon.glyphicon-thumbs-down{height: 39px;}
+::after, ::before {background-color: #fbf5db; font-weight: bold;}
 
-.badge{color:white;}
-h4{color:grey;}
+/*HEADER - Author Reader Title*/
+th:nth-child(1), th:nth-child(2), th:nth-child(3){width: 110px;  font-size: medium; text-align: left;}
 
+/*Year*/
+th:nth-child(4){width: 100px; text-align: center;}
+td:nth-child(4){text-align: center;}
 
-#ToggleArrow::before{ margin-top: 10px; cursor:pointer;  padding: 0 20px 20px 20px; position: relative; right: 300px;}
-#footer{ color: #9e9e9e;}
-#napaLibrary {background-color:white;}
-#napaLibrary > span{background: white;font-size:15px;}
+/*Book List*/
+th:nth-child(5){width: 110px; text-align: center; font-size: smaller;}
+tr>td:nth-child(5){text-align: center;}
 
-
-
-
-tbody td {overflow: visible;background-color:#fbf5db;}
-
-tr.listWant, tr.listOrder, tr.listAvailable, tr.listAlreadyRead{ display: table-row; vertical-align: inherit; border-color: inherit;}
-
-th.glyphicon{font-family: 'Glyphicons Halflings'; display: table-cell; text-align: center;}
-th.bookmarkGrey{ font-family: 'Glyphicons Halflings'; content: "\e043";}
-th.bookmarkRed{font-family: 'Glyphicons Halflings'; content: "\e044"; color: red; }
-th.bookmarkOrange{font-family: 'Glyphicons Halflings'; content: "\e044"; color: #ff8300; }
-th.bookmarkGreen{font-family: 'Glyphicons Halflings'; content: "\e044"; color: #1aea22; }
-th.bookmarkBlue {font-family: 'Glyphicons Halflings'; content: "\e044"; color:  #2196f3;}
-
-td{ background-position-x:initial; color: black; display: table-cell; padding: 8px;}
-td.glyphicon{font-weight: 900; display: table-cell; text-align: center;}
-
-td.glyphicon-trash{font-family: 'Glyphicons Halflings'; cursor: pointer;color: #9e9e9e }
-td.glyphicon-trash:hover {font-family: 'Glyphicons Halflings'; content: "\e014";font-weight: bold; color: red;}
-
+/*wdyt?*/
+th:nth-child(6){width: 75px; text-align: center; font-size: smaller;}
+tr>td:nth-child(6){text-align: center;}
+tr>td.wdyt{font-size: 16px; }
+tr>td.wdyt:hover{color: black;}
 td.glyphicon-thumbs-up{color: #009688;}
-td.wdyt:hover, td.glyphicon-bookmark:hover, td.glyphicon-thumbs-up:hover, td.glyphicon-thumbs-down:hover {cursor:pointer;}
-td.glyphicon-book{content: "\e043"; }
-td.wdyt{font-size: 19px;text-align: -webkit-center;}
+td.glyphicon-thumbs-down{color: black;}
+
+/*trash*/
+th:nth-child(7){width: 50px; text-align: right; font-size: smaller;}
+td:nth-child(7){text-align: right;}
+#destroy{color: #9c9c9c; font-size: smaller;}
+#destroy:hover {color: red;}
 td.glyphicon-thumbs-down + #destroy:hover{ color:black; }
+td + .glyphicon:hover, td + .wdyt:hover{cursor:pointer; font-weight:bold;}
 
+/*footer*/
+#footer{background-color: white; width:1000px; margin-left: 10%; color: #808080;}
+#footer .glyphicon-link::before { margin: 0 0 0 10px; content: "\e144";  font-size: 12px; background: white;}
+#footer > a #napaLibrary, #footer > a #countyOfNapa, #footer > a #worldCat{ font-size: 10px;}
+#footer a {text-decoration:none; background-color: white; font-size: xx-small;}
+a#napaLibrary:hover, a#countyOfNapa:hover, a#worldCat:hover{color: red; }
 
-td.moving_to_read{ color: red; }
-
-div.container.table{background-color: #fbf5db;margin-top:10px;}
-table.table{background-color:#fbf5db;}
-thead{color: #808080; font-size: x-large; background-color: #fbf5db;}
-tbody{background-color: #fbf5db;}
-/*tbody tr.listWant td#radioWant:hover{cursor: not-allowed; color: rgba(204, 129, 0, 0);}*/
-/*tbody tr.listWant:hover td.glyphicon.glyphicon-book.green{color:green;}
-tbody tr.listWant:hover td#radioOrder:hover, td#radioAvailable:hover, td#radioAlreadyRead:hover{color:white}*/
-
-
-th .glyphicon-star:before {
-    color: #fbf5db;
-    content: "\e006";
-}
-
-.glyphicon-link::before {
-    margin-left: 5px;
-    content: "\e144";
-    color: grey;
-    background: white;
-}
