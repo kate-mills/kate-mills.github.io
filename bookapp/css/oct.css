@@ -133,16 +133,16 @@ input#submit{float:right;margin-top: 5px;}
 table, thead, tr, td, tbody{ background-color: #fbf5db;}
 thead{color: #808080; font-size: large;}
 td{ font-family: Arial; background-position-x:initial; color: black; padding: 2px; font-size: 12px;background-color: #fbf5db;}
-#sorttable_sortrevind, #sorttable_sortfwdind{padding:0; font-size: x-small; color:#b5b3ad}
-th #sorttable_sortrevind, th #sorttable_sortfwdind{padding: 0; font-size: x-small; color:#b5b3ad; background-color: transparent;}
+#sorttable_sortrevind, #sorttable_sortfwdind{padding:0; font-size: x-small;}
+th #sorttable_sortrevind, th #sorttable_sortfwdind{padding: 0; font-size: x-small; background-color: transparent;}
 
 /* table --glyphicons--*/
 th.glyphicon, td.glyphicon, td.no_data{ display: table-cell;border: transparent;}
 td.no_data, td.glyphicon.glyphicon-thumbs-up, td.glyphicon.glyphicon-thumbs-down{height: 39px;}
-::after, ::before {background-color: #fbf5db; font-weight: bold;}
+
 
 /*HEADER - Author Reader Title*/
-th:nth-child(1), th:nth-child(2), th:nth-child(3){width: 110px;  font-size: medium; text-align: left;}
+th:nth-child(1), th:nth-child(2), th:nth-child(3){width: 100px;  font-size: medium; text-align: left;}
 
 /*Year*/
 th:nth-child(4){width: 100px; text-align: center;}
@@ -175,3 +175,4 @@ td + .glyphicon:hover, td + .wdyt:hover{cursor:pointer; font-weight:bold;}
 #footer a {text-decoration:none; background-color: white; font-size: xx-small;}
 a#napaLibrary:hover, a#countyOfNapa:hover, a#worldCat:hover{color: red; }
 
+::after, ::before {background-color: #fbf5db; font-weight: bold;}
