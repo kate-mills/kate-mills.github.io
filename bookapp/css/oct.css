@@ -176,3 +176,7 @@ td + .glyphicon:hover, td + .wdyt:hover{cursor:pointer; font-weight:bold;}
 a#napaLibrary:hover, a#countyOfNapa:hover, a#worldCat:hover{color: red; }
 
 ::after, ::before {background-color: #fbf5db; font-weight: bold;}
+.table{
+    width:70%;
+    margin:0 auto;
+}
