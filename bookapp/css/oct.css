@@ -136,6 +136,8 @@ td{ font-family: Arial; background-position-x:initial; color: black; padding: 2p
 #sorttable_sortrevind, #sorttable_sortfwdind{padding:0; font-size: x-small;}
 th #sorttable_sortrevind, th #sorttable_sortfwdind{padding: 0; font-size: x-small; background-color: transparent;}
 
+.table{width:70%; margin:0 auto;}
+
 /* table --glyphicons--*/
 th.glyphicon, td.glyphicon, td.no_data{ display: table-cell;border: transparent;}
 td.no_data, td.glyphicon.glyphicon-thumbs-up, td.glyphicon.glyphicon-thumbs-down{height: 39px;}
@@ -176,7 +178,3 @@ td + .glyphicon:hover, td + .wdyt:hover{cursor:pointer; font-weight:bold;}
 a#napaLibrary:hover, a#countyOfNapa:hover, a#worldCat:hover{color: red; }
 
 ::after, ::before {background-color: #fbf5db; font-weight: bold;}
-.table{
-    width:70%;
-    margin:0 auto;
-}
