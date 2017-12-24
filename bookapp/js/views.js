@@ -400,9 +400,9 @@ var allBooksView = new app.BookListView({
   bus: bus
 });
 
-app.router = new app.Router();
-Backbone.history.start();
 app.appView = new app.AppView({ bus: bus });
 var windowFn = app.appView.addAll;
 window.windowFn = windowFn;
 
+app.router = new app.Router();
+Backbone.history.start();
