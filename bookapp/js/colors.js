@@ -1,5 +1,5 @@
 $.fn.neutralize = function(){
-        this.css("color", "#fbf5db");
+        this.css("color", "#fff");
         return this;
     };
 $.fn.greyify = function(){
