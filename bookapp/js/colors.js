@@ -1,16 +1,13 @@
 $.fn.neutralize = function(){
         this.css("color", "#fbf5db");
-         this.css("background-color", "#FBF5DA");
         return this;
     };
 $.fn.greyify = function(){
         this.css("color", "#9e9e9e");
-         this.css("background-color", "#FBF5DA");
         return this;
     };
 $.fn.greenify = function(){
         this.css("color", "#08d008");
-         this.css("background-color", "#FBF5DA");
         return this;
 };
 $.fn.orangeify = function(){
@@ -23,11 +20,9 @@ $.fn.redify = function(){
 };
 $.fn.blueify = function(){
         this.css("color", "#2196f3");
-        this.css("background-color", "#FBF5DA");
         return this;
 };
 $.fn.purplefy = function(){
-        // this.css("color", "#d502f9");
         this.css({'color': '#009688'});
         return this;
 };
