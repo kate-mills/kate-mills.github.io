@@ -85,9 +85,9 @@ function makeAllGrey() {
 $( "#ToggleArrow" ).click(
     function() {
         if ( $('div#new-book.container').is(":hidden") ){
-            $('div#new-book.container').slideDown("slow");
+            $('div#new-book.container').slideDown("fast");
         }
         else{
-            $('div#new-book.container').slideUp("slow");
+            $('div#new-book.container').slideUp("fast");
         }
 });
