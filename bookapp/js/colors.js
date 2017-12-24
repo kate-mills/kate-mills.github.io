@@ -83,6 +83,11 @@ function makeAllGrey() {
 }
 
 $( "#ToggleArrow" ).click(
-  function() {
-    $('div#new-book.container').toggle();
-  });
+    function() {
+        if ( $('div#new-book.container').is(":hidden") ){
+            $('div#new-book.container').slideDown("slow");
+        }
+        else{
+            $('div#new-book.container').slideUp("slow");
+        }
+});
