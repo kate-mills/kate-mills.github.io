@@ -27,7 +27,7 @@ $.fn.purplefy = function(){
         return this;
 };
 $.fn.darkGrey = function(){
-        this.css({"color": "#777"});
+        this.css({"color": "#080808"});
         return this;
     };
 $.fn.lightGrey = function(){
