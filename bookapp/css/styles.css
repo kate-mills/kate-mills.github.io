@@ -133,9 +133,8 @@ table, thead, tr, td, tbody{
     font-size: 12px;
     text-align: left;
 }
-thead{color: #808080; font-size: large;}
-/* td{ font-family: Arial; background-position-x:initial; color: black; padding: 2px; font-size: 12px;background-color: #fbf5db;} */
-/* td{ font-family: Arial; background-position-x:initial; color: black; padding: 2px; font-size: 12px;} */
+thead{color: #080808;font-size: 14px;}
+
 td{ color: #3D3D3D;
     padding: 4px;
     background-color: #FFF;
