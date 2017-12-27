@@ -71,7 +71,8 @@ div#bookapp {
 /* --NAV-- */
 h3#nameTitle {text-align: center;padding-top: 20px; margin: 0 auto;}
 #ToggleArrow::before{ cursor:pointer;  position: relative; top: 45px; right: 299px;}
-div.nav > a{color: rgb(119, 119, 119); flex-wrap: nowrap;display: inline-block;font-size: medium;}
+/* div.nav > a{color: rgb(119, 119, 119); flex-wrap: nowrap;display: inline-block;font-size: medium;} */
+div.nav > a{color: rgb(119, 119, 119); flex-wrap: nowrap;display: inline-block;}
 div.nav > a:hover, div.nav > a:focus{ text-decoration: none;}
 div.nav > a:focus {outline: 5px auto -webkit-focus-ring-color;outline-offset: -2px;}
 div.nav {
@@ -102,9 +103,12 @@ div.nav {
 .grey{color: #9e9e9e;}
 
 /*inputs adding new book*/
-div#new-book.container { width: 30%; height: 190px; font-size:18px;}
+/* div#new-book.container { width: 30%; height: 190px; font-size:18px;} */
+div#new-book.container { width: 30%; height: 190px;}
 input#submit{float:right;margin-top: 5px;}
-.alert_warning{color:red; font-size: smaller; padding-left: 255px;}
+
+/* .alert_warning{color:red; font-size: smaller; padding-left: 255px;} */
+.alert_warning{color:red; padding-right: 255px;}
 
 /*glyphicons*/
 #redBook{color: red;}
@@ -122,13 +126,25 @@ input#submit{float:right;margin-top: 5px;}
 
 /*GENERAL TABLE*/
 /* table, thead, tr, td, tbody{ background-color: #fbf5db;} */
-table, thead, tr, td, tbody{ background-color: #fff;}
+table, thead, tr, td, tbody{
+    background-color: #fff;
+    white-space:nowrap;
+    font-family:arial;
+    font-size: 12px;
+    text-align: left;
+}
 thead{color: #808080; font-size: large;}
 /* td{ font-family: Arial; background-position-x:initial; color: black; padding: 2px; font-size: 12px;background-color: #fbf5db;} */
-td{ font-family: Arial; background-position-x:initial; color: black; padding: 2px; font-size: 12px;}
-#sorttable_sortrevind, #sorttable_sortfwdind{padding:0; font-size: x-small;}
-th #sorttable_sortrevind, th #sorttable_sortfwdind{padding: 0; font-size: x-small; background-color: transparent;}
-
+/* td{ font-family: Arial; background-position-x:initial; color: black; padding: 2px; font-size: 12px;} */
+td{ color: #3D3D3D;
+    padding: 4px;
+    background-color: #FFF;
+    vertical-align: top;
+}
+/* #sorttable_sortrevind, #sorttable_sortfwdind{padding:0; font-size: x-small;} */
+#sorttable_sortrevind, #sorttable_sortfwdind{padding:0;}
+/* th #sorttable_sortrevind, th #sorttable_sortfwdind{padding: 0; font-size: x-small; background-color: transparent;} */
+th #sorttable_sortrevind, th #sorttable_sortfwdind{padding: 0;background-color: transparent;}
 .table{width:70%; margin:0 auto;}
 
 /* table --glyphicons--*/
@@ -137,37 +153,39 @@ td.no_data, td.glyphicon.glyphicon-thumbs-up, td.glyphicon.glyphicon-thumbs-down
 
 
 /*HEADER - Author Reader Title*/
-th:nth-child(1), th:nth-child(2), th:nth-child(3){width: 100px;  font-size: medium; text-align: left;}
-
+/* th:nth-child(1), th:nth-child(2), th:nth-child(3){width: 100px;  font-size: medium; text-align: left;} */
+th:nth-child(1), th:nth-child(2), th:nth-child(3){width: 100px; text-align: left;}
 /*Year*/
 th:nth-child(4){width: 100px; text-align: center;}
 td:nth-child(4){text-align: center;}
 
 /*Book List*/
-th:nth-child(5){width: 110px; text-align: center; font-size: smaller;}
+/* th:nth-child(5){width: 110px; text-align: center; font-size: smaller;} */
 tr>td:nth-child(5){text-align: center;}
-
+th:nth-child(5){width: 110px; text-align: center;}
 /*wdyt?*/
-th:nth-child(6){width: 75px; text-align: center; font-size: smaller;}
+/* th:nth-child(6){width: 75px; text-align: center; font-size: smaller;} */
+th:nth-child(6){width: 75px; text-align: center;}
 tr>td:nth-child(6){text-align: center;}
-tr>td.wdyt{font-size: 16px; }
+/* tr>td.wdyt{font-size: 16px; } */
 tr>td.wdyt:hover{color: black;}
 td.glyphicon-thumbs-up{color: #009688;}
 td.glyphicon-thumbs-down{color: black;}
 
 /*trash*/
-th:nth-child(7){width: 50px; text-align: right; font-size: smaller;}
+/* th:nth-child(7){width: 50px; text-align: right; font-size: smaller;} */
+th:nth-child(7){width: 50px; text-align: right;}
 td:nth-child(7){text-align: right;}
-#destroy{color: #9c9c9c; font-size: smaller;}
+#destroy{color: #9c9c9c; }
 #destroy:hover {color: red;}
 td.glyphicon-thumbs-down + #destroy:hover{ color:black; }
 td + .glyphicon:hover, td + .wdyt:hover{cursor:pointer; font-weight:bold;}
 
 /*footer*/
-#footer{background-color: white; margin:0 auto; color: #ccc;font-size: 10px; text-align-last: center;}
-#footer .glyphicon-link::before { margin: 0 0 0 10px; content: "\e144";  font-size: 12px; background: white;}
+#footer{background-color: white; margin:5px auto; color: #ccc;font-size: 10px; text-align-last: center;}
+#footer .glyphicon-link::before { margin: 0 0 0 10px; content: "\e144";  font-size: 10px; background: white;}
 #footer > a #napaLibrary, #footer > a #countyOfNapa, #footer > a #worldCat{ font-size: 10px;}
-#footer a {text-decoration:none; background-color: white; font-size: xx-small;}
+#footer a {text-decoration:none; background-color: white; font-size: 9px;}
 a#napaLibrary:hover, a#countyOfNapa:hover, a#worldCat:hover{color: #000; }
 
 /* ::after, ::before {background-color: #fbf5db; font-weight: bold;} */
