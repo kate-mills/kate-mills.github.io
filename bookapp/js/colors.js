@@ -22,7 +22,7 @@ $.fn.blueify = function(){
         this.css("color", "#2196f3");
         return this;
 };
-$.fn.purplefy = function(){
+$.fn.tealify = function(){
         this.css({'color': '#009688'});
         return this;
 };
@@ -64,10 +64,10 @@ function makeBlue(){
 }
 function makePurple(){
     $('span.badge').removeClass('backGrey backGreen  backRed backOrange backBlue').addClass('backFavorite');
-    $("th").eq(4).purplefy().text("Favorite");
+    $("th").eq(4).tealify().text("Favorite");
     $("th").eq(5).darkGrey().text('wdyt?');
-    $('td.glyphicon.glyphicon-bookmark').purplefy();
-    $("#ToggleArrow").purplefy();
+    $('td.glyphicon.glyphicon-bookmark').tealify();
+    $("#ToggleArrow").tealify();
 }
 
 function makeAllGrey() {
