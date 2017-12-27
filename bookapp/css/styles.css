@@ -181,7 +181,7 @@ td.glyphicon-thumbs-down + #destroy:hover{ color:black; }
 td + .glyphicon:hover, td + .wdyt:hover{cursor:pointer; font-weight:bold;}
 
 /*footer*/
-#footer{background-color: white; margin:5px auto; color: #ccc;font-size: 10px; text-align-last: center;}
+#footer{background-color: #fff;margin:5px auto;color: #ccc;font-size: 10px;width: 50%;}
 #footer .glyphicon-link::before { margin: 0 0 0 10px; content: "\e144";  font-size: 10px; background: white;}
 #footer > a #napaLibrary, #footer > a #countyOfNapa, #footer > a #worldCat{ font-size: 10px;}
 #footer a {text-decoration:none; background-color: white; font-size: 9px;}
