@@ -14,16 +14,16 @@ function friendlyFooter(){
         this.text += "Tuesday."
         break;
     case 3:
-        this.text += "hump day";
+        this.text += "hump day!";
         break;
     case 4:
-        this.text += "Thursday";
+        this.text += "Thursday.";
         break;
     case 5:
-        this.text += "Friday";
+        this.text += "Friday.";
         break;
     case  6:
-        this.text += "Saturday";
+        this.text += "Saturday.";
         break;
     }
 }
