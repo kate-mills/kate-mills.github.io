@@ -46,21 +46,18 @@ function makeOrange(){
     $("th").eq(4).orangeify().text('Order');
     $("th").eq(5).neutralize();
     $("#ToggleArrow").orangeify();
-    $("#alphabet").orangeify();
 }
 function makeGreen() {
     $('span.badge').removeClass('backGrey backFavorite backBlue backOrange backRed').addClass('backGreen');
     $("th").eq(4).greenify().text('Want');
     $("th").eq(5).neutralize();
     $("#ToggleArrow").greenify();
-
 }
 function makeBlue(){
     $('span.badge').removeClass('backGrey backGreen backFavorite backOrange backRed').addClass('backBlue');
     $("th").eq(4).blueify().text('Available');
     $("th").eq(5).neutralize();
     $("#ToggleArrow").blueify();
-    $("#alphabet").blueify();
 }
 function makePurple(){
     $('span.badge').removeClass('backGrey backGreen  backRed backOrange backBlue').addClass('backFavorite');
@@ -69,14 +66,12 @@ function makePurple(){
     $('td.glyphicon.glyphicon-bookmark').tealify();
     $("#ToggleArrow").tealify();
 }
-
 function makeAllGrey() {
     $('span.badge').removeClass('backGreen backFavorite backBlue backOrange backRed').addClass('backGrey');
     $("th").eq(4).lightGrey().text('All');
     $("th").eq(5).darkGrey().text('wdyt?');
     $("#ToggleArrow").lightGrey();
 }
-
 $( "#ToggleArrow" ).click(
     function() {
         if ( $('div#new-book.container').is(":hidden") ){
@@ -85,4 +80,5 @@ $( "#ToggleArrow" ).click(
         else{
             $('div#new-book.container').slideUp("fast");
         }
-});
+    }
+);
