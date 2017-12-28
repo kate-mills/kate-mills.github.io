@@ -12,24 +12,22 @@ app.BookList = Backbone.Collection.extend({
 
 
 app.bookList = new app.BookList();
-var bookList = app.bookList;
-bookList.fetch();
-var num = bookList.length;
+app.bookList.fetch();
+
+var num = app.bookList.length;
 if(num < 1){
-  returnListLengthToOne(bookList);//var book from line 143 in app.Book.js
-  console.log('returnListLengthToOne called', bookList.length);
+  returnListLengthToOne(app.bookList);
+  console.log('returnListLengthToOne called', app.bookList.length);
 }
 
 
-// ***** bookList is what I will be working with in views *******
+console.log("bookList collection:",app.bookList.length,app.bookList);
 
-console.log("bookList collection:", bookList.length, bookList);
-
-var firstbook = bookList.at(0);
-var secondbook = bookList.at(1);
-var lastbook = bookList.at( bookList.length -1);
-var allBooks = bookList;
-var booksIWant = bookList.filter(function(book){ return book.get('iWant');});
-var booksOnOrder = bookList.filter(function(book){ return book.get('onOrder');});
-var booksAvailable = bookList.filter(function(book){ return book.get('available');});
-var booksRead = bookList.filter(function(book){ return book.get('read');});
+var firstbook =app.bookList.at(0);
+var secondbook =app.bookList.at(1);
+var lastbook =app.bookList.at(app.bookList.length -1);
+var allBooks =app.bookList;
+var booksIWant =app.bookList.filter(function(book){ return book.get('iWant');});
+var booksOnOrder =app.bookList.filter(function(book){ return book.get('onOrder');});
+var booksAvailable =app.bookList.filter(function(book){ return book.get('available');});
+var booksRead =app.bookList.filter(function(book){ return book.get('read');});

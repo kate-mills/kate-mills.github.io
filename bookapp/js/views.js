@@ -388,16 +388,16 @@ app.Router = Backbone.Router.extend({
     setFilter: function(params) {
         console.log('app.router.params = ' + params);
         window.filter = params.trim() || '';
-        console.log('bookList.length', bookList.length);
-        bookList.trigger('reset');
-        $('#all-length').html(bookList.length);
+        console.log('app.bookList.length', app.bookList.length);
+        app.bookList.trigger('reset');
+        $('#all-length').html(app.bookList.length);
     }
 
 });
 
 var allBooksView = new app.BookListView({
   el: "#table-body",
-  model: bookList,
+  model: app.bookList,
   bus: bus
 });
 

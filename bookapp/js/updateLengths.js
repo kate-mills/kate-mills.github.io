@@ -1,5 +1,5 @@
 function updateLengths(){
-    this.allBooks = bookList;
+    this.allBooks = app.bookList;
     this.booksIWant = app.bookList.getBooksIWant();
     this.favoriteBooks = app.bookList.getFavoriteBooks();
     this.booksOnOrder = app.bookList.getBooksOnOrder();
