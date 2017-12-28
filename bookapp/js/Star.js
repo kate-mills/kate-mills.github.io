@@ -1,10 +1,10 @@
 var title = {
-    nameAll: 'All Books',
-    nameWant: 'Books I Want',
-    nameOrder: 'Books On Order',
-    nameAvailable: 'Books Available',
-    nameRead: 'Books I Already Read',
-    nameFavorites: 'Favorites',
+    nameAll: 'All Audiobooks',
+    nameWant: 'Audiobooks I Want',
+    nameOrder: 'Audiobooks On Order',
+    nameAvailable: 'Audiobooks Available',
+    nameRead: 'Audiobooks I Already Read',
+    nameFavorites: 'Favorite Audiobooks',
 };
 
 var Bookmark = Backbone.View.extend({
@@ -31,4 +31,3 @@ var Rating = Backbone.View.extend({
   },
 
 });
-
