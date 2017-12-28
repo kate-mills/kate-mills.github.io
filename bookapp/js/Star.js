@@ -19,6 +19,5 @@ var Rating = {
     noData: '<td class="no_data"></td>',
     negative: '<td title="Click to give book a new rating." class="glyphicon glyphicon-thumbs-down black "></td>',
     questionmark: '<td style="" title="What do you think?" class="wdyt">?</td>',
-    full: '<td title="" class="glyphicon glyphicon-star grey"></td>',
     favorite: '<td title="Click if you didn\'t like this book." class="glyphicon glyphicon-thumbs-up purple"></td>',
 };
