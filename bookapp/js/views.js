@@ -208,19 +208,20 @@ app.AppView = Backbone.View.extend({
         "mousedown input": "onMousedownInput",
         "click input#submit": "onSubmit"
   },
+  testPublishedYear: function(year){
+      var today = new Date();
+      var next_year = today.getFullYear() + 1;
 
-  testPublishedYear: function(n){
-    if ( Number(n) ) {
-      if (n < 1900) {
-        // $('#error-alert').text('book was published in ' + n).addClass('alert_warning').show().fadeOut(1000);
-        $('#error-alert').text('Published in ' + n).addClass('alert_warning').show().fadeOut(1500);
-        return 'null';}
-      else {
-        return String(n);}
-    }
-    else if ( String(n)  || n === undefined || n === ''){
-      return 'null';
-    }
+      if ( !(Number(year)) ){
+          return 'null';
+      }
+      else if ( year < 1900  || year > next_year ){
+          $('#error-alert').text('Published in ' + year).addClass('alert_warning').show().fadeOut(1500);
+          return 'null';
+      }
+      else{
+          return String(year);
+      }
   },
   onKeypressReader: function(e) {
       var keyCode = e.keyCode || e.which;
