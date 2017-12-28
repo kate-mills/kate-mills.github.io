@@ -1,35 +1,35 @@
 $.fn.neutralize = function(){
-        this.css("color", "#fff");
-        return this;
-    };
+    this.css("color", "#fff");
+    return this;
+};
 $.fn.greyify = function(){
-        this.css("color", "#9e9e9e");
-        return this;
-    };
+    this.css("color", "#9e9e9e");
+    return this;
+};
 $.fn.greenify = function(){
-        this.css("color", "#08d008");
-        return this;
+    this.css("color", "#08d008");
+    return this;
 };
 $.fn.orangeify = function(){
-        this.css("color", "#ff8300");
-        return this;
+    this.css("color", "#ff8300");
+    return this;
 };
 $.fn.redify = function(){
-        this.css("color", "red");
-        return this;
+    this.css("color", "red");
+    return this;
 };
 $.fn.blueify = function(){
-        this.css("color", "#2196f3");
-        return this;
+    this.css("color", "#2196f3");
+    return this;
 };
 $.fn.tealify = function(){
-        this.css({'color': '#009688'});
-        return this;
+    this.css('color', '#009688');
+    return this;
 };
 $.fn.darkGrey = function(){
-        this.css({"color": "#080808"});
-        return this;
-    };
+    this.css("color", "#080808");
+    return this;
+};
 $.fn.lightGrey = function(){
     this.css('color', '#9e9e9e');
     return this;
