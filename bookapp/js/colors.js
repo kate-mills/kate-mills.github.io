@@ -2,10 +2,6 @@ $.fn.neutralize = function(){
     this.css("color", "#fff");
     return this;
 };
-$.fn.greyify = function(){
-    this.css("color", "#9e9e9e");
-    return this;
-};
 $.fn.greenify = function(){
     this.css("color", "#08d008");
     return this;
