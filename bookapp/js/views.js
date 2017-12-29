@@ -66,7 +66,6 @@ app.BookView = Backbone.View.extend({
         }
         if ( this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsup'  || this.model.get('alreadyRead') && this.model.get('rating') === 1) {
             this.bookmark = this.redBookmark;
-            console.log(this.model);
             this.rating = this.thumbsUp;
         }
         if (this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsdown'){
