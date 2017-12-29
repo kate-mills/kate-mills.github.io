@@ -19,12 +19,7 @@ app.Book = Backbone.Model.extend({
 
     },
     changeRating: function(rating, star){
-        if (rating === undefined ||  star === undefined) {
-          this.save({rating: 0, star: false});
-        }
-        else {
-          this.save({rating: rating, star: star });
-        }
+        this.save({rating: rating, star: star });
     },
     changeList: function(new_list) {
       console.log('changing list', this);
