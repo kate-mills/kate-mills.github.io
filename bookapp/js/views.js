@@ -39,7 +39,6 @@ app.BookView = Backbone.View.extend({
         if( this.model.get('iWant')){
            this.bookmark = this.greenBookmark;
            this.rating = this.bus.rating.noData;
-           this.alert = "Click " + this.title+ "";
            this.class = 'iWant';
         }
         if( this.model.get('onOrder') ) {
