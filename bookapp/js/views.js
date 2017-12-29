@@ -241,7 +241,7 @@ app.AppView = Backbone.View.extend({
             $('#title').val('');
             $('#published').val('');
             $('#author').focus();
-            updateLengths();
+            this.bus.trigger('updateLengths', this.model);
           }
       }
   },
