@@ -7,7 +7,7 @@ app.BookView = Backbone.View.extend({
         this.model.on('destroy', this.remove, this);
     },
     onClick: function(){
-        console.log('\tVIEWS-tr-Updated Lengths!');
+        console.log('\n\tVIEWS-BookView- No trigger-click called.');
     },
     events: {
         'click': 'onClick',
@@ -141,6 +141,7 @@ app.BookListView = Backbone.View.extend({
     },
     events: { "click": "onClick" },
     onClick:function(){
+        console.log('\tVIEWS- BookListView -trigger-updateLengths')
         this.bus.trigger("updateLengths", this.model);
     },
     onBookAdded: function(book){
@@ -241,6 +242,7 @@ app.AppView = Backbone.View.extend({
             $('#title').val('');
             $('#published').val('');
             $('#author').focus();
+            console.log('\tVIEWS- AppView -trigger-updateLengths')
             this.bus.trigger('updateLengths', this.model);
           }
       }
@@ -342,7 +344,7 @@ app.AppView = Backbone.View.extend({
     this.title= this.model.get('title');
     this.rating = this.model.get('rating');
     this.published = this.model.get('published');
-    console.log(this.author,'-', this.reader,'-', this.title,'-', this.published);
+    // console.log(this.author,'-', this.reader,'-', this.title,'-', this.published);
 
         var view = new app.BookView({model: book, bus: bus });
         $('#table-body').prepend(view.render().el);
@@ -359,9 +361,8 @@ app.Router = Backbone.Router.extend({
         '*filter' : 'setFilter'
       },
     setFilter: function(params) {
-        console.log('app.router.params = ' + params);
+        // console.log('app.router.params = ' + params);
         window.filter = params.trim() || '';
-        console.log('app.bookList.length', app.bookList.length);
         app.bookList.trigger('reset');
         $('#all-length').html(app.bookList.length);
     }

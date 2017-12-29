@@ -17,11 +17,11 @@ app.bookList.fetch();
 var num = app.bookList.length;
 if(num < 1){
   returnListLengthToOne(app.bookList);
-  console.log('returnListLengthToOne called', app.bookList.length);
+  // console.log('returnListLengthToOne called', app.bookList.length);
 }
 
 
-console.log("bookList collection:",app.bookList.length,app.bookList);
+// console.log("bookList collection:",app.bookList.length,app.bookList);
 
 var firstbook =app.bookList.at(0);
 var secondbook =app.bookList.at(1);
