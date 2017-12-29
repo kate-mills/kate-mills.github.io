@@ -3,7 +3,6 @@ app.BookView = Backbone.View.extend({
     initialize: function(options){
         this.bus = options.bus;
         this.model = options.model;
-
         this.model.on('add', this.addOne, this);
         this.model.on('destroy', this.remove, this);
     },
@@ -28,9 +27,8 @@ app.BookView = Backbone.View.extend({
     },
     render: function(){
         if(this.model){
-          this.$el.html(this.model.toJSON());
+            this.$el.html(this.model.toJSON());
         }
-
         this.greenBookmark = Bookmark.green;
         this.orangeBookmark = Bookmark.orange;
         this.blueBookmark = Bookmark.blue;
@@ -78,65 +76,64 @@ app.BookView = Backbone.View.extend({
     },
     updateOnEnter: function(e){
         if(e.which == 13){
-          this.close();
+            this.close();
         }
-      },
+    },
     onClickQuestionmark: function(e){
         $(e.target).removeClass('glyphicon-question-sign');
         $(e.target).addClass('glyphicon-thumbs-up').tealify();
         this.model.changeRating('thumbsup', true);
     },
     onClickThumbsUp: function() {
-      this.model.changeRating('thumbsdown', false);
-      this.render();
-      if(window.filter === 'favorites'){
-         this.$el.fadeOut('fast');
-      }
-    },
-    onClickThumbsDown: function(){
-      this.model.changeRating(0, false);
-      this.render();
-    },
-    onToggleWant: function(){
-      old_list = window.filter;
-      new_list = 'iWant';
-      this.model.changeList(newList, old_list);
-      this.render();
-
-      if(window.filter !== 'iWant'){
-        if(window.filter !== 'all')
-        this.$el.fadeOut('slow');
-      }
+         this.model.changeRating('thumbsdown', false);
+         this.render();
+         if(window.filter === 'favorites'){
+             this.$el.fadeOut('fast');
+         }
+     },
+     onClickThumbsDown: function(){
+         this.model.changeRating(0, false);
+         this.render();
+     },
+     onToggleWant: function(){
+         old_list = window.filter;
+         new_list = 'iWant';
+         this.model.changeList(newList, old_list);
+         this.render();
+         if(window.filter !== 'iWant'){
+             if(window.filter !== 'all')
+             this.$el.fadeOut('slow');
+         }
     },
     onToggleOrder: function(){
-      this.model.changeList('onOrder');
-      this.render();
-      if(window.filter !== 'onOrder'){
-        if(window.filter !== 'all')
-         this.$el.fadeOut('slow');
-      }
+        this.model.changeList('onOrder');
+        this.render();
+        if(window.filter !== 'onOrder'){
+            if(window.filter !== 'all')
+            this.$el.fadeOut('slow');
+        }
     },
     onToggleAvailable: function(){
-      this.model.changeList('available');
-      this.removeFromFavoriteList(this.model.toJSON());
-      this.render();
-      if(window.filter !== 'available'){
-        if(window.filter !== 'all')
-         this.$el.fadeOut('slow');
-      }
+        this.model.changeList('available');
+        this.removeFromFavoriteList(this.model.toJSON());
+        this.render();
+        if(window.filter !== 'available'){
+            if(window.filter !== 'all')
+            this.$el.fadeOut('slow');
+        }
     },
     onToggleRead: function(e){
-      var w = window.filter;
-      if (w !== 'all' && w !== 'alreadyRead') {
-          this.$(e.target).html('Read').addClass('moving_to_read');
-          this.$el.fadeOut('slow');
+        var w = window.filter;
+        if (w !== 'all' && w !== 'alreadyRead') {
+             this.$(e.target).html('Read').addClass('moving_to_read');
+             this.$el.fadeOut('slow');
       }
       this.model.changeList('alreadyRead');
       this.render();
     },
     addToFavoriteList: function(){
-      this.model.save('star', true);
-      this.model.save('rating', 'thumbsup');
+        this.model.save('star', true);
+        this.model.save('rating', 'thumbsup');
     },
     removeFromFavoriteList: function(model){
       this.model.save('star', false);
