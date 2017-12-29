@@ -7,7 +7,7 @@ app.BookView = Backbone.View.extend({
         this.model.on('destroy', this.remove, this);
     },
     onClick: function(){
-        console.log('\tVIEWS-Updated Lengths!');
+        console.log('\tVIEWS-tr-Updated Lengths!');
     },
     events: {
         'click': 'onClick',
@@ -128,7 +128,6 @@ app.BookView = Backbone.View.extend({
     removeFromFavoriteList: function(model){
         this.model.save('star', false);
         this.model.save('rating', 0);
-        updateLengths();
     },
     destroy: function(){
         this.model.destroy();
