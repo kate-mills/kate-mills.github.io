@@ -371,7 +371,7 @@ app.AppView = Backbone.View.extend({
     this.title= this.model.get('title');
     this.rating = this.model.get('rating');
     this.published = this.model.get('published');
-    console.log('adding One model: ', this.author, this.reader, this.title, this.published, this.rating);
+    console.log(this.author,'-', this.reader,'-', this.title,'-', this.published);
 
         var view = new app.BookView({model: book, bus: bus });
         $('#table-body').prepend(view.render().el);
