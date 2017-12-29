@@ -11,8 +11,8 @@ app.BookView = Backbone.View.extend({
         updateLengths();
     },
     onModelChange: function(options){
-     this.bus.trigger('updateBadgeNums');
-     updateLengths();
+        this.bus.trigger('updateBadgeNums');
+        updateLengths();
     },
     events: {
         'click': 'onClick',
@@ -29,38 +29,33 @@ app.BookView = Backbone.View.extend({
         if(this.model){
             this.$el.html(this.model.toJSON());
         }
-        this.greenBookmark = Bookmark.green;
-        this.orangeBookmark = Bookmark.orange;
-        this.blueBookmark = Bookmark.blue;
-        this.redBookmark = Bookmark.red;
-
         if( this.model.get('iWant')){
-           this.bookmark = this.greenBookmark;
+           this.bookmark = Bookmark.green;
            this.rating = this.bus.rating.noData;
            this.class = 'iWant';
         }
         if( this.model.get('onOrder') ) {
-            this.bookmark = this.orangeBookmark;
+            this.bookmark =  Bookmark.orange;
             this.rating = this.bus.rating.noData;
             this.class = 'onOrder';
         }
         if( this.model.get('available') ) {
-          this.bookmark = this.blueBookmark;
+          this.bookmark = Bookmark.blue;
           this.rating =  this.bus.rating.noData;
           this.class = 'available';
         }
         if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
-           this.bookmark = this.redBookmark;
+           this.bookmark = Bookmark.red;
            this.rating = this.bus.rating.questionmark;
            this.class = 'read';
         }
         if ( this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsup'  || this.model.get('alreadyRead') && this.model.get('rating') === 1) {
-            this.bookmark = this.redBookmark;
+            this.bookmark = Bookmark.red;
             this.rating = this.bus.rating.favorite;
             this.class = 'read';
         }
         if (this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsdown'){
-          this.bookmark = this.redBookmark;
+          this.bookmark =  Bookmark.red;
           this.rating = this.bus.rating.negative;
           this.class = 'read';
         }
