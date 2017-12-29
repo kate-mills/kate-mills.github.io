@@ -23,3 +23,7 @@ bus.rating = {
     questionmark: '<td style="color:red" title="click to Favorite" class="glyphicon glyphicon-question-sign"></td>',
     favorite: '<td style="color:#009688" title="click to Un-Favorite" class="glyphicon glyphicon-thumbs-up"></td>',
 };
+bus.on('updateLengths', function(){
+    updateLengths();
+    console.log('\tSTAR-Updated Lengths!');
+})
