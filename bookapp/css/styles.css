@@ -148,7 +148,7 @@ th #sorttable_sortrevind, th #sorttable_sortfwdind{padding: 0;background-color: 
 
 /* table --glyphicons--*/
 th.glyphicon, td.glyphicon, td.no_data{ display: table-cell;border: transparent;}
-td.no_data, td.glyphicon.glyphicon-thumbs-up, td.glyphicon.glyphicon-thumbs-down{height: 39px;}
+
 
 
 /*HEADER - Author Reader Title*/
