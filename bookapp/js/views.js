@@ -6,7 +6,6 @@ app.BookView = Backbone.View.extend({
         this.model.on('add', this.addOne, this);
         this.model.on('destroy', this.remove, this);
     },
-
     onClick: function(){
         this.bus.trigger("bookSelected", this.model);
         updateLengths();
@@ -36,10 +35,10 @@ app.BookView = Backbone.View.extend({
         this.status = this.model.get('status');
         this.date = this.model.get('created_at');
 
-        this.questionmark = Rating.questionmark;
-        this.thumbsUp  =  Rating.favorite;
-        this.thumbsDown = Rating.negative;
-        this.noData = Rating.noData;
+        this.questionmark = this.bus.rating.questionmark;
+        this.thumbsUp  =  this.bus.rating.favorite;
+        this.thumbsDown = this.bus.rating.negative;
+        this.noData = this.bus.rating.noData;
 
         this.greenBookmark = Bookmark.green;
         this.orangeBookmark = Bookmark.orange;
@@ -380,7 +379,6 @@ app.AppView = Backbone.View.extend({
 });//close app.AppView
 
 
-var bus = _.extend({}, Backbone.Events);
 _.extend(app.bookList, Backbone.Events);
 _.extend(title, Backbone.Events);
 

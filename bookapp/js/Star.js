@@ -1,3 +1,5 @@
+var bus = _.extend({}, Backbone.Events);
+
 var title = {
     nameAll: 'All Audiobooks',
     nameWant: 'Audiobooks I Want',
@@ -15,7 +17,7 @@ var Bookmark = {
     red: '<td title="Read Again? Click to move to Books Available." style="content:"\e043" class="glyphicon glyphicon-bookmark red">Read</td>',
 };
 
-var Rating = {
+bus.rating = {
     noData: '<td class="no_data"></td>',
     negative: '<td style="color:gainsboro" title="click to ??" class="glyphicon glyphicon-thumbs-down"></td>',
     questionmark: '<td style="color:red" title="click to Favorite" class="glyphicon glyphicon-question-sign"></td>',
