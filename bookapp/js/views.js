@@ -77,10 +77,9 @@ app.BookView = Backbone.View.extend({
         this.readerHTML = ('<td>' + this.model.get('reader') +'</td>');
         this.titleHTML = ('<td>' + this.model.get('title') +'</td>');
         this.publishedHTML = ('<td>' + this.model.get('published') +'</td>');
-
         this.ex = ('<td id="destroy" class="glyphicon glyphicon-trash '+this.bus.statusClass+'"></td>');
 
-        this.$el.html(  this.authorHTML + this.readerHTML + this.titleHTML + this.publishedHTML  + this.bookmark + this.radioWant + this.radioOrder + this.radioAvailable + this.radioRead   + this.rating + this.ex);
+        this.$el.html(  this.authorHTML + this.readerHTML + this.titleHTML + this.publishedHTML  + this.bookmark + this.rating + this.ex);
         this.$el.attr({
           id: this.model.cid,
           class: this.status,
