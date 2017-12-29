@@ -32,15 +32,6 @@ app.BookView = Backbone.View.extend({
           this.$el.html(this.model.attributes);
         }
 
-        this.rating = this.model.get('rating');
-        this.status = this.model.get('status');
-        this.date = this.model.get('created_at');
-
-        this.questionmark = this.bus.rating.questionmark;
-        this.thumbsUp  =  this.bus.rating.favorite;
-        this.thumbsDown = this.bus.rating.negative;
-        this.noData = this.bus.rating.noData;
-
         this.greenBookmark = Bookmark.green;
         this.orangeBookmark = Bookmark.orange;
         this.blueBookmark = Bookmark.blue;
@@ -48,43 +39,38 @@ app.BookView = Backbone.View.extend({
 
         if( this.model.get('iWant')){
            this.bookmark = this.greenBookmark;
-           this.rating = this.noData;
+           this.rating = this.bus.rating.noData;
            this.alert = "Click " + this.title+ "";
         }
         if( this.model.get('onOrder') ) {
             this.bookmark = this.orangeBookmark;
-            this.rating = this.noData;
+            this.rating = this.bus.rating.noData;
         }
         if( this.model.get('available') ) {
           this.bookmark = this.blueBookmark;
-          this.rating = this.noData;
+          this.rating =  this.bus.rating.noData;
         }
 
         if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
            this.bookmark = this.redBookmark;
-           this.rating = this.questionmark;
+           this.rating = this.bus.rating.questionmark;
         }
         if ( this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsup'  || this.model.get('alreadyRead') && this.model.get('rating') === 1) {
             this.bookmark = this.redBookmark;
-            this.rating = this.thumbsUp;
+            this.rating = this.bus.rating.favorite;
         }
         if (this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsdown'){
           this.bookmark = this.redBookmark;
-          this.rating = this.thumbsDown;
+          this.rating = this.bus.rating.negative;
         }
-
         this.authorHTML = ('<td>' + this.model.get('author') +'</td>');
         this.readerHTML = ('<td>' + this.model.get('reader') +'</td>');
         this.titleHTML = ('<td>' + this.model.get('title') +'</td>');
         this.publishedHTML = ('<td>' + this.model.get('published') +'</td>');
-        this.ex = ('<td id="destroy" class="glyphicon glyphicon-trash '+this.bus.statusClass+'"></td>');
+        this.trashcan = ('<td id="destroy" class="glyphicon glyphicon-trash '+this.bus.statusClass+'"></td>');
 
-        this.$el.html(  this.authorHTML + this.readerHTML + this.titleHTML + this.publishedHTML  + this.bookmark + this.rating + this.ex);
-        this.$el.attr({
-          id: this.model.cid,
-          class: this.status,
-      });
-        this.$el.attr({id: this.model.cid, status: this.model.status } );
+        this.$el.html(  this.authorHTML + this.readerHTML + this.titleHTML + this.publishedHTML  + this.bookmark + this.rating + this.trashcan);
+        this.$el.attr({ id: this.model.cid, class: this.model.get('status')});
         return this;
     },
     updateOnEnter: function(e){
