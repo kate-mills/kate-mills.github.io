@@ -28,8 +28,7 @@ app.BookView = Backbone.View.extend({
     },
     render: function(){
         if(this.model){
-          // this.model.toJSON();
-          this.$el.html(this.model.attributes);
+          this.$el.html(this.model.toJSON());
         }
 
         this.greenBookmark = Bookmark.green;
