@@ -7,8 +7,7 @@ app.BookView = Backbone.View.extend({
         this.model.on('destroy', this.remove, this);
     },
     onClick: function(){
-        this.bus.trigger("bookSelected", this.model);
-        updateLengths();
+        console.log('\tVIEWS-Updated Lengths!');
     },
     events: {
         'click': 'onClick',
@@ -143,7 +142,7 @@ app.BookListView = Backbone.View.extend({
     },
     events: { "click": "onClick" },
     onClick:function(){
-        this.bus.trigger("bookSelected", this.model);
+        this.bus.trigger("updateLengths", this.model);
     },
     onBookAdded: function(book){
         app.bookView = new app.BookView({ model: book });
