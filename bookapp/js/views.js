@@ -10,10 +10,6 @@ app.BookView = Backbone.View.extend({
         this.bus.trigger("bookSelected", this.model);
         updateLengths();
     },
-    onModelChange: function(options){
-        this.bus.trigger('updateBadgeNums');
-        updateLengths();
-    },
     events: {
         'click': 'onClick',
         'click td.glyphicon-question-sign': 'onClickQuestionmark',
