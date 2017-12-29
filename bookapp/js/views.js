@@ -41,27 +41,32 @@ app.BookView = Backbone.View.extend({
            this.bookmark = this.greenBookmark;
            this.rating = this.bus.rating.noData;
            this.alert = "Click " + this.title+ "";
+           this.class = 'iWant';
         }
         if( this.model.get('onOrder') ) {
             this.bookmark = this.orangeBookmark;
             this.rating = this.bus.rating.noData;
+            this.class = 'onOrder';
         }
         if( this.model.get('available') ) {
           this.bookmark = this.blueBookmark;
           this.rating =  this.bus.rating.noData;
+          this.class = 'available';
         }
-
         if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
            this.bookmark = this.redBookmark;
            this.rating = this.bus.rating.questionmark;
+           this.class = 'read';
         }
         if ( this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsup'  || this.model.get('alreadyRead') && this.model.get('rating') === 1) {
             this.bookmark = this.redBookmark;
             this.rating = this.bus.rating.favorite;
+            this.class = 'read';
         }
         if (this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsdown'){
           this.bookmark = this.redBookmark;
           this.rating = this.bus.rating.negative;
+          this.class = 'read';
         }
         this.authorHTML = ('<td>' + this.model.get('author') +'</td>');
         this.readerHTML = ('<td>' + this.model.get('reader') +'</td>');
@@ -70,7 +75,7 @@ app.BookView = Backbone.View.extend({
         this.trashcan = ('<td id="destroy" class="glyphicon glyphicon-trash '+this.bus.statusClass+'"></td>');
 
         this.$el.html(  this.authorHTML + this.readerHTML + this.titleHTML + this.publishedHTML  + this.bookmark + this.rating + this.trashcan);
-        this.$el.attr({ id: this.model.cid, class: this.model.get('status')});
+        this.$el.attr({ id: this.model.cid, class: this.class});
         return this;
     },
     updateOnEnter: function(e){
