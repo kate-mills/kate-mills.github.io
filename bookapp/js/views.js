@@ -18,9 +18,9 @@ app.BookView = Backbone.View.extend({
     },
     events: {
         'click': 'onClick',
-        'click td.wdyt': 'onClickQuestionmark',
+        'click td.glyphicon-question-sign': 'onClickQuestionmark',
         'click td.glyphicon-thumbs-up': 'onClickThumbsUp',
-        'click td.glyphicon-thumbs-down.black': 'onClickThumbsDown',
+        'click td.glyphicon-thumbs-down': 'onClickThumbsDown',
         'click td.glyphicon.glyphicon-bookmark.green': 'onToggleOrder',
         'click td.glyphicon.glyphicon-bookmark.orange': 'onToggleAvailable',
         'click td.glyphicon.glyphicon-bookmark.blue': 'onToggleRead',
@@ -67,6 +67,7 @@ app.BookView = Backbone.View.extend({
         }
         if ( this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsup'  || this.model.get('alreadyRead') && this.model.get('rating') === 1) {
             this.bookmark = this.redBookmark;
+            console.log(this.model);
             this.rating = this.thumbsUp;
         }
         if (this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsdown'){
@@ -96,13 +97,17 @@ app.BookView = Backbone.View.extend({
           this.close();
         }
       },
-    onClickQuestionmark: function(){
-      this.model.changeRating('thumbsup', true);
-      this.render();
+    onClickQuestionmark: function(e){
+        $(e.target).removeClass('glyphicon-question-sign');
+        $(e.target).addClass('glyphicon-thumbs-up').tealify();
+        this.model.changeRating('thumbsup', true);
     },
     onClickThumbsUp: function() {
       this.model.changeRating('thumbsdown', false);
       this.render();
+      if(window.filter === 'favorites'){
+         this.$el.fadeOut('fast');
+      }
     },
     onClickThumbsDown: function(){
       this.model.changeRating(0, false);
