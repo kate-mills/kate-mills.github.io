@@ -17,7 +17,7 @@ var Bookmark = {
 
 var Rating = {
     noData: '<td class="no_data"></td>',
-    negative: '<td title="Click to give book a new rating." class="glyphicon glyphicon-thumbs-down black "></td>',
-    questionmark: '<td style="" title="What do you think?" class="wdyt">?</td>',
-    favorite: '<td title="Click if you didn\'t like this book." class="glyphicon glyphicon-thumbs-up purple"></td>',
+    negative: '<td style="color:gainsboro" title="click to ??" class="glyphicon glyphicon-thumbs-down"></td>',
+    questionmark: '<td style="color:red" title="click to Favorite" class="glyphicon glyphicon-question-sign"></td>',
+    favorite: '<td style="color:#009688" title="click to Un-Favorite" class="glyphicon glyphicon-thumbs-up"></td>',
 };
