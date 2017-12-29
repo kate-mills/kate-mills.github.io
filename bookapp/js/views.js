@@ -5,7 +5,6 @@ app.BookView = Backbone.View.extend({
         this.model = options.model;
         this.model.on('add', this.addOne, this);
         this.model.on('destroy', this.remove, this);
-        this.bus.on('onClickRadio', this.onClick, this);
     },
 
     onClick: function(){
