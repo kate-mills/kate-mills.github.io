@@ -3,6 +3,7 @@ app.BookView = Backbone.View.extend({
     initialize: function(options){
         this.bus = options.bus;
         this.model = options.model;
+
         this.model.on('add', this.addOne, this);
         this.model.on('destroy', this.remove, this);
     },
@@ -30,7 +31,7 @@ app.BookView = Backbone.View.extend({
           // this.model.toJSON();
           this.$el.html(this.model.attributes);
         }
-        this.bus.status = this.model.get('status');
+
         this.rating = this.model.get('rating');
         this.status = this.model.get('status');
         this.date = this.model.get('created_at');
