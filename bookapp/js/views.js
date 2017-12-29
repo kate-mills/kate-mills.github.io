@@ -7,7 +7,8 @@ app.BookView = Backbone.View.extend({
         this.model.on('destroy', this.remove, this);
     },
     onClick: function(){
-        console.log('\n\tVIEWS-BookView- No trigger-click called.');
+        console.log('\n\tVIEWS- BookView -trigger-updateLengths')
+        this.bus.trigger('updateLengths', this.model);
     },
     events: {
         'click': 'onClick',
@@ -138,11 +139,6 @@ app.BookListView = Backbone.View.extend({
     initialize: function(options){
         this.bus = options.bus;
         this.bus.on("add", this.onBookAdded, this);
-    },
-    events: { "click": "onClick" },
-    onClick:function(){
-        console.log('\tVIEWS- BookListView -trigger-updateLengths')
-        this.bus.trigger("updateLengths", this.model);
     },
     onBookAdded: function(book){
         app.bookView = new app.BookView({ model: book });
