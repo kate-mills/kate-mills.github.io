@@ -136,9 +136,9 @@ app.BookView = Backbone.View.extend({
         this.model.save('rating', 'thumbsup');
     },
     removeFromFavoriteList: function(model){
-      this.model.save('star', false);
-      this.model.save('rating', 0);
-      updateLengths();
+        this.model.save('star', false);
+        this.model.save('rating', 0);
+        updateLengths();
     },
     destroy: function(){
         this.model.destroy();
@@ -146,30 +146,29 @@ app.BookView = Backbone.View.extend({
 }); //close app.BookView
 
 app.BookListView = Backbone.View.extend({
-
-  initialize: function(options){
+    initialize: function(options){
         this.bus = options.bus;
         this.bus.on("add", this.onBookAdded, this);
-  },
-  events: { "click": "onClick" },
-      onClick:function(){
+    },
+    events: { "click": "onClick" },
+    onClick:function(){
         this.bus.trigger("bookSelected", this.model);
-      },
-      onBookAdded: function(book){
+    },
+    onBookAdded: function(book){
         app.bookView = new app.BookView({ model: book });
         this.$el.append(app.bookView.render().$el);
-      },
-      onBookRemoved: function(book){
+    },
+    onBookRemoved: function(book){
         this.$el.find("tr#" + book.cid).remove();
         this.$("tr#" + book.cid).remove();
-      },
-      render: function(){
+    },
+    render: function(){
         var self = this;
         this.model.each(function(book){
             var view = new app.BookView({ model: book, bus: self.bus});
             self.$el.append(view.render().$el);
         });
-      }
+    }
 });
 
 app.AppView = Backbone.View.extend({
