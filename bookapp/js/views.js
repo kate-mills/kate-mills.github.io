@@ -156,7 +156,6 @@ app.BookListView = Backbone.View.extend({
         });
     }
 });
-
 app.AppView = Backbone.View.extend({
   el: '#bookapp',
   initialize: function (options) {
@@ -176,7 +175,6 @@ app.AppView = Backbone.View.extend({
         "keydown #reader": "onKeypressReader",
         "keydown #title": "onKeypressTitle",
         "keydown #published": "onKeypressPublished",
-        "mousedown input": "onMousedownInput",
         "click input#submit": "onSubmit"
   },
   testPublishedYear: function(year){
@@ -257,28 +255,6 @@ app.AppView = Backbone.View.extend({
         $('#author').focus();
         updateLengths();
     }
-  },
-  onMousedownInput: function(e){
-    if (e.target.id == 'author') {
-      var author= $(e.target).val();
-      author = author.trim();
-    }
-
-    if (e.target.id == 'reader') {
-      var reader = $(e.target).val();
-      reader = reader.trim();
-    }
-
-    if (e.target.id == 'title') {
-      var title = $(e.target).val();
-      title = title.trim();
-    }
-
-    if (e.target.id == 'published') {
-      var published = $(e.target).val();
-      published = published.trim();
-    }
-
   },
   addAll: function(){
       this.$('#table-body').html(''); // clean the book list
