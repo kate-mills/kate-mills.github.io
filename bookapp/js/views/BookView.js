@@ -60,6 +60,12 @@ app.BookView = Backbone.View.extend({
         this.$el.attr({ id: this.model.cid, class: this.class});
         return this;
     },
+    renderList: function(){
+        this.render();this.render();
+        if(window.filter !== 'all'){
+            this.$el.fadeOut('fast');
+        }
+    },
     onClickQuestionmark: function(){
         this.model.changeRating('thumbsup', true);
         this.render();
@@ -78,15 +84,9 @@ app.BookView = Backbone.View.extend({
      onToggleWant: function(){
          this.model.changeList('iWant');
          if(this.model.get('rating')){
-             this.model.save({'star': false, 'rating': 0});
+             this.model.changeRating(0, false);
          }
          this.renderList(this.model);
-     },
-     renderList: function(){
-         this.render();this.render();
-         if(window.filter !== 'all'){
-             this.$el.fadeOut('fast');
-         }
      },
      onToggleOrder: function(){
          this.model.changeList('onOrder');
@@ -100,7 +100,7 @@ app.BookView = Backbone.View.extend({
          this.model.changeList('alreadyRead');
          this.renderList(this.model);
      },
-    destroy: function(){
-        this.model.destroy();
-    },
-}); //close app.BookView
+     destroy: function(){
+         this.model.destroy();
+     }
+ }); //close app.BookView
