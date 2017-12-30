@@ -22,19 +22,19 @@ app.BookView = Backbone.View.extend({
         'click td#destroy': 'destroy'
     },
     render: function(){
+        if(!this.model.get('alreadyRead')){
+            this.rating = this.bus.rating.noData;
+        }
         if( this.model.get('iWant')){
            this.bookmark = this.bus.bookmark.green;
-           this.rating = this.bus.rating.noData;
            this.class = 'iWant';
         }
         if( this.model.get('onOrder') ) {
             this.bookmark = this.bus.bookmark.orange;
-            this.rating = this.bus.rating.noData;
             this.class = 'onOrder';
         }
         if( this.model.get('available') ) {
           this.bookmark = this.bus.bookmark.blue;
-          this.rating =  this.bus.rating.noData;
           this.class = 'available';
         }
         if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
