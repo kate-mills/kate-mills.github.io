@@ -55,14 +55,14 @@ app.BookView = Backbone.View.extend({
         this.trashcan = ('<td id="destroy" class="glyphicon glyphicon-trash"></td>');
 
         this.$el.html(  this.authorHTML + this.readerHTML + this.titleHTML + this.publishedHTML  + this.bookmark + this.rating + this.trashcan);
-        this.$el.attr({ id: this.model.cid, class: this.class, model: this.model.toJSON()});
+        this.$el.attr({ id: this.model.cid, class: this.class});
         return this;
     },
     renderList: function(){
-        this.render();
         if(window.filter !== 'all'){
             this.$el.fadeOut('fast');
         }
+        this.render();
     },
     onClickQuestionmark: function(){
         this.model.changeRating('thumbsup');
@@ -70,12 +70,10 @@ app.BookView = Backbone.View.extend({
     },
     onClickThumbsUp: function() {
          this.model.changeRating('thumbsdown');
-
          if(window.filter === 'favorites'){
              this.$el.fadeOut('fast');
          }
          this.render();
-         console.log(this.model);
      },
      onClickThumbsDown: function(){
          this.model.changeRating(0);
