@@ -51,31 +51,31 @@ app.AppView = Backbone.View.extend({
         this.$('#table-body').html('');
         switch(window.filter){
             case 'all':
-                $('#nameTitle').text("bus.title.nameAll");
+                $('#nameTitle').text("All Audiobooks");
                 $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
                 makeAllGrey();
                 _.each(app.bookList.getAllBooks(), this.addOne, this);
                 break;
             case 'iWant':
-                $('#nameTitle').text(bus.title.nameWant);
+                $('#nameTitle').text("Audiobooks I want");
                 $('#nameTitle').append('<p id="greenBook" class="glyphicon glyphicon-book"></p>');
                 makeGreen();
                 _.each(app.bookList.getBooksIWant(), this.addOne, this);
                 break;
             case 'onOrder':
-                $('#nameTitle').text(bus.title.nameOrder);
+                $('#nameTitle').text("Audiobooks on order");
                 $('#nameTitle').append('<p id="orangeBook" class="glyphicon glyphicon-book"></p>');
                 makeOrange();
                 _.each(app.bookList.getBooksOnOrder(), this.addOne, this);
                 break;
             case 'available':
-                $('#nameTitle').text(bus.title.nameAvailable);
+                $('#nameTitle').text("Audiobooks available");
                 $('#nameTitle').append('<p id="blueBook" class="glyphicon glyphicon-book"></p>');
                 makeBlue();
                 _.each(app.bookList.getBooksAvailable(), this.addOne, this);
                 break;
             case 'alreadyRead':
-                $('#nameTitle').text(bus.title.nameRead);
+                $('#nameTitle').text("Audiobooks read");
                 $('#nameTitle').append('<p id="redBook" class="glyphicon glyphicon-book"></p>');
                 makeRed();
                 _.each(app.bookList.getBooksRead(), this.addOne, this);

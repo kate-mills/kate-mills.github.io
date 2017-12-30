@@ -1,14 +1,5 @@
 var bus = _.extend({}, Backbone.Events);
 
-bus.title = {
-    nameAll: 'All Audiobooks',
-    nameWant: 'Audiobooks I Want',
-    nameOrder: 'Audiobooks On Order',
-    nameAvailable: 'Audiobooks Available',
-    nameRead: 'Audiobooks Read',
-    nameFavorites: 'Favorite Audiobooks',
-};
-
 bus.bookmark = {
     blue: '<td title="Click to move to Books Read" class="glyphicon glyphicon-bookmark blue">Available</td>',
     green: '<td title="Click to move to Books On Order." class="glyphicon glyphicon-bookmark green">Want</td>',
