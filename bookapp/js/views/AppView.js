@@ -2,12 +2,6 @@ app.AppView = Backbone.View.extend({
   el: '#bookapp',
   initialize: function (options) {
         this.bus = options.bus;
-        this.book = this.$('#new-book');
-        this.author = this.$('#author');
-        this.reader = this.$('#reader');
-        this.title = this.$('#title');
-        this.published = this.$('#published');
-
         app.bookList.on('add', this.addAll, this);
         app.bookList.on('reset', this.addAll, this);
         app.bookList.fetch(); // Loads list from local storage
