@@ -14,5 +14,6 @@ app.bookList = new app.BookList({model: app.Book});
 app.bookList.fetch();
 
 if(!app.bookList.length){
-    var firstbook = app.bookList.create();
+    var d = new Date();
+    var firstbook = app.bookList.create({published: d.getFullYear()});
 }
