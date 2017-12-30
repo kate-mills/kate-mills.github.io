@@ -260,44 +260,44 @@ app.AppView = Backbone.View.extend({
       this.$('#table-body').html(''); // clean the book list
       switch(window.filter){  // filter book item list
          case 'all':
-                $('#nameTitle').text(title.nameAll);
+                $('#nameTitle').text(bus.title.nameAll);
                 $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
                 makeAllGrey();
                 _.each(app.bookList.getAllBooks(), this.addOne, this);
                 break;
           case 'iWant':
-                $('#nameTitle').text(title.nameWant);
+                $('#nameTitle').text(bus.title.nameWant);
                 $('#nameTitle').append('<p id="greenBook" class="glyphicon glyphicon-book"></p>');
                 makeGreen();
                 _.each(app.bookList.getBooksIWant(), this.addOne, this);
                 break;
           case 'onOrder':
-                $('#nameTitle').text(title.nameOrder);
+                $('#nameTitle').text(bus.title.nameOrder);
                 $('#nameTitle').append('<p id="orangeBook" class="glyphicon glyphicon-book"></p>');
                 makeOrange();
                 _.each(app.bookList.getBooksOnOrder(), this.addOne, this);
                 break;
           case 'available':
-                $('#nameTitle').text(title.nameAvailable);
+                $('#nameTitle').text(bus.title.nameAvailable);
                 $('#nameTitle').append('<p id="blueBook" class="glyphicon glyphicon-book"></p>');
                 makeBlue();
                 _.each(app.bookList.getBooksAvailable(), this.addOne, this);
                 break;
           case 'alreadyRead':
-                $('#nameTitle').text(title.nameRead);
+                $('#nameTitle').text(bus.title.nameRead);
                 $('#nameTitle').append('<p id="redBook" class="glyphicon glyphicon-book"></p>');
                 makeRed();
                 _.each(app.bookList.getBooksRead(), this.addOne, this);
                 break;
           case 'favorites':
-                  $('#nameTitle').text(title.nameFavorites);
+                  $('#nameTitle').text(bus.title.nameFavorites);
                   $('#nameTitle').append('<p id="favoriteBook" class="glyphicon glyphicon-book"></p>');
                   makePurple();
                   _.each(app.bookList.getFavoriteBooks(), this.addOne, this);
                   break;
 
           default:
-                $('#nameTitle').text(title.nameAll);
+                $('#nameTitle').text(bus.title.nameAll);
                 $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
                 makeAllGrey();
                 _.each(app.bookList, this.addOne, this);

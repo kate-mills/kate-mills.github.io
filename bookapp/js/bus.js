@@ -1,6 +1,6 @@
 var bus = _.extend({}, Backbone.Events);
 
-var title = {
+bus.title = {
     nameAll: 'All Audiobooks',
     nameWant: 'Audiobooks I Want',
     nameOrder: 'Audiobooks On Order',
