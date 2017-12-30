@@ -5,7 +5,7 @@ bus.title = {
     nameWant: 'Audiobooks I Want',
     nameOrder: 'Audiobooks On Order',
     nameAvailable: 'Audiobooks Available',
-    nameRead: 'Audiobooks I Already Read',
+    nameRead: 'Audiobooks Read',
     nameFavorites: 'Favorite Audiobooks',
 };
 
