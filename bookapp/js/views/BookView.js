@@ -60,7 +60,7 @@ app.BookView = Backbone.View.extend({
         this.$el.attr({ id: this.model.cid, class: this.class});
         return this;
     },
-    onClickQuestionmark: function(e){
+    onClickQuestionmark: function(){
         this.model.changeRating('thumbsup', true);
         this.render();
     },
