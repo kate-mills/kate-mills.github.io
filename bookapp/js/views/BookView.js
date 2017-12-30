@@ -24,33 +24,31 @@ app.BookView = Backbone.View.extend({
     render: function(){
         if(!this.model.get('alreadyRead')){
             this.rating = this.bus.rating.noData;
+            if( this.model.get('iWant')){
+                this.bookmark = this.bus.bookmark.green;
+                this.class = 'iWant';
+            }
+            if( this.model.get('onOrder') ) {
+                this.bookmark = this.bus.bookmark.orange;
+                this.class = 'onOrder';
+            }
+            if( this.model.get('available') ) {
+                this.bookmark = this.bus.bookmark.blue;
+                this.class = 'available';
+            }
         }
-        if( this.model.get('iWant')){
-           this.bookmark = this.bus.bookmark.green;
-           this.class = 'iWant';
-        }
-        if( this.model.get('onOrder') ) {
-            this.bookmark = this.bus.bookmark.orange;
-            this.class = 'onOrder';
-        }
-        if( this.model.get('available') ) {
-          this.bookmark = this.bus.bookmark.blue;
-          this.class = 'available';
-        }
-        if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
-           this.bookmark = this.bus.bookmark.red;
-           this.rating = this.bus.rating.questionmark;
-           this.class = 'read';
-        }
-        if ( this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsup'  || this.model.get('alreadyRead') && this.model.get('rating') === 1) {
+        else{
             this.bookmark = this.bus.bookmark.red;
-            this.rating = this.bus.rating.favorite;
             this.class = 'read';
-        }
-        if (this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsdown'){
-          this.bookmark = this.bus.bookmark.red;
-          this.rating = this.bus.rating.negative;
-          this.class = 'read';
+            if(this.model.get('rating') === 0){
+                this.rating = this.bus.rating.questionmark;
+            }
+            if (this.model.get('rating') === 'thumbsup'){
+                this.rating = this.bus.rating.favorite;
+            }
+            if (this.model.get('rating') === 'thumbsdown'){
+                this.rating = this.bus.rating.negative;
+            }
         }
         this.authorHTML = ('<td>' + this.model.get('author') +'</td>');
         this.readerHTML = ('<td>' + this.model.get('reader') +'</td>');
