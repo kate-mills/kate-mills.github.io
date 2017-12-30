@@ -135,19 +135,13 @@ app.AppView = Backbone.View.extend({
         }
   },
   addOne: function(book){
-    this.model = book;
-    if(this.model);
-    this.model.toJSON();
+     if(book){
+         this.model = book;
+         var view = new app.BookView({model: this.model, bus: bus });
 
-    this.author = this.model.get('author');
-    this.reader = this.model.get('reader');
-    this.title= this.model.get('title');
-    this.rating = this.model.get('rating');
-    this.published = this.model.get('published');
-    // console.log(this.author,'-', this.reader,'-', this.title,'-', this.published);
-
-        var view = new app.BookView({model: book, bus: bus });
+        this.bus.trigger('updateLengths', this.model);
         $('#table-body').prepend(view.render().el);
+    }
   }
 });//close app.AppView
 
