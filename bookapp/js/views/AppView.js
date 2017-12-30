@@ -1,4 +1,3 @@
-
 app.AppView = Backbone.View.extend({
   el: '#bookapp',
   initialize: function (options) {
