@@ -22,9 +22,6 @@ app.BookView = Backbone.View.extend({
         'click td#destroy': 'destroy'
     },
     render: function(){
-        if(this.model){
-            this.$el.html(this.model.toJSON());
-        }
         if( this.model.get('iWant')){
            this.bookmark = this.bus.bookmark.green;
            this.rating = this.bus.rating.noData;
