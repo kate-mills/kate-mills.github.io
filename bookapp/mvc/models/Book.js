@@ -3,10 +3,10 @@ app.Book = Backbone.Model.extend({
     defaults: function(){
       return {
         created_at: (function(){return Date();}()),
-        title: 'Title',
-        author: 'Your Favorite Author',
-        reader: 'Reader',
-        published: '2017',
+        title: 'Title of audiobook',
+        author: 'Author name',
+        reader: 'Reader name',
+        published: '-',
         iWant:true,
         onOrder:false,
         available:false,
@@ -14,11 +14,9 @@ app.Book = Backbone.Model.extend({
         rating: 0
       };
     },
-
     changeRating: function(rating){
         this.save({rating: rating});
     },
-
     changeList: function(new_list) {
         if (! this.get('iWant') && new_list == 'iWant') {
           this.save({'iWant': true, 'onOrder': false, 'available': false, 'alreadyRead': false});
@@ -33,7 +31,6 @@ app.Book = Backbone.Model.extend({
         this.save({'alreadyRead': true, 'iWant': false, 'onOrder': false, 'available': false});
       }
     },
-    
     validate: function(attrs){
       if(!attrs.title)
           return "Book needs a title to be Entered.";
@@ -42,7 +39,6 @@ app.Book = Backbone.Model.extend({
       if(!attrs.published)
           return "Book needs a Date to be Published";
     },
-
     initialize: function() {
       if(!this.isValid()) {
         console.log( this.validationError,' \n  ');
