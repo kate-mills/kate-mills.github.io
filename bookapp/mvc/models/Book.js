@@ -11,7 +11,9 @@ app.Book = Backbone.Model.extend({
             onOrder:false,
             available:false,
             read:false,
-            rating: 0
+            booklist: 'iWant',
+            rating: 0,
+            bookmark:bus.bookmark.green
         };
     },
     changeRating: function(rating){
@@ -20,15 +22,19 @@ app.Book = Backbone.Model.extend({
     changeList: function(list_name){
         if(!this.get('iWant') && list_name == 'iWant'){
             this.save({'iWant': true, 'onOrder': false, 'available': false, 'alreadyRead': false});
+            this.save({'bookmark': bus.bookmark.green});
         }
         if (!this.get('onOrder') && list_name == 'onOrder'){
             this.save({'iWant': false,'onOrder': true,  'available': false, 'alreadyRead': false});
+            this.save({'bookmark': bus.bookmark.orange});
         }
         if(!this.get('available') && list_name == 'available'){
             this.save({'iWant': false,'onOrder': false, 'available': true,  'alreadyRead': false});
+            this.save({'bookmark': bus.bookmark.blue});
         }
         if(!this.get('alreadyRead') && list_name == 'alreadyRead'){
             this.save({'iWant': false,'onOrder': false, 'available': false, 'alreadyRead':  true});
+            this.save({'bookmark': bus.bookmark.red});
         }
     },
     validate: function(attrs){
