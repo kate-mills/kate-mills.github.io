@@ -65,18 +65,20 @@ app.BookView = Backbone.View.extend({
         }
     },
     onClickQuestionmark: function(){
-        this.model.changeRating('thumbsup', true);
+        this.model.changeRating('thumbsup');
         this.render();
     },
     onClickThumbsUp: function() {
-         this.model.changeRating('thumbsdown', false);
-         this.render();
+         this.model.changeRating('thumbsdown');
+
          if(window.filter === 'favorites'){
              this.$el.fadeOut('fast');
          }
+         this.render();
+         console.log(this.model);
      },
      onClickThumbsDown: function(){
-         this.model.changeRating(0, false);
+         this.model.changeRating(0);
          this.render();
      },
      onToggleWant: function(){
