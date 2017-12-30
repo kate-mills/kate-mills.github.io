@@ -177,7 +177,7 @@ th:nth-child(7){width: 50px; text-align: right;}
 td:nth-child(7){text-align: right;}
 #destroy{color: #9c9c9c; }
 #destroy:hover {color: red;}
-td.glyphicon-thumbs-down + #destroy:hover{ color:black; }
+td.glyphicon-thumbs-down + #destroy:hover{ color: gainsboro;}
 td + .glyphicon:hover, td + .wdyt:hover{cursor:pointer; font-weight:bold;}
 
 /*footer*/
