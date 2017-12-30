@@ -83,16 +83,16 @@ app.BookView = Backbone.View.extend({
      },
      onToggleWant: function(){
          this.model.changeList('iWant');
-         this.removeFromFavoriteList(this.model.toJSON());
+         if(this.model.get('rating')){
+             this.model.save({'star': false, 'rating': 0});
+         }
          this.renderList(this.model);
      },
-     renderList: function(model){
-         console.log('renderList', model.attributes.title);
-         this.model = model;
-         this.render();
+     renderList: function(){ 
          if(window.filter !== 'all'){
              this.$el.fadeOut('fast');
          }
+         this.render();
      },
      onToggleOrder: function(){
          this.model.changeList('onOrder');
@@ -103,17 +103,10 @@ app.BookView = Backbone.View.extend({
          this.renderList(this.model);
      },
      onToggleRead: function(){
+         console.log('READ', this.model);
          this.model.changeList('alreadyRead');
          this.renderList(this.model);
      },
-    addToFavoriteList: function(){
-        this.model.save('star', true);
-        this.model.save('rating', 'thumbsup');
-    },
-    removeFromFavoriteList: function(model){
-        this.model.save('star', false);
-        this.model.save('rating', 0);
-    },
     destroy: function(){
         this.model.destroy();
     },
