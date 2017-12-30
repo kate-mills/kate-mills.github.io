@@ -23,7 +23,21 @@ bus.rating = {
     questionmark: '<td style="color:red" title="click to Favorite" class="glyphicon glyphicon-question-sign"></td>',
     favorite: '<td style="color:#009688" title="click to Un-Favorite" class="glyphicon glyphicon-thumbs-up"></td>',
 };
+
 bus.on('updateLengths', function(){
+    function updateLengths(){
+        this.allBooks = app.bookList;
+        this.booksIWant = app.bookList.getBooksIWant();
+        this.favoriteBooks = app.bookList.getFavoriteBooks();
+        this.booksOnOrder = app.bookList.getBooksOnOrder();
+        this.booksAvailable = app.bookList.getBooksAvailable();
+        this.booksRead = app.bookList.getBooksRead();
+        $('#all-length.badge').html(this.allBooks.length);
+        $('#favorites-length.badge').html(this.favoriteBooks.length);
+        $('#want-length.badge').html(this.booksIWant.length);
+        $('#order-length.badge').html(this.booksOnOrder.length);
+        $('#available-length.badge').html(this.booksAvailable.length);
+        $('#read-length.badge').html(this.booksRead.length);
+    }
     updateLengths();
-    console.log('\tSTAR-Updated Lengths!');
 })
