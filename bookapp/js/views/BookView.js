@@ -18,7 +18,7 @@ app.BookView = Backbone.View.extend({
         'click td.glyphicon.glyphicon-bookmark.green': 'onToggleOrder',
         'click td.glyphicon.glyphicon-bookmark.orange': 'onToggleAvailable',
         'click td.glyphicon.glyphicon-bookmark.blue': 'onToggleRead',
-        'click td.glyphicon.glyphicon-bookmark.red': 'onToggleAvailable',
+        'click td.glyphicon.glyphicon-bookmark.red': 'onToggleWant',
         'click td#destroy': 'destroy'
     },
     render: function(){
@@ -82,41 +82,30 @@ app.BookView = Backbone.View.extend({
          this.render();
      },
      onToggleWant: function(){
-         old_list = window.filter;
-         new_list = 'iWant';
-         this.model.changeList(newList, old_list);
+         this.model.changeList('iWant');
+         this.removeFromFavoriteList(this.model.toJSON());
+         this.renderList(this.model);
+     },
+     renderList: function(model){
+         console.log('renderList', model.attributes.title);
+         this.model = model;
          this.render();
-         if(window.filter !== 'iWant'){
-             if(window.filter !== 'all')
-             this.$el.fadeOut('slow');
+         if(window.filter !== 'all'){
+             this.$el.fadeOut('fast');
          }
-    },
-    onToggleOrder: function(){
-        this.model.changeList('onOrder');
-        this.render();
-        if(window.filter !== 'onOrder'){
-            if(window.filter !== 'all')
-            this.$el.fadeOut('slow');
-        }
-    },
-    onToggleAvailable: function(){
-        this.model.changeList('available');
-        this.removeFromFavoriteList(this.model.toJSON());
-        this.render();
-        if(window.filter !== 'available'){
-            if(window.filter !== 'all')
-            this.$el.fadeOut('slow');
-        }
-    },
-    onToggleRead: function(e){
-        var w = window.filter;
-        if (w !== 'all' && w !== 'alreadyRead') {
-             this.$(e.target).html('Read').addClass('moving_to_read');
-             this.$el.fadeOut('slow');
-      }
-      this.model.changeList('alreadyRead');
-      this.render();
-    },
+     },
+     onToggleOrder: function(){
+         this.model.changeList('onOrder');
+         this.renderList(this.model);
+     },
+     onToggleAvailable: function(){
+         this.model.changeList('available');
+         this.renderList(this.model);
+     },
+     onToggleRead: function(){
+         this.model.changeList('alreadyRead');
+         this.renderList(this.model);
+     },
     addToFavoriteList: function(){
         this.model.save('star', true);
         this.model.save('rating', 'thumbsup');
