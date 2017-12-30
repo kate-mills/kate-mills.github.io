@@ -323,11 +323,6 @@ app.AppView = Backbone.View.extend({
   }
 });//close app.AppView
 
-
-_.extend(app.bookList, Backbone.Events);
-_.extend(title, Backbone.Events);
-
-
 app.Router = Backbone.Router.extend({
     routes: {
         '*filter' : 'setFilter'
@@ -338,7 +333,6 @@ app.Router = Backbone.Router.extend({
         app.bookList.trigger('reset');
         $('#all-length').html(app.bookList.length);
     }
-
 });
 
 var allBooksView = new app.BookListView({
