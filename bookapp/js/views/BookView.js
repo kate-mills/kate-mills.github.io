@@ -65,11 +65,6 @@ app.BookView = Backbone.View.extend({
         this.$el.attr({ id: this.model.cid, class: this.class});
         return this;
     },
-    updateOnEnter: function(e){
-        if(e.which == 13){
-            this.close();
-        }
-    },
     onClickQuestionmark: function(e){
         $(e.target).removeClass('glyphicon-question-sign');
         $(e.target).addClass('glyphicon-thumbs-up').tealify();
