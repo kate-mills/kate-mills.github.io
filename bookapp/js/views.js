@@ -305,7 +305,6 @@ app.AppView = Backbone.View.extend({
                 break;
         }
   },
-
   addOne: function(book){
     this.model = book;
     if(this.model);
@@ -323,18 +322,6 @@ app.AppView = Backbone.View.extend({
   }
 });//close app.AppView
 
-app.Router = Backbone.Router.extend({
-    routes: {
-        '*filter' : 'setFilter'
-      },
-    setFilter: function(params) {
-        // console.log('app.router.params = ' + params);
-        window.filter = params.trim() || '';
-        app.bookList.trigger('reset');
-        $('#all-length').html(app.bookList.length);
-    }
-});
-
 var allBooksView = new app.BookListView({
   el: "#table-body",
   model: app.bookList,
@@ -343,6 +330,3 @@ var allBooksView = new app.BookListView({
 
 app.appView = new app.AppView({ bus: bus });
 window.windowFn  = app.appView.addAll;
-
-app.router = new app.Router();
-Backbone.history.start();
