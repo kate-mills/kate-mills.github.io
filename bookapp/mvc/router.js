@@ -5,7 +5,6 @@ app.Router = Backbone.Router.extend({
     setFilter: function(params) {
         window.filter = params.trim() || '';
         app.bookList.trigger('reset');
-        $('#all-length').html(app.bookList.length);
     }
 });
 
