@@ -14,18 +14,22 @@ app.BookList = Backbone.Collection.extend({
 app.bookList = new app.BookList();
 app.bookList.fetch();
 
-var num = app.bookList.length;
-if(num < 1){
-  returnListLengthToOne(app.bookList);
-  // console.log('returnListLengthToOne called', app.bookList.length);
+if(!app.bookList.length){
+    var firstbook = app.bookList.create({
+        title: 'Add Some Books To Your Collection!',
+        author: 'Vince Flynn',
+        reader: 'Peter Hermann',
+        published: 2016,
+        iWant: true,
+        onOrder: false,
+        available: false,
+        alreadyRead: false
+      });
+      firstbook.set('created_at', Date());
+      console.log('book created', firstbook);
 }
 
 
-// console.log("bookList collection:",app.bookList.length,app.bookList);
-
-var firstbook =app.bookList.at(0);
-var secondbook =app.bookList.at(1);
-var lastbook =app.bookList.at(app.bookList.length -1);
 var allBooks =app.bookList;
 var booksIWant =app.bookList.filter(function(book){ return book.get('iWant');});
 var booksOnOrder =app.bookList.filter(function(book){ return book.get('onOrder');});

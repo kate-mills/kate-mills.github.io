@@ -51,19 +51,3 @@ app.Book = Backbone.Model.extend({
       }
     }
 });//close app.Book
-
-var returnListLengthToOne = function(list){
-  var book = list.create({
-    title: 'Add Some Books To Your Collection!',
-    author: 'Vince Flynn',
-    reader: 'Peter Hermann',
-    published: 2016,
-    iWant: true,
-    onOrder: false,
-    available: false,
-    alreadyRead: false
-  });
-
-  book.set('created_at', Date());
-  console.log('book created', book);
-};
