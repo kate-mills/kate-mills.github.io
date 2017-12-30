@@ -4,7 +4,7 @@ app.AppView = Backbone.View.extend({
         this.bus = options.bus;
         app.bookList.on('add', this.addAll, this);
         app.bookList.on('reset', this.addAll, this);
-        app.bookList.fetch(); // Loads list from local storage
+        app.bookList.fetch(); 
   },
   events: {
         "keydown #published": "onKeypressPublished",
