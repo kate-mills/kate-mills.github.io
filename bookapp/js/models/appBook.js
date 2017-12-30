@@ -3,23 +3,21 @@ app.Book = Backbone.Model.extend({
     defaults: function(){
       return {
         created_at: (function(){return Date();}()),
-        title: '',
-        author: '',
-        reader: '',
-        published: null,
+        title: 'Title',
+        author: 'Your Favorite Author',
+        reader: 'Reader',
+        published: '2017',
         all: true,
         iWant:true,
         onOrder:false,
         available:false,
         read:false,
-          rating: 0,
-          star: false,
-          status: 'listWant',
+        rating: 0
       };
 
     },
-    changeRating: function(rating, star){
-        this.save({rating: rating, star: star });
+    changeRating: function(rating){
+        this.save({rating: rating});
     },
     changeList: function(new_list) {
         if (! this.get('iWant') && new_list == 'iWant') {
