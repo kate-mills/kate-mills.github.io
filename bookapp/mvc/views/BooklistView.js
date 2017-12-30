@@ -50,12 +50,6 @@ app.AppView = Backbone.View.extend({
     addAll: function(){
         this.$('#table-body').html('');
         switch(window.filter){
-            case 'all':
-                $('#nameTitle').text("All Audiobooks");
-                $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
-                makeAllGrey();
-                _.each(app.bookList.getAllBooks(), this.addOne, this);
-                break;
             case 'iWant':
                 $('#nameTitle').text("Audiobooks I want");
                 $('#nameTitle').append('<p id="greenBook" class="glyphicon glyphicon-book"></p>');
@@ -81,17 +75,16 @@ app.AppView = Backbone.View.extend({
                 _.each(app.bookList.getBooksRead(), this.addOne, this);
                 break;
             case 'favorites':
-                $('#nameTitle').text(bus.title.nameFavorites);
+                $('#nameTitle').text("Favorite Audiobooks");
                 $('#nameTitle').append('<p id="favoriteBook" class="glyphicon glyphicon-book"></p>');
                 makePurple();
                 _.each(app.bookList.getFavoriteBooks(), this.addOne, this);
                 break;
             default:
-                $('#nameTitle').text(bus.title.nameAll);
+                $('#nameTitle').text("All Audiobooks");
                 $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
                 makeAllGrey();
-                _.each(app.bookList, this.addOne, this);
-                break;
+                _.each(app.bookList.getAllBooks(), this.addOne, this);
         }
     },
     addOne: function(book){
@@ -103,6 +96,4 @@ app.AppView = Backbone.View.extend({
         }
     }
 });
-
 app.appView = new app.AppView({ bus: bus });
-window.windowFn  = app.appView.addAll;
