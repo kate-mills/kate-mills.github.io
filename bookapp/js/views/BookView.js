@@ -88,10 +88,10 @@ app.BookView = Backbone.View.extend({
          this.renderList(this.model);
      },
      renderList: function(){
+         this.render();this.render();
          if(window.filter !== 'all'){
              this.$el.fadeOut('fast');
          }
-         this.render();
      },
      onToggleOrder: function(){
          this.model.changeList('onOrder');
@@ -102,7 +102,6 @@ app.BookView = Backbone.View.extend({
          this.renderList(this.model);
      },
      onToggleRead: function(){
-         console.log('READ', this.model);
          this.model.changeList('alreadyRead');
          this.renderList(this.model);
      },
