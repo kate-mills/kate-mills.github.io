@@ -62,41 +62,29 @@ app.AppView = Backbone.View.extend({
   },
   onKeypressPublished: function(e) {
         var keyCode = e.keyCode || e.which;
-        var published = $('#published').val().trim();
 
         if(keyCode == 9 || keyCode == 13) {
-          if (  this.$('#author').val() && this.$('#title').val()  ) {
-            app.bookList.create({
+            this.onSubmit();
+      }
+  },
+  onSubmit: function(){
+      if (  this.$('#author').val() && this.$('#title').val()  ) {
+          var yr = this.testPublishedYear( $('#published').val().trim() );
+
+          app.bookList.create({
               author: $('#author').val().trim(),
               reader: $('#reader').val().trim(),
               title: $('#title').val().trim(),
-              published: this.testPublishedYear( published )
-            });
+              published: yr
+          });
 
-            $('#author').val('');
-            $('#reader').val('');
-            $('#title').val('');
-            $('#published').val('');
-            $('#author').focus();
-            console.log('\tVIEWS- AppView -trigger-updateLengths')
-            this.bus.trigger('updateLengths', this.model);
-          }
+          $('#author').val('');
+          $('#reader').val('');
+          $('#title').val('');
+          $('#published').val('');
+          $('#author').focus();
+          this.bus.trigger('updateLengths', this.model);
       }
-  },
-  onSubmit: function(e){
-    if ( $('#author').val() && $('#title').val() ) {
-        var author = $('#author').val().trim();
-        var reader = $('#reader').val().trim();
-        var title = $('#title').val().trim();
-        var published = this.testPublishedYear( $('#published').val().trim() );
-        app.bookList.create({ author: author, reader: reader, title: title, published: published });
-        $('#author').val('');
-        $('#reader').val('');
-        $('#title').val('');
-        $('#published').val('');
-        $('#author').focus();
-        updateLengths();
-    }
   },
   addAll: function(){
       this.$('#table-body').html(''); // clean the book list
