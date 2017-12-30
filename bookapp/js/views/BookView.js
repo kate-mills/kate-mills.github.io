@@ -1,13 +1,11 @@
 app.BookView = Backbone.View.extend({
     tagName: 'tr',
-    initialize: function(options){
+    initialize: function(options){ // options -> model, bus
         this.bus = options.bus;
-        this.model = options.model;
         this.model.on('add', this.addOne, this);
         this.model.on('destroy', this.remove, this);
     },
     onClick: function(){
-        console.log('\n\tVIEWS- BookView -trigger-updateLengths')
         this.bus.trigger('updateLengths', this.model);
     },
     events: {
@@ -54,14 +52,14 @@ app.BookView = Backbone.View.extend({
         this.readerHTML = ('<td>' + this.model.get('reader') +'</td>');
         this.titleHTML = ('<td>' + this.model.get('title') +'</td>');
         this.publishedHTML = ('<td>' + this.model.get('published') +'</td>');
-        this.trashcan = ('<td id="destroy" class="glyphicon glyphicon-trash '+this.bus.statusClass+'"></td>');
+        this.trashcan = ('<td id="destroy" class="glyphicon glyphicon-trash"></td>');
 
         this.$el.html(  this.authorHTML + this.readerHTML + this.titleHTML + this.publishedHTML  + this.bookmark + this.rating + this.trashcan);
-        this.$el.attr({ id: this.model.cid, class: this.class});
+        this.$el.attr({ id: this.model.cid, class: this.class, model: this.model.toJSON()});
         return this;
     },
     renderList: function(){
-        this.render();this.render();
+        this.render();
         if(window.filter !== 'all'){
             this.$el.fadeOut('fast');
         }
