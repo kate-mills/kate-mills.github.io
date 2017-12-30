@@ -7,9 +7,6 @@ app.AppView = Backbone.View.extend({
         app.bookList.fetch(); // Loads list from local storage
   },
   events: {
-        "keydown #author": "onKeypressAuthor",
-        "keydown #reader": "onKeypressReader",
-        "keydown #title": "onKeypressTitle",
         "keydown #published": "onKeypressPublished",
         "click input#submit": "onSubmit"
   },
@@ -27,32 +24,6 @@ app.AppView = Backbone.View.extend({
       else{
           return String(year);
       }
-  },
-  onKeypressReader: function(e) {
-      var keyCode = e.keyCode || e.which;
-      this.readerValue = $('#reader').val();
-      var readerValue = this.readerValue.trim();
-      if (keyCode == 9){
-        this.reader = readerValue;
-      }
-      if (keyCode == 13) {
-        this.reader = readerValue;
-      }
-    },
-  onKeypressTitle: function(e){
-      var keyCode = e.keyCode || e.which;
-        this.titleValue = $('#title').val();
-        var titleValue = this.titleValue.trim();
-        if (keyCode == 9){
-            this.title = titleValue;
-        }if(keyCode == 13){
-             this.title = titleValue;
-        }
-  },
-  onKeypressAuthor: function(e) {
-        var keyCode = e.keyCode || e.which;
-        var author = $('#author').val().trim();
-        this.author = author;
   },
   onKeypressPublished: function(e) {
         var keyCode = e.keyCode || e.which;
