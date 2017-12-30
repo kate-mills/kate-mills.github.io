@@ -301,7 +301,6 @@ app.AppView = Backbone.View.extend({
                 $('#nameTitle').append('<p id="greyBook" class="glyphicon glyphicon-book"></p>');
                 makeAllGrey();
                 _.each(app.bookList, this.addOne, this);
-                updateLengths();
                 break;
         }
   },
