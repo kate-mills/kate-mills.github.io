@@ -9,7 +9,7 @@ bus.title = {
     nameFavorites: 'Favorite Audiobooks',
 };
 
-var Bookmark = {
+bus.bookmark = {
     blue: '<td title="Click to move to Books Read" class="glyphicon glyphicon-bookmark blue">Available</td>',
     green: '<td title="Click to move to Books On Order." class="glyphicon glyphicon-bookmark green">Want</td>',
     orange: '<td title="Click to move to Books Available." class="glyphicon glyphicon-bookmark orange">Order</td>',

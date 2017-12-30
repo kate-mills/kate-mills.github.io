@@ -26,32 +26,32 @@ app.BookView = Backbone.View.extend({
             this.$el.html(this.model.toJSON());
         }
         if( this.model.get('iWant')){
-           this.bookmark = Bookmark.green;
+           this.bookmark = bus.bookmark.green;
            this.rating = this.bus.rating.noData;
            this.class = 'iWant';
         }
         if( this.model.get('onOrder') ) {
-            this.bookmark =  Bookmark.orange;
+            this.bookmark =  bus.bookmark.orange;
             this.rating = this.bus.rating.noData;
             this.class = 'onOrder';
         }
         if( this.model.get('available') ) {
-          this.bookmark = Bookmark.blue;
+          this.bookmark = bus.bookmark.blue;
           this.rating =  this.bus.rating.noData;
           this.class = 'available';
         }
         if( this.model.get('alreadyRead')  && this.model.get('rating') === 0){
-           this.bookmark = Bookmark.red;
+           this.bookmark = bus.bookmark.red;
            this.rating = this.bus.rating.questionmark;
            this.class = 'read';
         }
         if ( this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsup'  || this.model.get('alreadyRead') && this.model.get('rating') === 1) {
-            this.bookmark = Bookmark.red;
+            this.bookmark = bus.bookmark.red;
             this.rating = this.bus.rating.favorite;
             this.class = 'read';
         }
         if (this.model.get('alreadyRead') && this.model.get('rating') === 'thumbsdown'){
-          this.bookmark =  Bookmark.red;
+          this.bookmark =  bus.bookmark.red;
           this.rating = this.bus.rating.negative;
           this.class = 'read';
         }
