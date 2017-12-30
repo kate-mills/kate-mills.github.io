@@ -7,18 +7,18 @@ app.Book = Backbone.Model.extend({
         author: 'Your Favorite Author',
         reader: 'Reader',
         published: '2017',
-        all: true,
         iWant:true,
         onOrder:false,
         available:false,
         read:false,
         rating: 0
       };
-
     },
+
     changeRating: function(rating){
         this.save({rating: rating});
     },
+
     changeList: function(new_list) {
         if (! this.get('iWant') && new_list == 'iWant') {
           this.save({'iWant': true, 'onOrder': false, 'available': false, 'alreadyRead': false});
@@ -33,7 +33,7 @@ app.Book = Backbone.Model.extend({
         this.save({'alreadyRead': true, 'iWant': false, 'onOrder': false, 'available': false});
       }
     },
-
+    
     validate: function(attrs){
       if(!attrs.title)
           return "Book needs a title to be Entered.";
