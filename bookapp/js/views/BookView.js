@@ -66,9 +66,8 @@ app.BookView = Backbone.View.extend({
         return this;
     },
     onClickQuestionmark: function(e){
-        $(e.target).removeClass('glyphicon-question-sign');
-        $(e.target).addClass('glyphicon-thumbs-up').tealify();
         this.model.changeRating('thumbsup', true);
+        this.render();
     },
     onClickThumbsUp: function() {
          this.model.changeRating('thumbsdown', false);
