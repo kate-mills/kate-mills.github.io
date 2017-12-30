@@ -22,13 +22,13 @@ app.Book = Backbone.Model.extend({
             this.save({'iWant': true, 'onOrder': false, 'available': false, 'alreadyRead': false});
         }
         if (!this.get('onOrder') && list_name == 'onOrder'){
-            this.save({'onOrder': true, 'iWant': false, 'available': false, 'alreadyRead': false});
+            this.save({'iWant': false,'onOrder': true,  'available': false, 'alreadyRead': false});
         }
         if(!this.get('available') && list_name == 'available'){
-            this.save({'available': true, 'iWant': false, 'onOrder': false, 'alreadyRead': false});
+            this.save({'iWant': false,'onOrder': false, 'available': true,  'alreadyRead': false});
         }
         if(!this.get('alreadyRead') && list_name == 'alreadyRead'){
-            this.save({'alreadyRead': true, 'iWant': false, 'onOrder': false, 'available': false});
+            this.save({'iWant': false,'onOrder': false, 'available': false, 'alreadyRead':  true});
         }
     },
     validate: function(attrs){

@@ -7,7 +7,6 @@ app.BookList = Backbone.Collection.extend({
       getBooksOnOrder: function(){return this.filter(function(book){return book.get('onOrder');});},
       getBooksAvailable: function(){return this.filter(function(book){return book.get('available');});},
       getBooksRead: function(){return this.filter(function(book){return book.get('alreadyRead');});}
-
 });
 
 app.bookList = new app.BookList({model: app.Book});
