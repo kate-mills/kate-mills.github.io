@@ -1,15 +1,15 @@
 var bus = _.extend({}, Backbone.Events);
 
 bus.bookmark = {
-    blue: '<td title="Click to move to Books Read" class="glyphicon glyphicon-bookmark blue">Available</td>',
-    green: '<td title="Click to move to Books On Order." class="glyphicon glyphicon-bookmark green">Want</td>',
-    orange: '<td title="Click to move to Books Available." class="glyphicon glyphicon-bookmark orange">Order</td>',
-    grey: '<td class="glyphicon glyphicon-book grey”>All</td>',
-    red: '<td title="Read Again? Click to move to Books Available." style="content:"\e043" class="glyphicon glyphicon-bookmark red">Read</td>',
+    available: '<td title="Click to move to Books Read" class="glyphicon glyphicon-bookmark blue">Available</td>',
+    iWant: '<td title="Click to move to Books On Order." class="glyphicon glyphicon-bookmark green">Want</td>',
+    onOrder: '<td title="Click to move to Books Available." class="glyphicon glyphicon-bookmark orange">Order</td>',
+    all: '<td class="glyphicon glyphicon-book grey”>All</td>',
+    read: '<td title="Read Again? Click to move to Books Available." style="content:"\e043" class="glyphicon glyphicon-bookmark red">Read</td>',
 };
 
 bus.rating = {
-    na: '<td class="no_data"></td>',
+    noData: '<td class="no_data"></td>',
     thumbsdown: '<td style="color:gainsboro" title="click to ??" class="glyphicon glyphicon-thumbs-down"></td>',
     questionmark: '<td style="color:red" title="click to Favorite" class="glyphicon glyphicon-question-sign"></td>',
     thumbsup: '<td style="color:#009688" title="click to Un-Favorite" class="glyphicon glyphicon-thumbs-up"></td>',
