@@ -7,35 +7,21 @@ app.Book = Backbone.Model.extend({
             author: 'Author name',
             reader: 'Reader name',
             published: '-',
-            iWant:true,
-            onOrder:false,
-            available:false,
-            read:false,
             booklist: 'iWant',
-            rating: 0,
-            bookmark:bus.bookmark.green
+            rating: 'noData',
+            bookmark:bus.bookmark.iWant,
+            wdyt: bus.rating.noData
         };
     },
-    changeRating: function(rating){
-        this.save({rating: rating});
+    changeBookmark: function(list){
+        this.save({'bookmark': bus.bookmark[list], 'class': list})
     },
-    changeList: function(list_name){
-        if(!this.get('iWant') && list_name == 'iWant'){
-            this.save({'iWant': true, 'onOrder': false, 'available': false, 'alreadyRead': false});
-            this.save({'bookmark': bus.bookmark.green});
-        }
-        if (!this.get('onOrder') && list_name == 'onOrder'){
-            this.save({'iWant': false,'onOrder': true,  'available': false, 'alreadyRead': false});
-            this.save({'bookmark': bus.bookmark.orange});
-        }
-        if(!this.get('available') && list_name == 'available'){
-            this.save({'iWant': false,'onOrder': false, 'available': true,  'alreadyRead': false});
-            this.save({'bookmark': bus.bookmark.blue});
-        }
-        if(!this.get('alreadyRead') && list_name == 'alreadyRead'){
-            this.save({'iWant': false,'onOrder': false, 'available': false, 'alreadyRead':  true});
-            this.save({'bookmark': bus.bookmark.red});
-        }
+    changeRating: function(rating){
+        this.save({rating: rating, wdyt: bus.rating[rating]});
+    },
+    changeBooklist: function(list){
+        this.save({'booklist': list});
+        this.changeBookmark(list);
     },
     validate: function(attrs){
         if(!attrs.title){return "Book needs a title to be Entered.";}
