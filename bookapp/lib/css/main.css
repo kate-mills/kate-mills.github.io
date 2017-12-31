@@ -1,0 +1,38 @@
+
+/*glyphicons*/
+#greyBook,.glyphicon.glyphicon-bookmark.grey,.glyphicon.glyphicon-trash, #ToggleArrow{color: #9e9e9e;}
+th.glyphicon.trash, .glyphicon-trash{color: #9e9e9e;}
+#all-length{background-color:#9e9e9e;}
+
+
+#greenBook, .glyphicon.glyphicon-bookmark.green{color: #08d008;}
+#want-length{background-color: #08d008;}
+
+#orangeBook, .glyphicon.glyphicon-bookmark.orange{color: #ff8300;}
+#order-length{background-color: #ff8300;}
+
+#blueBook,  .glyphicon.glyphicon-bookmark.blue{color: #2196f3;}
+#available-length{background-color: #2196f3;}
+
+#redBook, .glyphicon.glyphicon-bookmark.red{color: red;}
+#read-length{background-color: red}
+
+#favoriteBook{color:#009688;}
+#favorites-length{background-color: #009688;}
+
+.glyphicon.glyphicon-bookmark:hover,
+.glyphicon.glyphicon-trash:hover,
+.glyphicon.glyphicon-thumbs-down:hover,
+.glyphicon.glyphicon-thumbs-up:hover,
+.glyphicon.glyphicon-question-sign:hover{cursor:pointer;}
+
+#sorttable_sortrevind,
+#sorttable_sortfwdind{padding:0;}
+
+th #sorttable_sortrevind,
+th #sorttable_sortfwdind{padding: 0;background-color: transparent;}
+
+.table{width:70%; margin:0 auto;}
+th.glyphicon, td.glyphicon, td.no_data{display:table-cell; border:transparent;}
+/* th:nth-child(7){width: 50px; text-align: right;} */
+/* td:nth-child(7){text-align: right;} */

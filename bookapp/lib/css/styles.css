@@ -1,4 +1,3 @@
-
 /* article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block} */
 /* audio,canvas,video{display:inline-block;vertical-align:baseline} */
 /* audio:not([controls]){display:none;height:0}[hidden],template{display:none} */
@@ -31,7 +30,7 @@
     margin: 0 auto;
     background: #fff;
 } */
-input, textarea, keygen, select, button{
+/* input, textarea, keygen, select, button{
     text-rendering: auto;
     color: #9e9e9e;
     letter-spacing: normal;
@@ -46,7 +45,7 @@ input, textarea, keygen, select, button{
     -webkit-writing-mode: horizontal-tb;
 }
  input[type="text"] {
-    width: 100%;
+    width: 10%;
     font-size: 20px;
     font-family: inherit;
     line-height: 1.0em;
@@ -62,7 +61,7 @@ input, textarea, keygen, select, button{
     box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
 }
 
-/* --NAV-- */
+/* --NAV-- */ */
 h3#nameTitle {text-align: center;padding-top: 20px; margin: 0 auto;}
 #ToggleArrow::before{ cursor:pointer;  position: relative; top: 45px; right: 299px;}
 
@@ -118,6 +117,7 @@ input#submit{float:right;margin-top: 5px;}
 
 
 /*GENERAL TABLE*/
+tbody#table-body{border-bottom: 2px solid #dddddd;}
 table, thead, tr, td, tbody{
     background-color: #fff;
     white-space:nowrap;
@@ -173,4 +173,3 @@ td + .glyphicon:hover, td + .wdyt:hover{cursor:pointer; font-weight:bold;}
 a#napaLibrary:hover, a#countyOfNapa:hover, a#worldCat:hover{color: #000; }
 
 ::after, ::before {background-color: #fff; font-weight: bold;}
-tbody#table-body{border-bottom: 2px solid #dddddd;}
