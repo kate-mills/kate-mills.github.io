@@ -8,13 +8,13 @@ app.BookView = Backbone.View.extend({
     onClick: function(){},
     events: {
         'click': 'onClick',
-        'click td.glyphicon-question-sign': 'onClickQuestionmark',
-        'click td.glyphicon-thumbs-up': 'onClickThumbsUp',
-        'click td.glyphicon-thumbs-down': 'onClickThumbsDown',
-        'click td.glyphicon.glyphicon-bookmark.green': 'onToggleOrder',
-        'click td.glyphicon.glyphicon-bookmark.orange': 'onToggleAvailable',
-        'click td.glyphicon.glyphicon-bookmark.blue': 'onToggleRead',
-        'click td.glyphicon.glyphicon-bookmark.red': 'onToggleWant',
+        'click td.glyphicon-question-sign': 'toggle2ThumbsUp',
+        'click td.glyphicon-thumbs-up': 'toggle2ThumbsDown',
+        'click td.glyphicon-thumbs-down': 'toggle2Questionmark',
+        'click td.glyphicon.glyphicon-bookmark.green': 'toggle2Order',
+        'click td.glyphicon.glyphicon-bookmark.orange': 'toggle2Available',
+        'click td.glyphicon.glyphicon-bookmark.blue': 'toggle2Read',
+        'click td.glyphicon.glyphicon-bookmark.red': 'toggle2Want',
         'click td#destroy': 'destroy'
     },
     render: function(){
@@ -29,44 +29,44 @@ app.BookView = Backbone.View.extend({
         this.bus.trigger('updateLengths', this.model);
         return this;
     },
-    checkRender: function(){
+    checkWindowThenRender: function(){
         if(window.filter !== 'all'){
             this.$el.fadeOut('fast');
         }
         this.render();
     },
-    onClickQuestionmark: function(){
+    toggle2ThumbsUp: function(){
         this.model.changeRating('thumbsup');
         this.render();
     },
-    onClickThumbsUp: function() {
+    toggle2ThumbsDown: function() {
          this.model.changeRating('thumbsdown');
          if(window.filter === 'favorites'){
              this.$el.fadeOut('fast');
          }
          this.render();
      },
-     onClickThumbsDown: function(){
+     toggle2Questionmark: function(){
          this.model.changeRating('questionmark');
          this.render();
      },
-     onToggleWant: function(){
+     toggle2Want: function(){
          this.model.changeBooklist('iWant');
          this.model.changeRating('noData');
-         this.checkRender();
+         this.checkWindowThenRender();
      },
-     onToggleOrder: function(){
+     toggle2Order: function(){
          this.model.changeBooklist('onOrder');
-         this.checkRender();
+         this.checkWindowThenRender();
      },
-     onToggleAvailable: function(){
+     toggle2Available: function(){
          this.model.changeBooklist('available');
-         this.checkRender();
+         this.checkWindowThenRender();
      },
-     onToggleRead: function(){
+     toggle2Read: function(){
          this.model.changeBooklist('read');
          this.model.changeRating('questionmark');
-         this.checkRender();
+         this.checkWindowThenRender();
      },
      destroy: function(){
          this.model.destroy();
