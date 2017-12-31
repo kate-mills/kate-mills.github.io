@@ -88,12 +88,8 @@ app.AppView = Backbone.View.extend({
         }
     },
     addOne: function(book){
-        if(book){
-            this.model = book;
-            var view = new app.BookView({model: this.model, bus: bus });
-            this.bus.trigger('updateLengths', this.model);
-            $('#table-body').prepend(view.render().el);
-        }
+        var view = new app.BookView({model: book, bus: bus });
+        $('#table-body').prepend(view.render().el);
     }
 });
 app.appView = new app.AppView({ bus: bus });
