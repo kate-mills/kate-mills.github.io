@@ -41,7 +41,10 @@ app.BookView = Backbone.View.extend({
     },
     onClickThumbsUp: function() {
          this.model.changeRating('thumbsdown');
-         this.checkRender();
+         if(window.filter === 'favorites'){
+             this.$el.fadeOut('fast');
+         }
+         this.render();
      },
      onClickThumbsDown: function(){
          this.model.changeRating('questionmark');
