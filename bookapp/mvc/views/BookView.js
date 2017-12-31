@@ -5,9 +5,7 @@ app.BookView = Backbone.View.extend({
         this.model.on('add', this.addOne, this);
         this.model.on('destroy', this.remove, this);
     },
-    onClick: function(){
-
-    },
+    onClick: function(){},
     events: {
         'click': 'onClick',
         'click td.glyphicon-question-sign': 'onClickQuestionmark',
@@ -31,7 +29,7 @@ app.BookView = Backbone.View.extend({
         this.bus.trigger('updateLengths', this.model);
         return this;
     },
-    renderList: function(){
+    checkRender: function(){
         if(window.filter !== 'all'){
             this.$el.fadeOut('fast');
         }
@@ -43,10 +41,7 @@ app.BookView = Backbone.View.extend({
     },
     onClickThumbsUp: function() {
          this.model.changeRating('thumbsdown');
-         if(window.filter === 'favorites'){
-             this.$el.fadeOut('fast');
-         }
-         this.render();
+         this.checkRender();
      },
      onClickThumbsDown: function(){
          this.model.changeRating('questionmark');
@@ -55,20 +50,20 @@ app.BookView = Backbone.View.extend({
      onToggleWant: function(){
          this.model.changeBooklist('iWant');
          this.model.changeRating('noData');
-         this.renderList(this.model);
+         this.checkRender();
      },
      onToggleOrder: function(){
          this.model.changeBooklist('onOrder');
-         this.renderList(this.model);
+         this.checkRender();
      },
      onToggleAvailable: function(){
          this.model.changeBooklist('available');
-         this.renderList(this.model);
+         this.checkRender();
      },
      onToggleRead: function(){
          this.model.changeBooklist('read');
          this.model.changeRating('questionmark');
-         this.renderList(this.model);
+         this.checkRender();
      },
      destroy: function(){
          this.model.destroy();
