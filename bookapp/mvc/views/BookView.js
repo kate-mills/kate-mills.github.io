@@ -20,40 +20,13 @@ app.BookView = Backbone.View.extend({
         'click td#destroy': 'destroy'
     },
     render: function(){
-        this.bookmark = this.model.get('bookmark');
-        if(!this.model.get('alreadyRead')){
-            this.rating = this.bus.rating.noData;
-
-            if( this.model.get('iWant')){
-                this.class = 'iWant';
-            }
-            if( this.model.get('onOrder') ) {
-                this.class = 'onOrder';
-            }
-            if( this.model.get('available') ) {
-                this.class = 'available';
-            }
-        }
-        else{
-            this.class = 'read';
-            if(this.model.get('rating') === 0){
-                this.rating = this.bus.rating.questionmark;
-            }
-            if (this.model.get('rating') === 'thumbsup'){
-                this.rating = this.bus.rating.favorite;
-            }
-            if (this.model.get('rating') === 'thumbsdown'){
-                this.rating = this.bus.rating.negative;
-            }
-        }
-        console.log(this.model)
         this.authorHTML = ('<td>' + this.model.get('author') +'</td>');
         this.readerHTML = ('<td>' + this.model.get('reader') +'</td>');
         this.titleHTML = ('<td>' + this.model.get('title') +'</td>');
         this.publishedHTML = ('<td>' + this.model.get('published') +'</td>');
         this.trashcan = ('<td id="destroy" class="glyphicon glyphicon-trash"></td>');
 
-        this.$el.html(  this.authorHTML + this.readerHTML + this.titleHTML + this.publishedHTML  + this.bookmark + this.rating + this.trashcan);
+        this.$el.html(  this.authorHTML + this.readerHTML + this.titleHTML + this.publishedHTML  + this.model.get('bookmark') + this.model.get('wdyt') + this.trashcan);
         this.$el.attr({ id: this.model.cid, class: this.class});
         return this;
     },
@@ -75,29 +48,28 @@ app.BookView = Backbone.View.extend({
          this.render();
      },
      onClickThumbsDown: function(){
-         this.model.changeRating(0);
+         this.model.changeRating('questionmark');
          this.render();
      },
      onToggleWant: function(){
-         this.model.changeList('iWant');
-         if(this.model.get('rating')){
-             this.model.changeRating(0, false);
-         }
+         this.model.changeBooklist('iWant');
+         this.model.changeRating('noData');
          this.renderList(this.model);
      },
      onToggleOrder: function(){
-         this.model.changeList('onOrder');
+         this.model.changeBooklist('onOrder');
          this.renderList(this.model);
      },
      onToggleAvailable: function(){
-         this.model.changeList('available');
+         this.model.changeBooklist('available');
          this.renderList(this.model);
      },
      onToggleRead: function(){
-         this.model.changeList('alreadyRead');
+         this.model.changeBooklist('read');
+         this.model.changeRating('questionmark');
          this.renderList(this.model);
      },
      destroy: function(){
          this.model.destroy();
      }
- }); //close app.BookView
+ });
