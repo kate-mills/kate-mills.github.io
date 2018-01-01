@@ -1,37 +1,35 @@
+header h3, #new-book{text-align:center;margin-top:2em}
 
-header h3, #new-book{text-align: center;margin-top:2em}
-#greyBook,.glyphicon.glyphicon-bookmark.grey,.glyphicon.glyphicon-trash, th.glyphicon.trash, .glyphicon-trash{color: #9e9e9e;}
-.badge.backGrey{background-color:#9e9e9e;margin-left:5px}
+#greyBook,.glyphicon.glyphicon-bookmark.grey,.glyphicon.glyphicon-trash,th.glyphicon.trash,.glyphicon-trash{color:#9e9e9e;}
+td.glyphicon-trash:hover{color:red;font-weight: bold;}
+.badge.backGrey{background-color:#9e9e9e;}
 
 #greenBook, .glyphicon.glyphicon-bookmark.green{color: #08d008;}
-.badge.backGreen{background-color: #08d008;margin-left:5px}
+.badge.backGreen{background-color: #08d008;}
+.badge:hover{color:white;font-weight:bold;}
 
 #orangeBook, .glyphicon.glyphicon-bookmark.orange{color: #ff8300;}
-.badge.backOrange{background-color: #ff8300;margin-left:5px}
+.badge.backOrange{background-color: #ff8300;}
 
 #blueBook,  .glyphicon.glyphicon-bookmark.blue {color: #2196f3;}
-.badge.backBlue {background-color:#2196f3;margin-left:5px}
+.badge.backBlue {background-color:#2196f3;}
 
 #redBook, .glyphicon.glyphicon-bookmark.red{color: red;}
-.badge.backRed {background-color: red;margin-left:5px}
+.badge.backRed{background-color: red}
 
 #favoriteBook{color:#009688;}
 .badge.backFavorite{background-color: #009688;margin-left:5px}
 
+.badge{margin-left:5px;}
 .glyphicon.glyphicon-bookmark:hover,.glyphicon.glyphicon-trash:hover,.glyphicon.glyphicon-thumbs-down:hover,.glyphicon.glyphicon-thumbs-up:hover,.glyphicon.glyphicon-question-sign:hover,p#ToggleArrow:hover{cursor:pointer;}
 
 #sorttable_sortrevind,#sorttable_sortfwdind{padding:0;}
-
-
-/* table */
-th #sorttable_sortrevind,th #sorttable_sortfwdind{padding: 0;background-color: transparent;}
+th #sorttable_sortrevind,th #sorttable_sortfwdind{padding:0;background-color: transparent;}
 th.glyphicon,td.glyphicon,td.no_data{display:table-cell; border:transparent;}
 th:nth-child(5){width: 110px; text-align: center;}
 .table{width:80%; margin:0 auto;}
 div.container.table{margin-top: 3em}
 
-
-/* footer */
 #footer{font-size:12px;margin-top:2em; border-top:1px solid #9e9e9e;color: #9e9e9e}
 #footer a{color: #9e9e9e}
 #napaLibrary > span, #countyOfNapa > span, #worldCat > span{margin-left:1em;}
