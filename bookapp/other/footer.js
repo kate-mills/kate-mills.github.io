@@ -1,4 +1,3 @@
-
 function friendlyFooter(){
     this.text = ' Happy '
     switch (new Date().getDay()) {
