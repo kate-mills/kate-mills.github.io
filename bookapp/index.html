@@ -14,9 +14,18 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#/all">Book Tracker</a>
+                    <a class="navbar-brand active" href="#/all">Book Tracker</a>
                 </div>
                 <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Library Links
+                      <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a target="_blank" href="https://napa.polarislibrary.com/polaris/logon.aspx?ctx=3.1033.0.0.5&Header=1">Napa Library</a></li>
+                        <li><a target="_blank" href="http://countyofnapa.org/library/">County of Napa</a></li>
+                        <li><a target="_blank" href="http://www.worldcat.org/">World Cat</a></li>
+                      </ul>
+                    </li>
                     <li><a id="allLink" href="#/all">All<span id="all-length" class="badge">0</span></a></li>
                     <li><a id="wantLink" href="#/iWant">I Want <span id="want-length" class="badge">0</span></a></li>
                     <li><a id="orderLink" href="#/onOrder">On Order <span id="order-length" class="badge">0</span></a></li>
@@ -58,7 +67,7 @@
         </div>
         <div class="row">
             <div class="col-sm-2"></div>
-            <div class="col-sm-8" id="footer"><a class="inside_footer" title="Napa Library" id="napaLibrary" target="_blank" href="https://napa.polarislibrary.com/polaris/logon.aspx?ctx=3.1033.0.0.5&Header=1"><span class="glyphicon glyphicon-link"> </span> napa library</a><a title="NAPA COUNTY CA" id="countyOfNapa" target="_blank" href="http://countyofnapa.org/library/"><span class="glyphicon glyphicon-link"> </span> county of napa</a><a title="World Cat" id="worldCat" target="_blank" href="http://www.worldcat.org/"><span class="glyphicon glyphicon-link"> </span> worldcat</a></div>
+            <div class="col-sm-8" id="footer"></div>
             <div class="col-sm-2"></div>
         </div>
 
