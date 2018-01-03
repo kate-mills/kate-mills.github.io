@@ -27,7 +27,7 @@ td.glyphicon-trash:hover{color:red;font-weight: bold;}
 #sorttable_sortrevind,#sorttable_sortfwdind{padding:0;}
 th #sorttable_sortrevind,th #sorttable_sortfwdind{padding:0;background-color: transparent;}
 th.glyphicon,td.glyphicon,td.no_data{display:table-cell; border:transparent;}
-th:nth-child(5){width: 110px; text-align: center;}
+th:nth-child(5){width:110px; text-align:left;}
 .table{width:80%; margin:0 auto;}
 div.container.table{margin-top: 3em}
 
