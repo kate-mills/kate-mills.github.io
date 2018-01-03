@@ -29,7 +29,6 @@ app.Book = Backbone.Model.extend({
         if(!attrs.published){return "Book needs a Date to be Published";}
     },
     initialize: function(){
-        console.log(this.get('title'), "\t", this.get('booklist'))
         if(!this.isValid()){
             console.log( this.validationError,' \n');
         }
