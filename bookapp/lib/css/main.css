@@ -24,6 +24,8 @@ td.glyphicon-trash:hover{color:red;font-weight: bold;}
 .badge{margin-left:5px;}
 .glyphicon.glyphicon-bookmark:hover,.glyphicon.glyphicon-trash:hover,.glyphicon.glyphicon-thumbs-down:hover,.glyphicon.glyphicon-thumbs-up:hover,.glyphicon.glyphicon-question-sign:hover,p#ToggleArrow:hover{cursor:pointer;}
 
+tbody#table-body{background-color: #f7f1d8;}
+
 #sorttable_sortrevind,#sorttable_sortfwdind{padding:0;}
 th #sorttable_sortrevind,th #sorttable_sortfwdind{padding:0;background-color: transparent;}
 th.glyphicon,td.glyphicon,td.no_data{display:table-cell; border:transparent;}
